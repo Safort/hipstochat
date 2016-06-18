@@ -1,0 +1,4 @@
+.gulp-cache
+/.vscode
+/app
+/node_modules

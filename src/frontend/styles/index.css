@@ -1,0 +1,33 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body, .app, .main {
+    width: 100%;
+    height: 100%;
+}
+
+.app {
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    width: 850px
+}
+
+.detail {
+    flex-grow: 1;
+    background-color: #eee;
+    height: 100%;
+}
+
+.profile-edit {
+    display: flex;
+}
+
+@import "./menu/index.css";
+@import "./pm/index.css";
+@import './home/index.css';
