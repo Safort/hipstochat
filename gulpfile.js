@@ -7,7 +7,6 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
-const DeepMerge = require('deep-merge');
 const gulpBabel = require('gulp-babel');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodemon = require('gulp-nodemon');
@@ -16,18 +15,8 @@ const cache = new Cache();
 
 const frontendConfig = require('./webpack-frontend.config.js');
 const devServerConfig = require('./webpack-dev-server.config.js');
-
-const deepmerge = DeepMerge(function(target, source, key) {
-    if(target instanceof Array) {
-        return [].concat(target, source);
-    }
-    return source;
-});
-const config = function(overrides) {
-    return deepmerge(frontendConfig, overrides || {});
-};
-const onBuild = function(done) {
-    return function(err, stats) {
+const onBuild = (done) => {
+    return (err, stats) => {
         if (err) {
             console.log('Error', err);
         } else {
