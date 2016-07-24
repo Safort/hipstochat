@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { browserHistory, Router, Route, Link } from 'react-router';
+// import { browserHistory, Router, Route, Link } from 'react-router';
+import { browserHistory, Router } from 'react-router';
 
 import Main from '../components/main';
 import Signup from '../components/signup';
@@ -15,33 +16,33 @@ import * as userActions from '../actions/userActions';
 import '../../styles/index.css';
 
 const routeConfig = {
-    path: '/',
-    component: Main,
-    indexRoute: {component: Home},
-    childRoutes: [
-        {path: '/signup', component: Signup},
-        {path: '/profile/edit', component: Profile},
-        {path: '/pm/:usename', component: Pm},
-        {path: '*', component: NoMatch}
-    ]
+  path: '/',
+  component: Main,
+  indexRoute: { component: Home },
+  childRoutes: [
+    { path: '/signup', component: Signup },
+    { path: '/profile/edit', component: Profile },
+    { path: '/pm/:usename', component: Pm },
+    { path: '*', component: NoMatch },
+  ],
 };
 
 class App extends Component {
-    render() {
-        return <Router history={browserHistory} routes={routeConfig} />;
-    }
+  render() {
+    return <Router history={browserHistory} routes={routeConfig} />;
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        userActions: bindActionCreators(userActions, dispatch)
-    };
+  return {
+    userActions: bindActionCreators(userActions, dispatch),
+  };
 }
 
 function mapStateToProps(state) {
-    return {
-        user: state.user
-    };
+  return {
+    user: state.user,
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

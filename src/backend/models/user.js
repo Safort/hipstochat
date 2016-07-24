@@ -1,4 +1,4 @@
-import mongoose, {Schema} from 'mongoose';
+import mongoose from 'mongoose';
 import UserSchema from '../schemas/user';
 
 export default mongoose.model('users', UserSchema);

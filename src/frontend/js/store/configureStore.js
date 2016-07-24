@@ -5,18 +5,18 @@ import ping from '../enhancers/ping';
 import redirect from '../enhancers/redirect';
 
 export default function configureStore(initialState) {
-    const store = createStore(
-        rootReducer,
-        initialState,
-        applyMiddleware(thunk, ping, redirect)
-    );
+  const store = createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(thunk, ping, redirect)
+  );
 
-    if (module.hot) {
-        module.hot.accept('../reducers', () => {
-            const nextRootReducer = require('../reducers');
-            store.replaceReducer(nextRootReducer);
-        });
-    }
+  if (module.hot) {
+    module.hot.accept('../reducers', () => {
+      const nextRootReducer = require('../reducers');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
 
-    return store;
+  return store;
 }
