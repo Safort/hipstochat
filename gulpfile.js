@@ -7,8 +7,6 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
-const DeepMerge = require('deep-merge');
-const gulpBabel = require('gulp-babel');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodemon = require('gulp-nodemon');
 const Cache = require('gulp-file-cache');
@@ -16,18 +14,8 @@ const cache = new Cache();
 
 const frontendConfig = require('./webpack-frontend.config.js');
 const devServerConfig = require('./webpack-dev-server.config.js');
-
-const deepmerge = DeepMerge(function(target, source, key) {
-    if(target instanceof Array) {
-        return [].concat(target, source);
-    }
-    return source;
-});
-const config = function(overrides) {
-    return deepmerge(frontendConfig, overrides || {});
-};
-const onBuild = function(done) {
-    return function(err, stats) {
+const onBuild = (done) => {
+    return (err, stats) => {
         if (err) {
             console.log('Error', err);
         } else {
@@ -98,7 +86,7 @@ gulp.task('frontend-watch', function() {
 gulp.task('backend-prod', function() {
     return gulp
         .src('./src/backend/**/*.js', {base: './src/backend'})
-        .pipe(gulpBabel())
+        .pipe(babel())
         .pipe(gulp.dest('app/'));
 });
 
@@ -108,7 +96,7 @@ gulp.task('backend-dev', function() {
         .src('./src/backend/**/*.js', {base: './src/backend'})
         .pipe(cache.filter()) // remember files
         .pipe(plumber())
-        .pipe(gulpBabel())
+        .pipe(babel())
         .pipe(cache.cache())  // cache them
         .pipe(gulp.dest('app/'));
 });
