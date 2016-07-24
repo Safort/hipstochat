@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 import Signup from '../signup';
 
-class Home extends Component {
-  render() {
-    const {username} = this.props.user;
 
-    return (
-      <div>
-        { username ? 'Welcome home, Master!' : <Signup /> }
-      </div>
-    );
-  }
+const Home = (props) => {
+  const { username } = props.user;
+
+  return <div>{username ? 'Welcome home, Master!' : <Signup />}</div>;
 };
 
 function mapDispatchToProps(dispatch) {

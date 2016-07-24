@@ -13,6 +13,7 @@ export default function configureStore(initialState) {
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
+      /*eslint spaced-comment: 0*/
       const nextRootReducer = require('../reducers');
       store.replaceReducer(nextRootReducer);
     });

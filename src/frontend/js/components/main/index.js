@@ -12,13 +12,13 @@ class Main extends Component {
 
   render() {
     let { user, contacts } = this.props;
-    const menu = <Menu user={user} contacts={contacts}/>;
+    const menu = <Menu user={user} contacts={contacts} />;
     const children = <div className="detail">{this.props.children}</div>;
 
     return (
       <div className="main">
-        { user.username ? menu : '' }
-        { user.isInfoLoaded ? children : <PageLoader /> }
+        {user.username ? menu : ''}
+        {user.isInfoLoaded ? children : <PageLoader />}
       </div>
     );
   }

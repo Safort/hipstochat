@@ -62,9 +62,11 @@ class Signup extends Component {
           <input ref="password" placeholder="Password" />
           <input type="button" value="Sign up" onClick={this._signupUser} />
         </div>
-        <form className={pageSignin}
-              action="http://localhost:8080/signin"
-              method="post">
+        <form
+          className={pageSignin}
+          action="http://localhost:8080/signin"
+          method="post"
+        >
           <h3>Sign in</h3>
           <input ref="signinUsername" placeholder="Username" />
           <input ref="signinPassword" placeholder="Password" />
@@ -73,7 +75,7 @@ class Signup extends Component {
       </div>
     );
   }
-};
+}
 
 function mapDispatchToProps(dispatch) {
   return {

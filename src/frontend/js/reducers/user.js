@@ -7,7 +7,7 @@ const initialState = {
   avatarUrl: null,
   token: null,
   errors: [],
-  isInfoLoaded: false
+  isInfoLoaded: false,
 };
 
 export default function user(state = initialState, action) {

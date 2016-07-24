@@ -1,9 +1,9 @@
 import passport from 'passport';
 import passportLocal from 'passport-local';
 import UserModel from './models/user';
-import {isValidPassword} from './utils';
+import { isValidPassword } from './utils';
 
-export default (app) => {
+export default () => {
   passport.use(
     'local-signin',
     new passportLocal.Strategy(
@@ -33,7 +33,7 @@ export default (app) => {
     },
     (req, username, password, done) => {
       const registerUser = () => {
-        UserModel.findOne({username}, (err, user) => {
+        UserModel.findOne({ username }, (err, user) => {
           if (err) {
             console.log('Singup error: ', err);
             return done(err);
@@ -42,7 +42,7 @@ export default (app) => {
             console.log('Error: user already exist');
             return done(null, false);
           } else {
-            var newUser = new UserModel();
+            const newUser = new UserModel();
             newUser.username = username;
             newUser.password = password;
 

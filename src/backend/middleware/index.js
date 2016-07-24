@@ -34,7 +34,7 @@ export default ({ app, express }) => {
   app.use(cookieParser());
 
   app.use(session({
-    store: new MongoStore({mongooseConnection: app.get('db')}),
+    store: new MongoStore({ mongooseConnection: app.get('db') }),
     secret: 'secret_key',
     saveUninitialized: false,
     resave: false,

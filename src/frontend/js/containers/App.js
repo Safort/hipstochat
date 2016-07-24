@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-// import { render } from 'react-dom';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { browserHistory, Router, Route, Link } from 'react-router';
 import { browserHistory, Router } from 'react-router';
 
 import Main from '../components/main';
@@ -27,11 +25,7 @@ const routeConfig = {
   ],
 };
 
-class App extends Component {
-  render() {
-    return <Router history={browserHistory} routes={routeConfig} />;
-  }
-}
+const App = () => <Router history={browserHistory} routes={routeConfig} />;
 
 function mapDispatchToProps(dispatch) {
   return {

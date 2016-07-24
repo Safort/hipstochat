@@ -7,6 +7,7 @@ export function signup({ username, name, email, password }) {
       payload: null,
     });
 
+    /*eslint quote-props: 0*/
     fetch(
       'http://localhost:8080/api/signup',
       {
@@ -18,7 +19,7 @@ export function signup({ username, name, email, password }) {
         body: JSON.stringify({ username, name, email, password }),
       }
     )
-    .then(res => {
+    .then(() => {
       dispatch({
         type: actions.CREATE_USER_SUCCESS,
         payload: {
@@ -27,9 +28,9 @@ export function signup({ username, name, email, password }) {
           email,
           avatarUrl: '/defaultAvatar',
           errors: [],
-        }
+        },
       });
-    }).catch(err => {
+    }).catch(() => {
       dispatch({
         type: actions.CREATE_USER_FAIL,
         payload: {},
@@ -64,7 +65,7 @@ export function signin({ username, password }) {
         payload: res,
       });
     })
-    .catch(err => {
+    .catch(() => {
       dispatch({
         type: actions.SIGNIN_USER_FAIL,
         payload: {},
@@ -93,7 +94,7 @@ export function signout() {
         payload: res,
       });
     })
-    .catch(err => {
+    .catch(() => {
       dispatch({
         type: actions.SIGNOUT_USER_FAIL,
         payload: {},
@@ -120,7 +121,7 @@ export function loadInfo() {
         payload: res,
       });
     })
-    .catch(err => {
+    .catch(() => {
       dispatch({
         type: actions.LOAD_USER_INFO_FAIL,
         payload: {},

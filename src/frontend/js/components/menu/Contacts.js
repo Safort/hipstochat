@@ -1,24 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-let Contact = ({ address, name }) => {
-  return (
-    <Link className="menu-contacts__item" to={`/pm/${address}`}>
-      {name}
-    </Link>
-  );
-};
+let Contact = ({ address, name }) => (
+  <Link className="menu-contacts__item" to={`/pm/${address}`}>{name}</Link>
+);
 
-let Plus = () => {
-  return (
-    <Link className="menu-contacts__plus" to={'/contacts/add'}>+</Link>
-  );
-};
+let Plus = () => (
+  <Link className="menu-contacts__plus" to={'/contacts/add'}>+</Link>
+);
 
 export default ({ list }) => {
-  const contacts = list.map(({ name, address }, i) => {
-    return <Contact key={i} name={name} address={address} />
-  });
+  const contacts = list.map(({ name, address }, i) => (
+    <Contact key={i} name={name} address={address} />
+    )
+  );
 
   return (
     <div className="menu-contacts">
@@ -27,7 +22,7 @@ export default ({ list }) => {
           Contacts {`(${contacts.length})`}
         </div>
         <Plus />
-    </header>
+      </header>
       <div className="menu-contacts__list">{contacts}</div>
     </div>
   );
