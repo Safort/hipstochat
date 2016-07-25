@@ -7,7 +7,7 @@ export function signup({ username, name, email, password }) {
       payload: null,
     });
 
-    /*eslint quote-props: 0*/
+    /* eslint quote-props: 0 */
     fetch(
       'http://localhost:8080/api/signup',
       {

@@ -6,7 +6,6 @@ import auth from '../auth';
 import sessions from './sessions';
 import headers from './headers';
 
-
 export default ({ app, express }) => {
   const staticDir = './app/public';
   const passport = auth(app);

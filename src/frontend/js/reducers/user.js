@@ -15,12 +15,12 @@ export default function user(state = initialState, action) {
     case actions.SET_USER_NAME_REQUEST:
       return {
         ...state,
-        name: action.payload
+        name: action.payload,
       };
 
     case actions.CREATE_USER_REQUEST:
       return {
-        ...state
+        ...state,
       };
 
     case actions.CREATE_USER_SUCCESS:
@@ -34,14 +34,16 @@ export default function user(state = initialState, action) {
 
     case actions.CREATE_USER_FAIL:
       return {
-          ...state,
-          errors: action.payload.errors
+        ...state,
+        errors: action.payload.errors,
       };
 
     //
 
     case actions.SIGNIN_USER_REQUEST:
-      return {...state};
+      return {
+        ...state,
+      };
 
     case actions.SIGNIN_USER_SUCCESS:
       return {
@@ -51,19 +53,21 @@ export default function user(state = initialState, action) {
         email: action.payload.email,
         avatarUrl: action.payload.avatarUrl,
         errors: [],
-        token: action.payload.token
+        token: action.payload.token,
       };
 
     case actions.SIGNIN_USER_FAIL:
       return {
         ...state,
-        errors: action.payload.errors
+        errors: action.payload.errors,
       };
 
     //
 
     case actions.SIGNOUT_USER_REQUEST:
-      return {...state};
+      return {
+        ...state,
+      };
 
     case actions.SIGNOUT_USER_SUCCESS:
       return {
@@ -73,13 +77,13 @@ export default function user(state = initialState, action) {
         avatarUrl: null,
         errors: [],
         token: null,
-        isInfoLoaded: true
+        isInfoLoaded: true,
       };
 
     case actions.SIGNOUT_USER_FAIL:
       return {
         ...state,
-        errors: action.payload.errors
+        errors: action.payload.errors,
       };
 
     //
@@ -87,7 +91,7 @@ export default function user(state = initialState, action) {
     case actions.LOAD_USER_INFO_REQUEST:
       return {
         ...state,
-        isInfoLoaded: false
+        isInfoLoaded: false,
       };
 
     case actions.LOAD_USER_INFO_SUCCESS:
@@ -99,19 +103,17 @@ export default function user(state = initialState, action) {
         avatarUrl: action.payload.avatarUrl,
         errors: [],
         token: action.payload.token,
-        isInfoLoaded: true
+        isInfoLoaded: true,
       };
 
     case actions.LOAD_USER_INFO_FAIL:
       return {
         ...state,
         errors: action.payload.errors,
-        isInfoLoaded: true
+        isInfoLoaded: true,
       };
 
     default:
       return state;
   }
-
-  return state;
 }

@@ -1,7 +1,6 @@
 import methodOverride from 'method-override';
 
-
-export default function(app) {
+export default function (app) {
   app.disable('x-powered-by');
 
   app.use(methodOverride('X-HTTP-Method'));          // Microsoft
