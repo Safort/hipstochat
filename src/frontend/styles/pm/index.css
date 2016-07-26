@@ -48,13 +48,12 @@
     overflow: hidden;
     padding: 5px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 .pm-form__input {
     height: 90px;
     max-height: 90px;
-    width: 100%;
-    max-width: 100%;
-    display: block;
 }
 
 .pm-panel {
