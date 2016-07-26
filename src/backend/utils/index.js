@@ -1,4 +1,10 @@
-export function isSignedIn(req, res, next) {
+import crypto from 'crypto';
+
+function hashPwd(pwd) {
+  return crypto.createHash('sha256').update(pwd).digest('hex');
+}
+
+function isSignedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
@@ -6,6 +12,12 @@ export function isSignedIn(req, res, next) {
   res.redirect('/api/signin-error');
 }
 
-export function isValidPassword(user, password) {
-  return user.password === password;
+function isValidPassword(user, pwd) {
+  return user.password === hashPwd(pwd);
 }
+
+export {
+  hashPwd,
+  isSignedIn,
+  isValidPassword,
+};
