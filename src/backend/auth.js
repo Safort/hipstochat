@@ -45,6 +45,8 @@ export default () => {
             const newUser = new UserModel();
             newUser.username = username;
             newUser.password = password;
+            newUser.name = req.body.name;
+            newUser.email = req.body.email;
 
             newUser.save((err) => {
               if (err) {
