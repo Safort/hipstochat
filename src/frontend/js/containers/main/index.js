@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 import Menu from '../menu';
-import PageLoader from '../PageLoader';
+import PageLoader from '../../components/pageLoader';
 
 class Main extends Component {
   componentDidMount() {

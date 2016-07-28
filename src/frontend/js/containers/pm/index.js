@@ -19,26 +19,30 @@ const list = [
   { id: 16, name: 'user-a', text: 'some text', date: '4:42 PM' },
 ];
 
-const Message = ({ name, text, date }) => <div className="pm-message">
-  <div className="pm-message__avatar"></div>
-  <div className="pm-message__content">
-    <div className="pm-message__username">{name}</div>
-    <div className="pm-message__date">{date}</div>
-    <div className="pm-message__text">{text}</div>
+const Message = ({ name, text, date }) => (
+  <div className="pm-message">
+    <div className="pm-message__avatar"></div>
+    <div className="pm-message__content">
+      <div className="pm-message__username">{name}</div>
+      <div className="pm-message__date">{date}</div>
+      <div className="pm-message__text">{text}</div>
+    </div>
   </div>
-</div>;
+);
 
-const Form = () => <form className="pm-form">
-  <textarea className="pm-form__input"></textarea>
-  <div className="pm-panel">
-    <input className="pm-form__send" type="submit" value="Send" />
-  </div>
-</form>;
+const Form = () => (
+  <form className="pm-form">
+    <textarea className="pm-form__input"></textarea>
+    <div className="pm-panel">
+      <input className="pm-form__send" type="submit" value="Send" />
+    </div>
+  </form>
+);
 
 export default () => {
-  const messages = list.map(({ name, date, id, text }) => <Message
-    key={id} name={name} text={text} date={date}
-  />);
+  const messages = list.map(({ name, date, id, text }) => (
+    <Message key={id} name={name} text={text} date={date} />
+  ));
 
   return (
     <div className="pm">

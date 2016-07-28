@@ -3,11 +3,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory, Router } from 'react-router';
 
-import Main from '../components/main';
-import Signup from '../components/signup';
-import Home from '../components/home';
-import Pm from '../components/pm';
-import Profile from '../components/profile';
+import Main from './main';
+import Signup from './signup';
+import Home from './home';
+import Pm from './pm';
+import Profile from './profile';
 import NoMatch from '../components/no-match.js';
 
 import * as userActions from '../actions/userActions';

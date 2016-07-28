@@ -1,12 +1,10 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import Profile from './Profile.js';
-import Channels from './Channels.js';
-import Search from './Search.js';
-import Contacts from './Contacts.js';
-
+import Profile from '../../components/menu/Profile.js';
+import Channels from '../../components/menu/Channels.js';
+import Search from '../../components/menu/Search.js';
+import Contacts from '../../components/menu/Contacts.js';
 import * as userActions from '../../actions/userActions';
 
 const Menu = ({ user, userActions }) => {
