@@ -129,3 +129,34 @@ export function loadInfo() {
     });
   };
 }
+
+export function update({ username, name, email }) {
+  return (dispatch) => {
+    dispatch({
+      type: actions.UPDATE_USER_REQUEST,
+      payload: null,
+    });
+
+    fetch('http://localhost:8080/api/user', {
+      method: 'put',
+      headers: {
+        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      },
+      credentials: 'include',
+      body: `username=${username}&name=${name}&email=${email}`,
+    })
+    .then(res => res.json())
+    .then(() => {
+      dispatch({
+        type: actions.UPDATE_USER_SUCCESS,
+        payload: { username, name, email },
+      });
+    })
+    .catch(() => {
+      dispatch({
+        type: actions.UPDATE_USER_FAIL,
+        payload: {},
+      });
+    });
+  };
+}

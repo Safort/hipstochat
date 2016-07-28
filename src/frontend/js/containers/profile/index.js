@@ -4,8 +4,21 @@ import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 
 class Profile extends Component {
+  constructor() {
+    super();
 
+    this._save = this.save.bind(this);
+  }
 
+  save() {
+    const refs = this.refs;
+
+    const username = refs.username.value;
+    const name = refs.name.value;
+    const email = refs.email.value;
+
+    this.props.userActions.update({ username, name, email });
+  }
 
   render() {
     console.log('-----', this.props.user);
@@ -13,20 +26,20 @@ class Profile extends Component {
     return (
       <div className="profile-edit">
         <div className="profile">
-          <input ref="user" placeholder="name"  defaultValue={user.name} />
+          <input
+            ref="username" placeholder="username" defaultValue={user.username}
+          />
           <br />
-          <input ref="userName" placeholder="userName" defaultValue={user.username} />
+          <input ref="name" placeholder="name" defaultValue={user.name} />
           <br />
           <input ref="email" placeholder="email" defaultValue={user.email} />
           <br />
-          <input type="button" value="Save" />
+          <input type="button" onClick={this._save} value="Save" />
         </div>
       </div>
     );
   }
 }
-
-
 
 function mapDispatchToProps(dispatch) {
   return {

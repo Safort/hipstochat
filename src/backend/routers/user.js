@@ -7,4 +7,23 @@ export default ({ app }) => {
       res.json(userInfo);
     });
   });
+
+  app.put('/api/user', isSignedIn, (req, res) => {
+    const userId = req.session.passport.user;
+    const username = req.body.username;
+    const name = req.body.name;
+    const email = req.body.email;
+
+    const conditions = { _id: userId };
+    const update = { username, name, email };
+    const options = { multi: false };
+
+    UserModel.update(conditions, update, options, err => {
+      if (err) {
+        res.json({ success: false });
+      } else {
+        res.json({ success: true });
+      }
+    });
+  });
 };
