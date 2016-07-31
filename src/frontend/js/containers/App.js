@@ -5,6 +5,7 @@ import { browserHistory, Router } from 'react-router';
 
 import Main from './main';
 import Signup from './signup';
+import Search from './search';
 import Home from './home';
 import Pm from './pm';
 import Profile from './profile';
@@ -21,11 +22,14 @@ const routeConfig = {
     { path: '/signup', component: Signup },
     { path: '/profile/edit', component: Profile },
     { path: '/pm/:usename', component: Pm },
+    { path: '/search', component: Search },
     { path: '*', component: NoMatch },
   ],
 };
 
-const App = () => <Router history={browserHistory} routes={routeConfig} />;
+const App = () => (
+  <Router history={browserHistory} routes={routeConfig} />
+);
 
 function mapDispatchToProps(dispatch) {
   return {
