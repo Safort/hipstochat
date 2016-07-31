@@ -1,26 +1,17 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as userActions from '../../actions/userActions';
+import * as searchActions from '../../actions/searchActions';
 
-
-let users = [
-  { username: 'Username' },
-  { username: 'Username2' },
-  { username: 'Username3' },
-  { username: 'Username4' },
-];
 
 const User = ({username}) => (
   <div className="search__user">{username}</div>
 );
 
-
 class Search extends Component {
-
   render() {
-    const userList = users.map(({ username }) => (
-      <User username={username} />
+    const userList = this.props.search.userList.map(({ username }, i) => (
+      <User key={i} username={username} />
     ));
 
     return (
@@ -28,8 +19,9 @@ class Search extends Component {
         <header className="search__header">
           <input placeholder="username or channel name" />
         </header>
-
-        {userList}
+        <div className="search__users">
+          {userList}
+        </div>
       </div>
     );
   }
@@ -37,13 +29,13 @@ class Search extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    userActions: bindActionCreators(userActions, dispatch),
+    searchActions: bindActionCreators(searchActions, dispatch),
   };
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.user,
+    search: state.search,
   };
 }
 
