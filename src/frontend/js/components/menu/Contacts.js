@@ -6,14 +6,13 @@ let Contact = ({ address, name }) => (
 );
 
 let Plus = () => (
-  <Link className="menu-contacts__plus" to={'/contacts/add'}>+</Link>
+  <Link className="menu-contacts__plus" to={'/search'}>+</Link>
 );
 
 export default ({ list }) => {
   const contacts = list.map(({ name, address }, i) => (
     <Contact key={i} name={name} address={address} />
-    )
-  );
+  ));
 
   return (
     <div className="menu-contacts">

@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Profile from '../../components/menu/Profile.js';
 import Channels from '../../components/menu/Channels.js';
-import Search from '../../components/menu/Search.js';
 import Contacts from '../../components/menu/Contacts.js';
 import * as userActions from '../../actions/userActions';
 
@@ -26,7 +25,6 @@ const Menu = ({ user, userActions }) => {
   return (
     <div className="menu">
       <Profile user={user} userActions={userActions} />
-      <Search />
       <Channels list={chanelList} />
       <Contacts list={contactList} />
     </div>

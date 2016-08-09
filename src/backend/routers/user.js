@@ -26,4 +26,13 @@ export default ({ app }) => {
       }
     });
   });
+
+  app.get('/api/users/:username', (req, res) => {
+    UserModel.find(
+      { username: { $regex: req.params.username } },
+      'username',
+      (err, userList) => {
+        res.json({ userList });
+      });
+  });
 };

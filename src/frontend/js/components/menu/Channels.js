@@ -8,7 +8,7 @@ const Channel = ({ address, name }) => (
 );
 
 const Plus = () => (
-  <Link className="menu-channels__plus" to={'/channels/add'}>+</Link>
+  <Link className="menu-channels__plus" to={'/search'}>+</Link>
 );
 
 export default ({ list }) => {

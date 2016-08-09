@@ -12,12 +12,6 @@ const initialState = {
 
 export default function user(state = initialState, action) {
   switch (action.type) {
-    case actions.SET_USER_NAME_REQUEST:
-      return {
-        ...state,
-        name: action.payload,
-      };
-
     case actions.CREATE_USER_REQUEST:
       return {
         ...state,
