@@ -1,83 +1,85 @@
 .menu {
-    display: flex;
-    flex-direction: column;
-    background-color: #bbb;
+  display: flex;
+  flex-direction: column;
+  background-color: #bbb;
+  width: 200px;
+  padding: 10px;
 }
 
 .menu-profile {
-    display: flex;
-    align-items: center;
-    padding: 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
 }
 
 .menu-profile__img {
-    background-color: black;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
+  background-color: black;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
 }
 .menu-profile__username {
-    margin-left: 5px;
-    font-size: 15px;
-    flex-grow: 1;
+  margin-left: 5px;
+  font-size: 15px;
+  flex-grow: 1;
 }
 .menu-profile__config {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 
 
 .menu-search {
-    text-align: center;
+  text-align: center;
 }
 .menu-search__input {
-    width: 90%;
+  width: 90%;
 }
 
 
 
 .menu-channels {
-    padding: 5px;
+  padding: 5px;
 }
 .menu-channels__header {
-    display: flex;
+  display: flex;
 }
 .menu-channels__title {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 .menu-channels__list {}
 .menu-channels__item {
-    display: block;
+  display: block;
 }
 
 
 
 .menu-contacts {
-    padding: 5px;
+  padding: 5px;
 }
 
 .menu-contacts__header {
-    display: flex;
+  display: flex;
 }
 .menu-contacts__title {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .menu-contacts__list {}
 .menu-contacts__item {
-    display: block;
+  display: block;
 }
 
 
 
 .menu-contacts__plus,
 .menu-channels__plus {
-    text-decoration: none;
-    border-radius: 100%;
-    border: 1px solid #000;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  text-decoration: none;
+  border-radius: 100%;
+  border: 1px solid #000;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

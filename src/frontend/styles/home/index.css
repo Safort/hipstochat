@@ -1,40 +1,40 @@
 .home {
-    height: 100%;
-    width: 400px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
+  height: 100%;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 }
 
 
 .home__tabs {
-    display: flex;
-    margin-bottom: 10px;
-    width: 170px;
+  display: flex;
+  margin-bottom: 10px;
+  width: 170px;
 }
 
 .home__tab {
-    text-align: center;
-    background-color: #ccc;
-    flex-grow: 1;
-    cursor: pointer;
+  text-align: center;
+  background-color: #ccc;
+  flex-grow: 1;
+  cursor: pointer;
 }
 .home__tab--active {
-    background-color: #555;
+  background-color: #555;
 }
 
 
 
 .home__page {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .home__page--inactive {
-    display: none;
+  display: none;
 }
 .home__page--active {
-    display: flex;
+  display: flex;
 }

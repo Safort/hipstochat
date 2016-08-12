@@ -1,66 +1,66 @@
 
 .pm {
-    height: 100%;
+  height: 100%;
 }
 
 .pm-list {
-    height: calc(100% - 140px);
-    overflow-y: auto;
+  height: calc(100% - 140px);
+  overflow-y: auto;
 }
 
 
 .pm-message {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .pm-message:hover {
-    background-color: #fff;
+  background-color: #fff;
 }
 .pm-message__avatar {
-    width: 35px;
-    height: 35px;
-    background-color: #555;
-    display: inline-block;
-    vertical-align: top;
+  width: 35px;
+  height: 35px;
+  background-color: #555;
+  display: inline-block;
+  vertical-align: top;
 }
 .pm-message__content {
-    display: inline-block;
-    width: calc(100% - 35px);
-    padding-left: 5px;
-    box-sizing: border-box;
+  display: inline-block;
+  width: calc(100% - 35px);
+  padding-left: 5px;
+  box-sizing: border-box;
 }
 .pm-message__username {
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 10px;
-    color: #666;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+  color: #666;
 }
 .pm-message__date {
-    display: inline-block;
-    vertical-align: top;
+  display: inline-block;
+  vertical-align: top;
 }
 .pm-message__text {}
 
 
 .pm-form {
-    background-color: #aaa;
-    height: 140px;
-    max-height: 140px;
-    overflow: hidden;
-    padding: 5px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+  background-color: #aaa;
+  height: 140px;
+  max-height: 140px;
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 .pm-form__input {
-    height: 90px;
-    max-height: 90px;
+  height: 90px;
+  max-height: 90px;
 }
 
 .pm-panel {
-    text-align: right;
-    margin-top: 5px;
+  text-align: right;
+  margin-top: 5px;
 }
 
 .pm-form__send {
-    width: 100px;
+  width: 100px;
 }
