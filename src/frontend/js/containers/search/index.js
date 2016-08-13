@@ -2,26 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as searchActions from '../../actions/searchActions';
+import * as modalActions from '../../actions/modalActions';
+import User from './user';
 
-class User extends Component {
-  constructor(props) {
-    super(props);
-
-    this._onClick = this.onClick.bind(this);
-  }
-
-  onClick() {
-    // console.log(this.props);
-  }
-
-  render() {
-    return (
-      <div onClick={this._onClick} className="search__user">
-        {this.props.username}
-      </div>
-    );
-  }
-}
 
 class Search extends Component {
   constructor(props) {
@@ -39,8 +22,12 @@ class Search extends Component {
 
 
   render() {
-    const userList = this.props.search.userList.map(({ username }, i) => (
-      <User key={i} dispatch={this.props.dispatch} username={username} />
+    const userList = this.props.search.userList.map((user, i) => (
+      <User
+        key={i}
+        modalActions={this.props.modalActions}
+        data={user}
+      />
     ));
 
     return (
@@ -65,6 +52,7 @@ class Search extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     searchActions: bindActionCreators(searchActions, dispatch),
+    modalActions: bindActionCreators(modalActions, dispatch),
   };
 }
 
@@ -72,6 +60,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     search: state.search,
+    modal: state.modal,
   };
 }
 

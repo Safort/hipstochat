@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as userActions from '../../actions/userActions';
 import Menu from '../menu';
 import PageLoader from '../../components/pageLoader';
+import Modal from '../../components/modal';
+import * as userActions from '../../actions/userActions';
+import * as modalActions from '../../actions/modalActions';
+
 
 class Main extends Component {
   componentDidMount() {
@@ -11,7 +14,7 @@ class Main extends Component {
   }
 
   render() {
-    let { user, contacts } = this.props;
+    const { user, contacts, modal } = this.props;
     const menu = <Menu user={user} contacts={contacts} />;
     const children = <div className="detail">{this.props.children}</div>;
 
@@ -19,6 +22,7 @@ class Main extends Component {
       <div className="main">
         {user.username ? menu : ''}
         {user.isInfoLoaded ? children : <PageLoader />}
+        <Modal {...modal} />
       </div>
     );
   }
@@ -27,12 +31,14 @@ class Main extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
+    modalActions: bindActionCreators(modalActions, dispatch),
   };
 }
 
 function mapStateToProps(state) {
   return {
     user: state.user,
+    modal: state.modal,
   };
 }
 

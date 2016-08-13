@@ -29,6 +29,7 @@ html, body, .app, .main {
 }
 
 @import './home/index.css';
-@import "./menu/index.css";
-@import "./pm/index.css";
-@import './home/index.css';
+@import './menu/index.css';
+@import './pm/index.css';
+@import './search/index.css';
+@import './modal/index.css';

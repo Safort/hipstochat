@@ -26,7 +26,7 @@ class Modal extends Component {
 
 
   render() {
-    const { state, modalName } = this.props;
+    const { state, modalName, modalData } = this.props;
     const CurrentModal = modalComponents[modalName];
     let classes = `modal modal_${state}`;
 
@@ -37,7 +37,7 @@ class Modal extends Component {
     return (
       <div ref="bg" className={classes} onClick={this._hide}>
         <div className="modal__content">
-          <CurrentModal />
+          <CurrentModal user={modalData} />
         </div>
       </div>
     );

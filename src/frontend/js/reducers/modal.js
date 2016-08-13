@@ -3,6 +3,7 @@ import * as actions from '../constants/modal';
 
 const initialState = {
   modalName: '',
+  modalData: {},
   state: 'hidden',
 };
 
@@ -14,6 +15,7 @@ export default function modal(state = initialState, action) {
       return {
         ...state,
         modalName: action.payload.modalName,
+        modalData: action.payload.modalData,
         state: 'showed',
       };
 
@@ -21,6 +23,7 @@ export default function modal(state = initialState, action) {
       return {
         ...state,
         modalName: '',
+        modalData: {},
         state: 'hidden',
       };
 
