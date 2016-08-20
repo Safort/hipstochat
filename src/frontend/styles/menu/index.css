@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   padding: 5px;
+  flex-shrink: 0;
 }
 
 .menu-profile__img {

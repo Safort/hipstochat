@@ -26,6 +26,7 @@ html, body, .app, .main {
 
 .profile-edit {
   display: flex;
+  padding: 10px;
 }
 
 @import './home/index.css';
