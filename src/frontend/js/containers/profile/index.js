@@ -21,7 +21,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log('-----', this.props.user);
     const user = this.props.user;
     return (
       <div className="profile-edit">

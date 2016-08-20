@@ -4,11 +4,11 @@ import { Link } from 'react-router';
 export default class Profile extends Component {
   constructor() {
     super();
-    this._logout = this.logout.bind(this);
+    this._signout = this.signout.bind(this);
   }
 
-  logout() {
-    this.props.userActions.logout();
+  signout() {
+    this.props.userActions.signout();
   }
 
   render() {
@@ -23,7 +23,7 @@ export default class Profile extends Component {
           <Link to={"/profile/edit"}>{username}</Link>
         </div>
         <div className="menu-profile__config">
-          <div title="Exit" onClick={this._logout}>[Exit]</div>
+          <div title="Exit" onClick={this._signout}>[Exit]</div>
         </div>
       </div>
     );

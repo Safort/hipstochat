@@ -9,7 +9,11 @@ export default ({ app, passport }) => {
 
   app.get('/api/signout', (req, res) => {
     req.logout();
-    res.redirect('/');
+    if (req.user) {
+      res.json({success: false});
+    } else {
+      res.json({success: true});
+    }
   });
 
   app.get('/api/signin-error', (req, res) => {
