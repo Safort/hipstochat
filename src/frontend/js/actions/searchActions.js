@@ -1,3 +1,4 @@
+import { get } from '../utils/request';
 import * as actions from '../constants/search';
 
 export function searchUser({ username }) {
@@ -7,18 +8,7 @@ export function searchUser({ username }) {
       payload: null,
     });
 
-    /* eslint quote-props: 0 */
-    fetch(
-      `http://localhost:8080/api/users/${username}`,
-      {
-        method: 'get',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-    .then(res => res.json())
+    get(`http://localhost:8080/api/users/${username}`)
     .then(({ userList }) => {
       dispatch({
         type: actions.SEARCH_USER_SUCCESS,

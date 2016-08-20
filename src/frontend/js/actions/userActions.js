@@ -1,3 +1,4 @@
+import { get, post, put } from '../utils/request';
 import * as actions from '../constants/user';
 
 export function signup({ username, name, email, password }) {
@@ -7,18 +8,9 @@ export function signup({ username, name, email, password }) {
       payload: null,
     });
 
-    /* eslint quote-props: 0 */
-    fetch(
-      'http://localhost:8080/api/signup',
-      {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, name, email, password }),
-      }
-    )
+    const body = { username, name, email, password };
+
+    post('http://localhost:8080/api/signup', { body })
     .then(() => {
       dispatch({
         type: actions.CREATE_USER_SUCCESS,
@@ -47,16 +39,9 @@ export function signin({ username, password }) {
       payload: null,
     });
 
-    fetch('http://localhost:8080/api/signin', {
-      method: 'post',
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    })
-    .then(res => res.json())
+    const body = { username, password };
+
+    post('http://localhost:8080/api/signin', { body })
     .then(res => {
       dispatch({
         type: actions.SIGNIN_USER_SUCCESS,
@@ -81,13 +66,7 @@ export function signout() {
       payload: null,
     });
 
-    fetch('http://localhost:8080/api/signout', {
-      method: 'get',
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-      },
-      credentials: 'include',
-    })
+    get('http://localhost:8080/api/signout')
     .then(res => {
       dispatch({
         type: actions.SIGNOUT_USER_SUCCESS,
@@ -110,11 +89,7 @@ export function loadInfo() {
       payload: null,
     });
 
-    fetch('http://localhost:8080/api/user', {
-      method: 'get',
-      credentials: 'include',
-    })
-    .then(res => res.json())
+    get('http://localhost:8080/api/user')
     .then(res => {
       dispatch({
         type: actions.LOAD_USER_INFO_SUCCESS,
@@ -137,15 +112,9 @@ export function update({ username, name, email }) {
       payload: null,
     });
 
-    fetch('http://localhost:8080/api/user', {
-      method: 'put',
-      headers: {
-        'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-      },
-      credentials: 'include',
-      body: `username=${username}&name=${name}&email=${email}`,
-    })
-    .then(res => res.json())
+    const body = { username, name, email };
+
+    put('http://localhost:8080/api/user', { body })
     .then(() => {
       dispatch({
         type: actions.UPDATE_USER_SUCCESS,
