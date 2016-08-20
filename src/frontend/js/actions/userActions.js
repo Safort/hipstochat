@@ -39,6 +39,7 @@ export function signup({ username, name, email, password }) {
   };
 }
 
+
 export function signin({ username, password }) {
   return (dispatch) => {
     dispatch({
@@ -46,17 +47,14 @@ export function signin({ username, password }) {
       payload: null,
     });
 
-    const userData = new FormData();
-    userData.append('username', username);
-    userData.append('password', password);
-
     fetch('http://localhost:8080/api/signin', {
       method: 'post',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-      },
       credentials: 'include',
-      body: `username=${username}&password=${password}`,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
     })
     .then(res => res.json())
     .then(res => {
@@ -65,7 +63,8 @@ export function signin({ username, password }) {
         payload: res,
       });
     })
-    .catch(() => {
+    .catch(err => {
+      console.log('Error: ', err);
       dispatch({
         type: actions.SIGNIN_USER_FAIL,
         payload: {},
@@ -73,6 +72,7 @@ export function signin({ username, password }) {
     });
   };
 }
+
 
 export function signout() {
   return (dispatch) => {
