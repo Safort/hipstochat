@@ -7,9 +7,10 @@
   "license": "ISC",
   "scripts": {
     "start": "node ./app/index",
-    "build": "NODE_ENV=production gulp build",
-    "watch": "NODE_ENV=development gulp watch",
-    "test": "gulp test",
+    "build-frontend": "NODE_ENV=production webpack",
+    "watch-frontend": "NODE_ENV=development webpack-dev-server",
+    "build-backend": "NODE_ENV=production gulp build",
+    "watch-backend": "NODE_ENV=development gulp watch",
     "lint": "eslint ./src"
   },
   "devDependencies": {
