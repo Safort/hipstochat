@@ -1,7 +1,7 @@
 import { get } from '../utils/request';
 import * as actions from '../constants/search';
 
-export function searchUser({ username }) {
+export function findUser({ username }) {
   return (dispatch) => {
     dispatch({
       type: actions.SEARCH_USER_REQUEST,

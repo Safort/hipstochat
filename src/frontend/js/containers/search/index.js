@@ -10,14 +10,14 @@ class Search extends Component {
   constructor(props) {
     super(props);
 
-    this._search = this.search.bind(this);
+    this._find = this.find.bind(this);
   }
 
 
-  search() {
+  find() {
     const username = this.refs.username.value;
 
-    this.props.searchActions.searchUser({ username });
+    this.props.searchActions.findUser({ username });
   }
 
 
@@ -37,12 +37,10 @@ class Search extends Component {
             className="search__input"
             ref="username"
             placeholder="username or channel name"
-            onKeyUp={this._search}
+            onKeyUp={this._find}
           />
         </header>
-        <div className="search__users">
-          {userList}
-        </div>
+        <div className="search__users">{userList}</div>
       </div>
     );
   }
