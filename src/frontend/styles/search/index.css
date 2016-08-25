@@ -22,6 +22,8 @@
   padding: 5px 0;
   border-bottom: 1px solid #ccc;
   padding-left: 5px;
+  display: flex;
+  align-items: center;
 }
 .search__user:hover {
   background-color: #bbb;
@@ -29,4 +31,8 @@
 }
 .search__user:last-child {
   border-bottom: none;
+}
+
+.search__username {
+  margin-left: 10px;
 }

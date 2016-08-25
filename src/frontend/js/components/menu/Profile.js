@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import Avatar from '../avatar';
+
 
 export default class Profile extends Component {
   constructor() {
@@ -16,9 +18,7 @@ export default class Profile extends Component {
 
     return (
       <div className="menu-profile">
-        <div className="menu-profile__img">
-          <img src="" alt="" />
-        </div>
+        <Avatar username={username} />
         <div className="menu-profile__username">
           <Link to={"/profile/edit"}>{username}</Link>
         </div>

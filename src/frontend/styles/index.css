@@ -34,3 +34,4 @@ html, body, .app, .main {
 @import './pm/index.css';
 @import './search/index.css';
 @import './modal/index.css';
+@import './avatar/index.css';

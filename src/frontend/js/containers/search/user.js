@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Avatar from '../../components/avatar';
 
 
 class User extends Component {
@@ -15,9 +16,12 @@ class User extends Component {
 
 
   render() {
+    const username = this.props.data.username;
+
     return (
       <div onClick={this._onClick} className="search__user">
-        {this.props.data.username}
+        <Avatar username={username} />
+        <div className="search__username">{username}</div>
       </div>
     );
   }

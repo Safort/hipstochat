@@ -1,0 +1,18 @@
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #929c8f;
+  text-align: center;
+  line-height: 42px;
+}
+
+.avatar::before {
+  content: attr(data-content);
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
