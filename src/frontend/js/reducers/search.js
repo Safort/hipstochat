@@ -27,6 +27,14 @@ export default function search(state = initialState, action) {
         errors: action.payload.errors,
       };
 
+    case actions.SEARCH_CLEAR:
+      return {
+        userList: [],
+        chatList: [],
+        errors: [],
+        isInfoLoaded: false,
+      };
+
     default:
       return state;
   }

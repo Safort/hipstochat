@@ -13,6 +13,10 @@ class Search extends Component {
     this._find = this.find.bind(this);
   }
 
+  componentWillMount() {
+    this.props.searchActions.clear();
+  }
+
 
   find() {
     const username = this.refs.username.value;

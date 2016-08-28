@@ -26,3 +26,13 @@ export function findUser({ username }) {
     });
   };
 }
+
+
+export function clear() {
+  return (dispatch) => {
+    dispatch({
+      type: actions.SEARCH_CLEAR,
+      payload: null,
+    });
+  }
+}
