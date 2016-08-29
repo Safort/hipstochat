@@ -34,5 +34,5 @@ export function clear() {
       type: actions.SEARCH_CLEAR,
       payload: null,
     });
-  }
+  };
 }

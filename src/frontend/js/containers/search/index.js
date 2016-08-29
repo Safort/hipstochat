@@ -17,11 +17,13 @@ class Search extends Component {
     this.props.searchActions.clear();
   }
 
-
+  // TODO: must add debouncer
   find() {
-    const username = this.refs.username.value;
+    const username = this.refs.username.value.trim();
 
-    this.props.searchActions.findUser({ username });
+    if (username.length >= 2) {
+      this.props.searchActions.findUser({ username });
+    }
   }
 
 
