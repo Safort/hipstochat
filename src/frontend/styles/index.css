@@ -28,10 +28,3 @@ html, body, .app, .main {
   display: flex;
   padding: 10px;
 }
-
-@import './home/index.css';
-@import './menu/index.css';
-@import './pm/index.css';
-@import './search/index.css';
-@import './modal/index.css';
-@import './avatar/index.css';
