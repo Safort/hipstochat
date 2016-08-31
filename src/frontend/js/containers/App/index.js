@@ -1,18 +1,19 @@
+import './index.css';
+
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory, Router } from 'react-router';
 
-import Main from './main';
-import Signup from './signup';
-import Search from './search';
-import Home from './home';
-import Pm from './pm';
-import Profile from './profile';
-import NoMatch from '../components/no-match.js';
+import Main from '../main';
+import Signup from '../signup';
+import Search from '../search';
+import Home from '../home';
+import Pm from '../pm';
+import Profile from '../profile';
+import NoMatch from '../../components/no-match.js';
 
-import * as userActions from '../actions/userActions';
-import '../../styles/index.css';
+import * as userActions from '../../actions/userActions';
 
 const routeConfig = {
   path: '/',
