@@ -5,7 +5,6 @@ export function findUser({ username }) {
   return (dispatch) => {
     dispatch({
       type: actions.SEARCH_USER_REQUEST,
-      payload: null,
     });
 
     get(`http://localhost:8080/api/users/${username}`)
@@ -32,7 +31,6 @@ export function clear() {
   return (dispatch) => {
     dispatch({
       type: actions.SEARCH_CLEAR,
-      payload: null,
     });
   };
 }

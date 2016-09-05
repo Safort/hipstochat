@@ -5,7 +5,6 @@ export function signup({ username, name, email, password }) {
   return (dispatch) => {
     dispatch({
       type: actions.CREATE_USER_REQUEST,
-      payload: null,
     });
 
     const body = { username, name, email, password };
@@ -36,7 +35,6 @@ export function signin({ username, password }) {
   return (dispatch) => {
     dispatch({
       type: actions.SIGNIN_USER_REQUEST,
-      payload: null,
     });
 
     const body = { username, password };
@@ -63,7 +61,6 @@ export function signout() {
   return (dispatch) => {
     dispatch({
       type: actions.SIGNOUT_USER_REQUEST,
-      payload: null,
     });
 
     get('http://localhost:8080/api/signout')
@@ -86,7 +83,6 @@ export function loadInfo() {
   return (dispatch) => {
     dispatch({
       type: actions.LOAD_USER_INFO_REQUEST,
-      payload: null,
     });
 
     get('http://localhost:8080/api/user')
@@ -109,7 +105,6 @@ export function update({ username, name, email }) {
   return (dispatch) => {
     dispatch({
       type: actions.UPDATE_USER_REQUEST,
-      payload: null,
     });
 
     const body = { username, name, email };
