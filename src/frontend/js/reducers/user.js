@@ -1,5 +1,6 @@
 import * as actions from '../constants/user';
 
+
 const initialState = {
   username: null,
   name: null,
@@ -9,6 +10,7 @@ const initialState = {
   errors: [],
   isInfoLoaded: false,
 };
+
 
 export default function user(state = initialState, action) {
   switch (action.type) {

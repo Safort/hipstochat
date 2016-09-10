@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as modalActions from '../../actions/modalActions';
+import * as dialogsActions from '../../actions/dialogsActions';
 import Profile from './profile';
 
 
@@ -27,7 +28,7 @@ class Modal extends Component {
 
 
   render() {
-    const { state, modalName, modalData } = this.props;
+    const { state, modalName, modalData, dialogsActions } = this.props;
     const CurrentModal = modalComponents[modalName];
     let classes = `modal modal_${state}`;
 
@@ -38,7 +39,7 @@ class Modal extends Component {
     return (
       <div ref="bg" className={classes} onClick={this._hide}>
         <div className="modal__content">
-          <CurrentModal user={modalData} />
+          <CurrentModal user={modalData} dialogsActions={dialogsActions} />
         </div>
       </div>
     );
@@ -49,6 +50,7 @@ class Modal extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActions, dispatch),
+    dialogsActions: bindActionCreators(dialogsActions, dispatch),
   };
 }
 

@@ -1,44 +1,20 @@
 import { get, post, put } from '../utils/request';
-import * as actions from '../constants/user';
-
-export function getAll() {
-  return (dispatch) => {
-    dispatch({
-      type: actions.GET_DIALOGS_REQUEST,
-    });
-
-    get('http://localhost:8080/api/dialogs')
-    .then(result => {
-      dispatch({
-        type: actions.GET_DIALOGS_SUCCESS,
-        payload: { list: result.list },
-      });
-    }).catch(errors => {
-      dispatch({
-        type: actions.GET_DIALOGS_FAIL,
-        payload: { errors },
-      });
-    });
-  };
-}
+import * as actions from '../constants/dialogs';
 
 
-export function create({ id }) {
+export function create({ dialogUserId, dialogName }) {
   return (dispatch) => {
     dispatch({
       type: actions.CREATE_DIALOG_REQUEST,
     });
 
-    const body = { id };
+    const body = { dialogUserId, dialogName };
 
     post('http://localhost:8080/api/dialogs', { body })
     .then(result => {
       dispatch({
         type: actions.CREATE_DIALOG_SUCCESS,
-        payload: {
-          id: result.id,
-          name: result.name,
-        },
+        payload: { dialogUserId, dialogName },
       });
     }).catch(errors => {
       dispatch({
@@ -50,20 +26,17 @@ export function create({ id }) {
 }
 
 
-export function remove({ id }) {
+export function remove({ dialogUserId }) {
   return (dispatch) => {
     dispatch({
       type: actions.REMOVE_DIALOG_REQUEST,
     });
 
-    remove(`http://localhost:8080/api/dialogs/${id}`)
+    remove(`http://localhost:8080/api/dialogs/${dialogUserId}`)
     .then(result => {
       dispatch({
         type: actions.REMOVE_DIALOG_SUCCESS,
-        payload: {
-          id: result.id,
-          name: result.name,
-        },
+        payload: { dialogUserId },
       });
     }).catch(errors => {
       dispatch({

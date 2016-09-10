@@ -1,20 +1,21 @@
 import UserModel from '../models/user';
 import { isSignedIn } from '../utils';
 
+
 export default ({ app }) => {
   app.get('/api/user', isSignedIn, (req, res) => {
-    UserModel.findById(req.session.passport.user, (err, userInfo) => {
+    UserModel.findById(req.user._id, (err, userInfo) => {
       res.json(userInfo);
     });
   });
 
+
   app.put('/api/user', isSignedIn, (req, res) => {
-    const userId = req.session.passport.user;
+    const conditions = { _id: req.user._id };
     const username = req.body.username;
     const name = req.body.name;
     const email = req.body.email;
 
-    const conditions = { _id: userId };
     const update = { username, name, email };
     const options = { multi: false };
 
@@ -26,6 +27,7 @@ export default ({ app }) => {
       }
     });
   });
+
 
   app.get('/api/users/:username', (req, res) => {
     UserModel.find(

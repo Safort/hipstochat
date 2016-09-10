@@ -1,11 +1,13 @@
 import UserModel from '../models/user';
 
+
 export default ({ app, passport }) => {
   app.post('/api/signin', passport.authenticate('local-signin'), (req, res) => {
-    UserModel.findById(req.session.passport.user, (err, userInfo) => {
+    UserModel.findById(req.user._id, (err, userInfo) => {
       res.json(userInfo);
     });
   });
+
 
   app.get('/api/signout', (req, res) => {
     req.logout();
@@ -16,6 +18,7 @@ export default ({ app, passport }) => {
       res.json({ success: true });
     }
   });
+
 
   app.get('/api/signin-error', (req, res) => {
     res.json({

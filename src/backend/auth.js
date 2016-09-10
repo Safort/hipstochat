@@ -3,6 +3,7 @@ import passportLocal from 'passport-local';
 import UserModel from './models/user';
 import { isValidPassword } from './utils';
 
+
 export default () => {
   passport.use(
     'local-signin',
@@ -39,7 +40,6 @@ export default () => {
             return done(err);
           }
           if (user) {
-            console.log('Error: user already exist');
             return done(null, false);
           } else {
             const newUser = new UserModel();
@@ -47,13 +47,12 @@ export default () => {
             newUser.password = password;
             newUser.name = req.body.name;
             newUser.email = req.body.email;
+            newUser.dialogs = { list: [] };
 
-            newUser.save((err) => {
+            newUser.save(err => {
               if (err) {
-                console.log('Error in saving: ', err);
                 throw err;
               } else {
-                console.log('Registration succesful');
                 return done(null, newUser);
               }
             });
