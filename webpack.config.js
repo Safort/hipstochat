@@ -33,7 +33,7 @@ const plugins = [
     template: 'templates/index.html'
   }),
   new webpack.DefinePlugin({
-    NODE_ENV: JSON.stringify(NODE_ENV)
+    'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
   })
 ];
 
