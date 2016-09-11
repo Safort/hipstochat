@@ -42,7 +42,7 @@ export default ({ app }) => {
       res.json({ success: true, dialogUserId });
     })
     .catch(() => {
-      res.json({ success: true });
+      res.json({ success: false });
     });
   });
 };

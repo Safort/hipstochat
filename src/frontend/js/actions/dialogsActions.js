@@ -1,4 +1,4 @@
-import { get, post, put } from '../utils/request';
+import request from '../utils/request';
 import * as actions from '../constants/dialogs';
 
 
@@ -10,7 +10,7 @@ export function create({ dialogUserId, dialogName }) {
 
     const body = { dialogUserId, dialogName };
 
-    post('http://localhost:8080/api/dialogs', { body })
+    request('post', 'http://localhost:8080/api/dialogs', { body })
     .then(result => {
       dispatch({
         type: actions.CREATE_DIALOG_SUCCESS,
@@ -32,7 +32,7 @@ export function remove({ dialogUserId }) {
       type: actions.REMOVE_DIALOG_REQUEST,
     });
 
-    remove(`http://localhost:8080/api/dialogs/${dialogUserId}`)
+    request('delete', `http://localhost:8080/api/dialogs/${dialogUserId}`)
     .then(result => {
       dispatch({
         type: actions.REMOVE_DIALOG_SUCCESS,

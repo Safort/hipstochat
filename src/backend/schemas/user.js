@@ -77,6 +77,7 @@ UserSchema.statics.removeDialog = function({ userId, dialogUserId }) {
         user.dialogs.list = user.dialogs.list
           .filter(dialog => dialog.dialogUserId !== dialogUserId);
 
+        user.markModified('dialogs.list');
         user.save(err => {
           if (err) {
             reject(err);
