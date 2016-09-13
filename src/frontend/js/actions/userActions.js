@@ -4,7 +4,7 @@ import * as dialogsActions from '../constants/dialogs';
 
 
 export function signup({ username, name, email, password }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: userActions.CREATE_USER_REQUEST,
     });
@@ -26,7 +26,6 @@ export function signup({ username, name, email, password }) {
     }).catch(() => {
       dispatch({
         type: userActions.CREATE_USER_FAIL,
-        payload: {},
       });
     });
   };
@@ -34,7 +33,7 @@ export function signup({ username, name, email, password }) {
 
 
 export function signin({ username, password }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: userActions.SIGNIN_USER_REQUEST,
     });
@@ -51,7 +50,6 @@ export function signin({ username, password }) {
     .catch(err => {
       dispatch({
         type: userActions.SIGNIN_USER_FAIL,
-        payload: {},
       });
     });
   };
@@ -59,7 +57,7 @@ export function signin({ username, password }) {
 
 
 export function signout() {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: userActions.SIGNOUT_USER_REQUEST,
     });
@@ -74,7 +72,6 @@ export function signout() {
     .catch(() => {
       dispatch({
         type: userActions.SIGNOUT_USER_FAIL,
-        payload: {},
       });
     });
   };
@@ -82,7 +79,7 @@ export function signout() {
 
 
 export function loadInfo() {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: userActions.LOAD_USER_INFO_REQUEST,
     });
@@ -102,7 +99,6 @@ export function loadInfo() {
     .catch(() => {
       dispatch({
         type: userActions.LOAD_USER_INFO_FAIL,
-        payload: {},
       });
     });
   };
@@ -110,7 +106,7 @@ export function loadInfo() {
 
 
 export function update({ username, name, email }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: userActions.UPDATE_USER_REQUEST,
     });
@@ -127,7 +123,6 @@ export function update({ username, name, email }) {
     .catch(() => {
       dispatch({
         type: userActions.UPDATE_USER_FAIL,
-        payload: {},
       });
     });
   };

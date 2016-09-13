@@ -3,12 +3,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 
+
 class Profile extends Component {
   constructor() {
     super();
 
     this._save = this.save.bind(this);
   }
+
 
   save() {
     const refs = this.refs;
@@ -20,8 +22,10 @@ class Profile extends Component {
     this.props.userActions.update({ username, name, email });
   }
 
+
   render() {
     const user = this.props.user;
+
     return (
       <div className="profile-edit">
         <div className="profile">
@@ -40,16 +44,17 @@ class Profile extends Component {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-  };
+
+function mapStateToProps({ user }) {
+  return { user };
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

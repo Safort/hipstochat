@@ -1,4 +1,5 @@
 import './index.css';
+
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,11 +15,13 @@ class Search extends Component {
     this._find = this.find.bind(this);
   }
 
+
   componentWillMount() {
     this.props.searchActions.clear();
   }
 
-  // TODO: must add debouncer
+
+  // TODO: add debouncer
   find() {
     const username = this.refs.username.value.trim();
 
@@ -62,11 +65,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-function mapStateToProps(state) {
-  return {
-    search: state.search,
-    modal: state.modal,
-  };
+function mapStateToProps({ search, modal }) {
+  return { search, modal };
 }
 
 

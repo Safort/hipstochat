@@ -1,8 +1,9 @@
 import { get } from '../utils/request';
 import * as actions from '../constants/search';
 
+
 export function findUser({ username }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: actions.SEARCH_USER_REQUEST,
     });
@@ -28,7 +29,7 @@ export function findUser({ username }) {
 
 
 export function clear() {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: actions.SEARCH_CLEAR,
     });

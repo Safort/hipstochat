@@ -2,7 +2,7 @@ import * as actions from '../constants/modal';
 
 
 export function show(modalName, modalData) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: actions.MODAL_SHOW,
       payload: {
@@ -16,7 +16,7 @@ export function show(modalName, modalData) {
 
 
 export function hide() {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: actions.MODAL_HIDE,
       payload: {

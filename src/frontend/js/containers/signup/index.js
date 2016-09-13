@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import * as userActions from '../../actions/userActions';
 
+
 class Signup extends Component {
   constructor() {
     super();
@@ -12,9 +13,11 @@ class Signup extends Component {
     this._signinUser = this.signinUser.bind(this);
   }
 
+
   componentWillMount() {
     this.setState({ signup: 'inactive', signin: 'active' });
   }
+
 
   signupUser() {
     const refs = this.refs;
@@ -25,6 +28,7 @@ class Signup extends Component {
     this.props.userActions.signup({ username, name, email, password });
   }
 
+
   signinUser(event) {
     event.preventDefault();
 
@@ -34,6 +38,7 @@ class Signup extends Component {
     this.props.userActions.signin({ username, password });
   }
 
+
   tabHandler() {
     if (this.state.signup === 'active') {
       this.setState({ signup: 'inactive', signin: 'active' });
@@ -41,6 +46,7 @@ class Signup extends Component {
       this.setState({ signup: 'active', signin: 'inactive' });
     }
   }
+
 
   render() {
     const tabSignup = `home__tab home__tab--${this.state.signup}`;
@@ -77,16 +83,16 @@ class Signup extends Component {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-  };
+
+function mapStateToProps({ user }) {
+  return { user };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

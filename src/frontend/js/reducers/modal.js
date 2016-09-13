@@ -10,7 +10,6 @@ const initialState = {
 
 export default function modal(state = initialState, action) {
   switch (action.type) {
-
     case actions.MODAL_SHOW:
       return {
         ...state,

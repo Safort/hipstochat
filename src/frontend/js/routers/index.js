@@ -6,6 +6,7 @@ import Pm from '../containers/pm';
 import Profile from '../containers/profile';
 import NoMatch from '../components/no-match.js';
 
+
 const routes = {
   path: '/',
   component: Main,
@@ -18,5 +19,6 @@ const routes = {
     { path: '*', component: NoMatch },
   ],
 };
+
 
 export default routes;

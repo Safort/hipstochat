@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import ping from '../enhancers/ping';
 import redirect from '../enhancers/redirect';
 
+
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,

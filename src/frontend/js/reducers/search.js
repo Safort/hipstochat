@@ -1,11 +1,12 @@
 import * as actions from '../constants/search';
 
+
 const initialState = {
   userList: [],
-  chatList: [],
   errors: [],
   isInfoLoaded: false,
 };
+
 
 export default function search(state = initialState, action) {
   switch (action.type) {
@@ -24,13 +25,11 @@ export default function search(state = initialState, action) {
       return {
         ...state,
         isInfoLoaded: true,
-        errors: action.payload.errors,
       };
 
     case actions.SEARCH_CLEAR:
       return {
         userList: [],
-        chatList: [],
         errors: [],
         isInfoLoaded: false,
       };

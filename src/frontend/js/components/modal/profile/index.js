@@ -26,9 +26,7 @@ class Profile extends Component {
 
     return (
       <div className="modal-profile">
-        <div className="modal-profile__title">
-          Contact info
-        </div>
+        <div className="modal-profile__title">Contact info</div>
         <div className="modal-profile__info">
           username: {user.username}
         </div>

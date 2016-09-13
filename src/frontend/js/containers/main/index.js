@@ -15,6 +15,7 @@ class Main extends Component {
     this.props.userActions.loadInfo();
   }
 
+
   render() {
     const { user, contacts, modal } = this.props;
     const menu = <Menu user={user} contacts={contacts} />;
@@ -30,6 +31,7 @@ class Main extends Component {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
@@ -37,11 +39,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-    modal: state.modal,
-  };
+
+function mapStateToProps({ user, modal }) {
+  return { user, modal };
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

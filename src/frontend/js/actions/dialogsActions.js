@@ -3,7 +3,7 @@ import * as actions from '../constants/dialogs';
 
 
 export function create({ dialogUserId, dialogName }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: actions.CREATE_DIALOG_REQUEST,
     });
@@ -27,7 +27,7 @@ export function create({ dialogUserId, dialogName }) {
 
 
 export function remove({ dialogUserId }) {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({
       type: actions.REMOVE_DIALOG_REQUEST,
     });

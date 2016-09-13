@@ -8,16 +8,14 @@ const initialState = {
   avatarUrl: null,
   token: null,
   errors: [],
-  isInfoLoaded: false,
+  isInfoLoaded: false, // TODO: replace on isFetching
 };
 
 
 export default function user(state = initialState, action) {
   switch (action.type) {
     case actions.CREATE_USER_REQUEST:
-      return {
-        ...state,
-      };
+      return { ...state };
 
     case actions.CREATE_USER_SUCCESS:
       return {
@@ -29,17 +27,12 @@ export default function user(state = initialState, action) {
       };
 
     case actions.CREATE_USER_FAIL:
-      return {
-        ...state,
-        errors: action.payload.errors,
-      };
+      return { ...state };
 
     //
 
     case actions.SIGNIN_USER_REQUEST:
-      return {
-        ...state,
-      };
+      return { ...state };
 
     case actions.SIGNIN_USER_SUCCESS:
       return {
@@ -53,17 +46,12 @@ export default function user(state = initialState, action) {
       };
 
     case actions.SIGNIN_USER_FAIL:
-      return {
-        ...state,
-        errors: action.payload.errors,
-      };
+      return { ...state };
 
     //
 
     case actions.SIGNOUT_USER_REQUEST:
-      return {
-        ...state,
-      };
+      return { ...state };
 
     case actions.SIGNOUT_USER_SUCCESS:
       return {
@@ -77,10 +65,7 @@ export default function user(state = initialState, action) {
       };
 
     case actions.SIGNOUT_USER_FAIL:
-      return {
-        ...state,
-        errors: action.payload.errors,
-      };
+      return { ...state };
 
     //
 
@@ -105,7 +90,6 @@ export default function user(state = initialState, action) {
     case actions.LOAD_USER_INFO_FAIL:
       return {
         ...state,
-        errors: action.payload.errors,
         isInfoLoaded: true,
       };
 

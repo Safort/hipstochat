@@ -21,9 +21,7 @@ export default class Dialog extends Component {
 
     return (
       <div className="dialogs__item">
-        <Link to={`/pm/${dialogUserId}`}>
-          {dialogName}
-        </Link>
+        <Link to={`/pm/${dialogUserId}`}>{dialogName}</Link>
         <span onClick={this._onClick}>[-]</span>
       </div>
     );

@@ -55,10 +55,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-function mapStateToProps(state) {
-  return {
-    modal: state.modal,
-  };
+function mapStateToProps({ modal }) {
+  return { modal };
 }
 
 

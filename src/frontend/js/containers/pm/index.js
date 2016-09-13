@@ -1,5 +1,7 @@
 import './index.css';
+
 import React from 'react';
+
 
 // dummy
 const list = [
@@ -39,6 +41,7 @@ const Form = () => (
     </div>
   </form>
 );
+
 
 export default () => {
   const messages = list.map(({ name, date, id, text }) => (

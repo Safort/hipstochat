@@ -9,6 +9,7 @@ export default class Profile extends Component {
     this._signout = this.signout.bind(this);
   }
 
+
   signout() {
     this.props.userActions.signout();
   }
