@@ -23,7 +23,7 @@ const UserSchema = new Schema({
 
 
 // create new dialog
-UserSchema.statics.createDialog = function(userId, newDialog) {
+UserSchema.statics.createDialog = function createDialog(userId, newDialog) {
   const { dialogUserId, dialogName } = newDialog;
 
   return new Promise((resolve, reject) => {
@@ -54,7 +54,7 @@ UserSchema.statics.createDialog = function(userId, newDialog) {
 
 
 // get dialogs by user id
-UserSchema.statics.getDialogs = function({ userId }) {
+UserSchema.statics.getDialogs = function getDialogs({ userId }) {
   return new Promise((resolve, reject) => {
     this.model('users').findById(userId, (err, user) => {
       if (err) {
@@ -68,12 +68,13 @@ UserSchema.statics.getDialogs = function({ userId }) {
 
 
 // remove dialog by dialogUserId
-UserSchema.statics.removeDialog = function({ userId, dialogUserId }) {
+UserSchema.statics.removeDialog = function removeDialog({ userId, dialogUserId }) {
   return new Promise((resolve, reject) => {
     this.model('users').findById(userId, (err, user) => {
       if (err) {
         reject(err);
       } else {
+        /* eslint no-param-reassign: 0 */
         user.dialogs.list = user.dialogs.list
           .filter(dialog => dialog.dialogUserId !== dialogUserId);
 

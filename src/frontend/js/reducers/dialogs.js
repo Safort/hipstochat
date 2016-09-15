@@ -13,7 +13,7 @@ export default function dialogs(state = initialState, action) {
     case actions.UPDATE_DIALOG_LIST:
       return {
         ...state,
-        list: action.payload
+        list: action.payload,
       };
 
 

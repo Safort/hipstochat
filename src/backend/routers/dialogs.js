@@ -25,7 +25,7 @@ export default ({ app }) => {
     .then(() => {
       res.json({ success: true });
     })
-    .catch(err => {
+    .catch(() => {
       res.json({ success: false });
     });
   });

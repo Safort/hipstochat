@@ -11,7 +11,7 @@ export function create({ dialogUserId, dialogName }) {
     const body = { dialogUserId, dialogName };
 
     request('post', 'http://localhost:8080/api/dialogs', { body })
-    .then(result => {
+    .then(() => {
       dispatch({
         type: actions.CREATE_DIALOG_SUCCESS,
         payload: { dialogUserId, dialogName },
@@ -33,7 +33,7 @@ export function remove({ dialogUserId }) {
     });
 
     request('delete', `http://localhost:8080/api/dialogs/${dialogUserId}`)
-    .then(result => {
+    .then(() => {
       dispatch({
         type: actions.REMOVE_DIALOG_SUCCESS,
         payload: { dialogUserId },

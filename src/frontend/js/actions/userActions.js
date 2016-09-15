@@ -47,7 +47,7 @@ export function signin({ username, password }) {
         payload: res,
       });
     })
-    .catch(err => {
+    .catch(() => {
       dispatch({
         type: userActions.SIGNIN_USER_FAIL,
       });
