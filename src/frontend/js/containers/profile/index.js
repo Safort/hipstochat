@@ -13,11 +13,9 @@ class Profile extends Component {
 
 
   save() {
-    const refs = this.refs;
-
-    const username = refs.username.value;
-    const name = refs.name.value;
-    const email = refs.email.value;
+    const username = this._username.value;
+    const name = this._name.value;
+    const email = this._email.value;
 
     this.props.userActions.update({ username, name, email });
   }
@@ -30,12 +28,22 @@ class Profile extends Component {
       <div className="profile-edit">
         <div className="profile">
           <input
-            ref="username" placeholder="username" defaultValue={user.username}
+            ref={username => { this._username = username; }}
+            placeholder="username"
+            defaultValue={user.username}
           />
           <br />
-          <input ref="name" placeholder="name" defaultValue={user.name} />
+          <input
+            ref={name => { this._name = name; }}
+            placeholder="name"
+            defaultValue={user.name}
+          />
           <br />
-          <input ref="email" placeholder="email" defaultValue={user.email} />
+          <input
+            ref={email => { this._email = email; }}
+            placeholder="email"
+            defaultValue={user.email}
+          />
           <br />
           <input type="button" onClick={this._save} value="Save" />
         </div>

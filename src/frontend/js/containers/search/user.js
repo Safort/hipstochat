@@ -18,6 +18,7 @@ class User extends Component {
   render() {
     const username = this.props.data.username;
 
+    /* eslint jsx-a11y/no-static-element-interactions: 0 */
     return (
       <div onClick={this._onClick} className="search__user">
         <Avatar username={username} />

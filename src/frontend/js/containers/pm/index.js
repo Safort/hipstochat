@@ -1,7 +1,6 @@
-import './index.css';
-
 import React from 'react';
 
+import './index.css';
 
 // dummy
 const list = [
@@ -24,7 +23,7 @@ const list = [
 
 const Message = ({ name, text, date }) => (
   <div className="pm-message">
-    <div className="pm-message__avatar"></div>
+    <div className="pm-message__avatar" />
     <div className="pm-message__content">
       <div className="pm-message__username">{name}</div>
       <div className="pm-message__date">{date}</div>
@@ -33,9 +32,10 @@ const Message = ({ name, text, date }) => (
   </div>
 );
 
+
 const Form = () => (
   <form className="pm-form">
-    <textarea className="pm-form__input"></textarea>
+    <textarea className="pm-form__input" />
     <div className="pm-panel">
       <input className="pm-form__send" type="submit" value="Send" />
     </div>

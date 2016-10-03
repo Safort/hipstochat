@@ -1,11 +1,11 @@
-import './index.css';
-
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as searchActions from '../../actions/searchActions';
 import * as modalActions from '../../actions/modalActions';
 import User from './user';
+
+import './index.css';
 
 
 class Search extends Component {
@@ -23,7 +23,7 @@ class Search extends Component {
 
   // TODO: add debouncer
   find() {
-    const username = this.refs.username.value.trim();
+    const username = this._username.value.trim();
 
     if (username.length >= 2) {
       this.props.searchActions.findUser({ username });
@@ -45,7 +45,7 @@ class Search extends Component {
         <header className="search__header">
           <input
             className="search__input"
-            ref="username"
+            ref={username => { this._username = username; }}
             placeholder="username or channel name"
             onKeyUp={this._find}
           />

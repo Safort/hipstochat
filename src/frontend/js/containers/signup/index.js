@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import * as userActions from '../../actions/userActions';
 
 
@@ -20,11 +19,10 @@ class Signup extends Component {
 
 
   signupUser() {
-    const refs = this.refs;
-    const username = refs.username.value;
-    const name = refs.name.value;
-    const email = refs.email.value;
-    const password = refs.password.value;
+    const username = this._username.value;
+    const name = this._name.value;
+    const email = this._email.value;
+    const password = this._password.value;
     this.props.userActions.signup({ username, name, email, password });
   }
 
@@ -32,9 +30,8 @@ class Signup extends Component {
   signinUser(event) {
     event.preventDefault();
 
-    const refs = this.refs;
-    const username = refs.signinUsername.value;
-    const password = refs.signinPassword.value;
+    const username = this._signinUsername.value;
+    const password = this._signinPassword.value;
     this.props.userActions.signin({ username, password });
   }
 
@@ -56,16 +53,22 @@ class Signup extends Component {
 
     return (
       <div className="home">
-        <div className="home__tabs" onClick={this._tabHandler}>
+        <button className="home__tabs" onClick={this._tabHandler}>
           <div className={tabSignup}>Sign up</div>
           <div className={tabSignin}>Sign in</div>
-        </div>
+        </button>
         <div className={pageSignup}>
           <h3>Sign up</h3>
-          <input ref="username" placeholder="Username" />
-          <input ref="name" placeholder="Name" />
-          <input ref="email" placeholder="Email" />
-          <input ref="password" placeholder="Password" />
+          <input
+            ref={username => { this._username = username; }}
+            placeholder="Username"
+          />
+          <input ref={name => { this._name = name; }} placeholder="Name" />
+          <input ref={email => { this._email = email; }} placeholder="Email" />
+          <input
+            ref={password => { this._password = password; }}
+            placeholder="Password"
+          />
           <input type="button" value="Sign up" onClick={this._signupUser} />
         </div>
         <form
@@ -74,8 +77,14 @@ class Signup extends Component {
           method="post"
         >
           <h3>Sign in</h3>
-          <input ref="signinUsername" placeholder="Username" />
-          <input ref="signinPassword" placeholder="Password" />
+          <input
+            ref={signinUsername => { this._signinUsername = signinUsername; }}
+            placeholder="Username"
+          />
+          <input
+            ref={signinPassword => { this._signinPassword = signinPassword; }}
+            placeholder="Password"
+          />
           <input type="submit" value="Sign in" onClick={this._signinUser} />
         </form>
       </div>

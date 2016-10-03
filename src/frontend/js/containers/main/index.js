@@ -1,5 +1,3 @@
-import './index.css';
-
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -8,6 +6,8 @@ import PageLoader from '../../components/pageLoader';
 import Modal from '../../components/modal';
 import * as userActions from '../../actions/userActions';
 import * as modalActions from '../../actions/modalActions';
+
+import './index.css';
 
 
 class Main extends Component {

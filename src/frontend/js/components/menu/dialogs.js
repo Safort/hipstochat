@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import Dialog from './dialog';
 
 
-let Plus = () => (
+const Plus = () => (
   <Link className="dialogs__plus" to={'/search'}>+</Link>
 );
 

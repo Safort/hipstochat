@@ -4,7 +4,7 @@ import Search from '../containers/search';
 import Home from '../containers/home';
 import Pm from '../containers/pm';
 import Profile from '../containers/profile';
-import NoMatch from '../components/no-match.js';
+import NoMatch from '../components/no-match';
 
 
 const routes = {

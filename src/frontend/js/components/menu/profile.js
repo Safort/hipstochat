@@ -21,10 +21,10 @@ export default class Profile extends Component {
       <div className="menu-profile">
         <Avatar username={username} />
         <div className="menu-profile__username">
-          <Link to={"/profile/edit"}>{username}</Link>
+          <Link to={'/profile/edit'}>{username}</Link>
         </div>
         <div className="menu-profile__config">
-          <div title="Exit" onClick={this._signout}>[Exit]</div>
+          <button title="Exit" onClick={this._signout}>[Exit]</button>
         </div>
       </div>
     );

@@ -1,10 +1,10 @@
-import './index.css';
-
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/userActions';
 import Signup from '../signup';
+
+import './index.css';
 
 
 const Home = props => {
