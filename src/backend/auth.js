@@ -42,12 +42,13 @@ export default () => {
           if (user) {
             return done(null, false);
           } else {
-            const newUser = new UserModel();
-            newUser.username = username;
-            newUser.password = password;
-            newUser.name = req.body.name;
-            newUser.email = req.body.email;
-            newUser.dialogs = { list: [] };
+            const newUser = new UserModel({
+              username,
+              password,
+              name: req.body.name,
+              email: req.body.email,
+              dialogs: { list: [] },
+            });
 
             newUser.save(err => {
               if (err) {
