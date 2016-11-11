@@ -3,8 +3,8 @@ import UserModel from '../models/user';
 
 export default ({ app, passport }) => {
   app.post('/api/signin', passport.authenticate('local-signin'), (req, res) => {
-    UserModel.findById(req.user._id, (err, userInfo) => {
-      res.json(userInfo);
+    UserModel.getUserById(req.user._id).then(user => {
+      res.json(user);
     });
   });
 

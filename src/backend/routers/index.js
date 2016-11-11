@@ -1,11 +1,11 @@
 import signin from './signin';
 import signup from './signup';
 import user from './user';
-import dialogs from './dialogs';
+import dialog from './dialog';
+
 
 export default ({ app, passport }) => {
-  signin({ app, passport });
-  signup({ app, passport });
-  user({ app, passport });
-  dialogs({ app, passport });
+  [user, dialog, signin, signup].forEach(route => {
+    route({ app, passport });
+  });
 };

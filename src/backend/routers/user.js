@@ -4,8 +4,8 @@ import { isSignedIn } from '../utils';
 
 export default ({ app }) => {
   app.get('/api/user', isSignedIn, (req, res) => {
-    UserModel.findById(req.user._id, (err, userInfo) => {
-      res.json(userInfo);
+    UserModel.getUserById(req.user._id).then(user => {
+      res.json(user);
     });
   });
 
