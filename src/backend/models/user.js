@@ -2,4 +2,4 @@ import mongoose from 'mongoose';
 import UserSchema from '../schemas/user';
 
 
-export default mongoose.model('users', UserSchema);
+export default mongoose.model('user', UserSchema);

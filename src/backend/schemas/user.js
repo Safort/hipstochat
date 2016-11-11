@@ -1,7 +1,9 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import crypto from 'crypto';
+import '../models/dialog';
 
 
+const dialogModel = mongoose.model('dialog');
 const UserSchema = new Schema({
   username: {
     type: String,
@@ -18,59 +20,36 @@ const UserSchema = new Schema({
   age: String,
   sex: String,
   email: String,
-  dialogs: Object,
 });
 
 
-// create new dialog
-UserSchema.statics.createDialog = function createDialog(userId, newDialog) {
-  const { dialogUserId, dialogName } = newDialog;
-
+UserSchema.statics.getUserById = function getUserById(userId) {
   return new Promise((resolve, reject) => {
-    this.model('users').findById(userId, (err, user) => {
+    this.model('user').findById(userId, (err, user) => {
       if (err) {
         reject(err);
       } else {
-        const hasDialog = user.dialogs.list
-          .some(dialog => dialog.dialogUserId === dialogUserId);
-
-        if (hasDialog) {
-          reject({ error: 'duplicate' });
-        } else {
-          user.dialogs.list.push({ dialogUserId, dialogName });
-          user.markModified('dialogs.list');
-          user.save(err => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve({ dialogUserId, dialogName });
-            }
+        dialogModel
+        .getDialogs({ creatorId: userId })
+        .then(dialogs => {
+          resolve({
+            ...user._doc,
+            dialogs: { list: dialogs },
           });
-        }
+        })
+        .catch(err => {
+          reject(err);
+        });
       }
     });
   });
 };
 
 
-// get dialogs by user id
-UserSchema.statics.getDialogs = function getDialogs({ userId }) {
+// get dialog messages by dialogUserId
+UserSchema.statics.getMessages = function getMessages({ userId, dialogUserId }) {
   return new Promise((resolve, reject) => {
-    this.model('users').findById(userId, (err, user) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(user.dialogs);
-      }
-    });
-  });
-};
-
-
-// remove dialog by dialogUserId
-UserSchema.statics.removeDialog = function removeDialog({ userId, dialogUserId }) {
-  return new Promise((resolve, reject) => {
-    this.model('users').findById(userId, (err, user) => {
+    this.model('user').findById(userId, (err, user) => {
       if (err) {
         reject(err);
       } else {

@@ -1,6 +1,6 @@
 import { get, post, put } from '../utils/request';
 import * as userActions from '../constants/user';
-import * as dialogsActions from '../constants/dialogs';
+import * as dialogActions from '../constants/dialog';
 
 
 export function signup({ username, name, email, password }) {
@@ -92,7 +92,7 @@ export function loadInfo() {
       });
 
       dispatch({
-        type: dialogsActions.UPDATE_DIALOG_LIST,
+        type: dialogActions.UPDATE_DIALOG_LIST,
         payload: res.dialogs.list,
       });
     })
