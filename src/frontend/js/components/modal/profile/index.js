@@ -11,11 +11,11 @@ class Profile extends Component {
 
 
   onClick() {
-    const { user, dialogsActions } = this.props;
+    const { user, dialogActions } = this.props;
 
-    dialogsActions.create({
-      dialogUserId: user._id,
-      dialogName: user.username,
+    dialogActions.create({
+      interlocutorId: user._id,
+      name: user.username,
     });
   }
 

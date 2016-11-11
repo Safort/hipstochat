@@ -1,7 +1,6 @@
-import * as actions from '../constants/dialogs';
+import * as actions from '../constants/dialog';
 
 
-// dummy
 const initialState = {
   list: [],
   errors: [],
@@ -30,9 +29,9 @@ export default function dialogs(state = initialState, action) {
 
 
     case actions.REMOVE_DIALOG_SUCCESS: {
-      const { dialogUserId } = action.payload;
+      const { id } = action.payload;
       const list = state.list
-        .filter(dialog => dialog.dialogUserId !== dialogUserId);
+        .filter(dialog => dialog._id !== id);
 
       return { ...state, list };
     }

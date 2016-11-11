@@ -8,9 +8,9 @@ const Plus = () => (
 );
 
 
-export default ({ list, dialogsActions }) => {
+export default ({ list, dialogActions }) => {
   const dialogs = list.map((dialog, i) => (
-    <Dialog key={i} dialogsActions={dialogsActions} {...dialog} />
+    <Dialog key={i} dialogActions={dialogActions} {...dialog} />
   ));
 
   return (

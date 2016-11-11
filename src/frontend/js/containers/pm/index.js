@@ -1,25 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as userActions from '../../actions/userActions';
 
 import './index.css';
 
-// dummy
-const list = [
-  { id: 1, name: 'user-a', text: 'some text', date: '4:42 PM' },
-  { id: 2, name: 'user-a', text: 'some text', date: '4:42 PM' },
-  { id: 3, name: 'user-a', text: 'some text', date: '5:42 PM' },
-  { id: 4, name: 'user-b', text: 'some text', date: '4:42 PM' },
-  { id: 5, name: 'user-a', text: 'some text', date: '1:42 PM' },
-  { id: 6, name: 'user-b', text: 'some text', date: '4:42 PM' },
-  { id: 7, name: 'user-a', text: 'some text', date: '1:42 PM' },
-  { id: 8, name: 'user-b', text: 'some text', date: '4:42 PM' },
-  { id: 9, name: 'user-a', text: 'some text', date: '4:42 PM' },
-  { id: 10, name: 'user-b', text: 'some text', date: '4:42 PM' },
-  { id: 12, name: 'user-a', text: 'some text', date: '4:42 PM' },
-  { id: 13, name: 'user-a', text: 'some text', date: '4:42 PM' },
-  { id: 14, name: 'user-a', text: 'some text', date: '4:42 PM' },
-  { id: 15, name: 'user-a', text: 'some text', date: '4:42 PM' },
-  { id: 16, name: 'user-a', text: 'some text', date: '4:42 PM' },
-];
 
 const Message = ({ name, text, date }) => (
   <div className="pm-message">
@@ -43,15 +28,33 @@ const Form = () => (
 );
 
 
-export default () => {
-  const messages = list.map(({ name, date, id, text }) => (
-    <Message key={id} name={name} text={text} date={date} />
-  ));
+class PM extends Component {
+  render() {
+    const { list } = this.props.dialogs;
+    const messages = list ? list.map(({ name, date, id, text }) => (
+      <Message key={id} name={name} text={text} date={date} />
+    )) : null;
 
-  return (
-    <div className="pm">
-      <div className="pm-list">{messages}</div>
-      <Form />
-    </div>
-  );
-};
+    return (
+      <div className="pm">
+        <div className="pm-list">{messages}</div>
+        <Form />
+      </div>
+    );
+  }
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    userActions: bindActionCreators(userActions, dispatch),
+  };
+}
+
+
+function mapStateToProps({ user, dialogs }) {
+  return { user, dialogs };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(PM);

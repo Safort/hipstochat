@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import Profile from '../../components/menu/profile';
 import Dialogs from '../../components/menu/dialogs';
 import * as userActions from '../../actions/userActions';
-import * as dialogsActions from '../../actions/dialogsActions';
+import * as dialogActions from '../../actions/dialogActions';
 
 import './index.css';
 
 
-const Menu = ({ user, userActions, dialogs, dialogsActions }) => (
+const Menu = ({ user, userActions, dialogs, dialogActions }) => (
   <div className="menu">
     <Profile user={user} userActions={userActions} />
-    <Dialogs list={dialogs.list} dialogsActions={dialogsActions} />
+    <Dialogs list={dialogs.list} dialogActions={dialogActions} />
   </div>
 );
 
@@ -20,7 +20,7 @@ const Menu = ({ user, userActions, dialogs, dialogsActions }) => (
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
-    dialogsActions: bindActionCreators(dialogsActions, dispatch),
+    dialogActions: bindActionCreators(dialogActions, dispatch),
   };
 }
 
