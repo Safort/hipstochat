@@ -39,7 +39,7 @@ export function remove({ id }) {
       type: actions.REMOVE_DIALOG_REQUEST,
     });
 
-    request('delete', `http://localhost:8080/api/dialogs/${id}`)
+    request('delete', `http://localhost:8080/api/me/dialog/${id}`)
     .then(() => {
       dispatch({
         type: actions.REMOVE_DIALOG_SUCCESS,

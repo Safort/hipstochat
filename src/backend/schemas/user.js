@@ -20,6 +20,7 @@ const UserSchema = new Schema({
   age: String,
   sex: String,
   email: String,
+  dialogs: [],
 });
 
 
@@ -29,40 +30,27 @@ UserSchema.statics.getUserById = function getUserById(userId) {
       if (err) {
         reject(err);
       } else {
-        dialogModel
-        .getDialogs({ creatorId: userId })
-        .then(dialogs => {
-          resolve({
-            ...user._doc,
-            dialogs: { list: dialogs },
-          });
-        })
-        .catch(err => {
-          reject(err);
-        });
+        resolve(user);
       }
     });
   });
 };
 
 
-// get dialog messages by dialogUserId
-UserSchema.statics.getMessages = function getMessages({ userId, dialogUserId }) {
+UserSchema.statics.removeDialogById = function removeDialogById({ userId, dialogId }) {
   return new Promise((resolve, reject) => {
     this.model('user').findById(userId, (err, user) => {
       if (err) {
         reject(err);
       } else {
-        /* eslint no-param-reassign: 0 */
-        user.dialogs.list = user.dialogs.list
-          .filter(dialog => dialog.dialogUserId !== dialogUserId);
-
-        user.markModified('dialogs.list');
+        user.dialogs = user.dialogs.filter(({ id }) => {
+          return id.toString() !== dialogId;
+        });
         user.save(err => {
           if (err) {
             reject(err);
           } else {
-            resolve({ dialogUserId });
+            resolve();
           }
         });
       }

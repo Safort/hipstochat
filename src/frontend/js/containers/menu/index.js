@@ -12,7 +12,7 @@ import './index.css';
 const Menu = ({ user, userActions, dialogs, dialogActions }) => (
   <div className="menu">
     <Profile user={user} userActions={userActions} />
-    <Dialogs list={dialogs.list} dialogActions={dialogActions} />
+    <Dialogs dialogs={dialogs} dialogActions={dialogActions} />
   </div>
 );
 

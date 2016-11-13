@@ -47,7 +47,7 @@ export default () => {
               password,
               name: req.body.name,
               email: req.body.email,
-              dialogs: { list: [] },
+              dialogs: [],
             });
 
             newUser.save(err => {

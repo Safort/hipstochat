@@ -6,8 +6,8 @@ const DialogSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: true,
   },
-  interlocutorId: {
-    type: Schema.Types.ObjectId,
+  participants: {
+    type: Array,
     required: true,
   },
   creationDate: {
@@ -27,30 +27,33 @@ DialogSchema.statics.createDialog = function createDialog(dialogData) {
   const DialogModel = mongoose.model('dialog');
 
   return new Promise((resolve, reject) => {
-    this.model('user').findById(creatorId, err => {
+    // проверяем, существует ли пользователь с таким id
+    this.model('user').findById(creatorId, (err, user) => {
       if (err) {
         reject(err);
       } else {
-        // is dialog exist?
-        this.find({ creatorId, interlocutorId }, (err, data) => {
+        // создаём новый диалог
+        const newDialog = new DialogModel({
+          creatorId,
+          participants: [creatorId, interlocutorId],
+          interlocutorId,
+          name,
+        });
+
+        // сохраняем новый диалог
+        newDialog.save((err, createdDialog) => {
           if (err) {
             reject(err);
-          } else if (data.length === 0) {
-            const newDialog = new DialogModel({
-              creatorId,
-              interlocutorId,
-              name,
-            });
-
-            newDialog.save((err, createdDialog) => {
+          } else {
+            // сохраняем новый диалог в список диалогов пользователя
+            user.dialogs.push({ id: createdDialog._id, name });
+            user.save(err => {
               if (err) {
                 reject(err);
               } else {
                 resolve(createdDialog);
               }
             });
-          } else {
-            reject('duplicate');
           }
         });
       }

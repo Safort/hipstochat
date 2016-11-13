@@ -9,11 +9,12 @@ const initialState = {
 
 export default function dialogs(state = initialState, action) {
   switch (action.type) {
-    case actions.UPDATE_DIALOG_LIST:
+    case actions.UPDATE_DIALOG_LIST: {
       return {
         ...state,
         list: action.payload,
       };
+    }
 
 
     case actions.CREATE_DIALOG_SUCCESS: {
@@ -24,24 +25,26 @@ export default function dialogs(state = initialState, action) {
     }
 
 
-    case actions.REMOVE_DIALOG_REQUEST:
+    case actions.REMOVE_DIALOG_REQUEST: {
       return { ...state };
+    }
 
 
     case actions.REMOVE_DIALOG_SUCCESS: {
       const { id } = action.payload;
-      const list = state.list
-        .filter(dialog => dialog._id !== id);
+      const list = state.list.filter(dialog => dialog.id !== id);
 
       return { ...state, list };
     }
 
 
-    case actions.REMOVE_DIALOG_FAIL:
+    case actions.REMOVE_DIALOG_FAIL: {
       return { ...state };
+    }
 
 
-    default:
+    default: {
       return state;
+    }
   }
 }

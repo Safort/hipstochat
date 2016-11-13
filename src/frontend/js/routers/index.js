@@ -14,7 +14,7 @@ const routes = {
   childRoutes: [
     { path: '/signup', component: Signup },
     { path: '/profile/edit', component: Profile },
-    { path: '/pm/:usename', component: Pm },
+    { path: '/pm/:dialogId', component: Pm },
     { path: '/search', component: Search },
     { path: '*', component: NoMatch },
   ],

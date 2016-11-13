@@ -11,16 +11,16 @@ export default class Dialog extends Component {
 
 
   onClick() {
-    this.props.dialogActions.remove({ id: this.props._id });
+    this.props.dialogActions.remove({ id: this.props.id });
   }
 
 
   render() {
-    const { _id, name } = this.props;
+    const { id, name } = this.props;
 
     return (
       <div className="dialogs__item">
-        <Link to={`/pm/${_id}`}>{name}</Link>
+        <Link to={`/pm/${id}`}>{name}</Link>
         <button onClick={this._onClick}>[-]</button>
       </div>
     );

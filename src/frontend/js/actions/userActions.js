@@ -84,7 +84,7 @@ export function loadInfo() {
       type: userActions.LOAD_USER_INFO_REQUEST,
     });
 
-    get('http://localhost:8080/api/user')
+    get('http://localhost:8080/api/me')
     .then(res => {
       dispatch({
         type: userActions.LOAD_USER_INFO_SUCCESS,
@@ -93,7 +93,7 @@ export function loadInfo() {
 
       dispatch({
         type: dialogActions.UPDATE_DIALOG_LIST,
-        payload: res.dialogs.list,
+        payload: res.dialogs,
       });
     })
     .catch(() => {
@@ -113,7 +113,7 @@ export function update({ username, name, email }) {
 
     const body = { username, name, email };
 
-    put('http://localhost:8080/api/user', { body })
+    put('http://localhost:8080/api/me', { body })
     .then(() => {
       dispatch({
         type: userActions.UPDATE_USER_SUCCESS,
