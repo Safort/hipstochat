@@ -1,9 +1,8 @@
-import mongoose, { Schema } from 'mongoose';
+import { Schema } from 'mongoose';
 import crypto from 'crypto';
 import '../models/dialog';
 
 
-const dialogModel = mongoose.model('dialog');
 const UserSchema = new Schema({
   username: {
     type: String,
@@ -24,7 +23,7 @@ const UserSchema = new Schema({
 });
 
 
-UserSchema.statics.getUserById = function getUserById(userId) {
+UserSchema.statics.getUserById = function (userId) {
   return new Promise((resolve, reject) => {
     this.model('user').findById(userId, (err, user) => {
       if (err) {
@@ -37,15 +36,15 @@ UserSchema.statics.getUserById = function getUserById(userId) {
 };
 
 
-UserSchema.statics.removeDialogById = function removeDialogById({ userId, dialogId }) {
+UserSchema.statics.removeDialogById = function ({ userId, dialogId }) {
   return new Promise((resolve, reject) => {
+    /* eslint no-param-reassign: 0 */
     this.model('user').findById(userId, (err, user) => {
       if (err) {
         reject(err);
       } else {
-        user.dialogs = user.dialogs.filter(({ id }) => {
-          return id.toString() !== dialogId;
-        });
+        user.dialogs = user.dialogs
+          .filter(({ id }) => id.toString() !== dialogId);
         user.save(err => {
           if (err) {
             reject(err);

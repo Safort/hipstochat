@@ -3,6 +3,7 @@ import user from './user';
 import search from './search';
 import modal from './modal';
 import dialogs from './dialog';
+import messages from './message';
 
 
 export default combineReducers({
@@ -10,4 +11,5 @@ export default combineReducers({
   dialogs,
   search,
   modal,
+  messages,
 });

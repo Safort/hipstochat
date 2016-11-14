@@ -4,7 +4,10 @@ import mongoose, { Schema } from 'mongoose';
 const MessageSchema = new Schema({
   dialogId: Schema.Types.ObjectId,
   authorId: Schema.Types.ObjectId,
-  message: String,
+  text: {
+    type: String,
+    required: true,
+  },
   date: {
     type: Date,
     default: Date.now,

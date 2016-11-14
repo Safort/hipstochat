@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as userActions from '../../actions/userActions';
+import * as messageActions from '../../actions/messageActions';
 
+import Form from './form';
 import './index.css';
 
 
@@ -18,27 +19,45 @@ const Message = ({ name, text, date }) => (
 );
 
 
-const Form = () => (
-  <form className="pm-form">
-    <textarea className="pm-form__input" />
-    <div className="pm-panel">
-      <input className="pm-form__send" type="submit" value="Send" />
-    </div>
-  </form>
-);
-
-
 class PM extends Component {
+  constructor() {
+    super();
+
+    this._sendMessage = this.sendMessage.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.messageActions.fetchMessages({
+      dialogId: this.props.params.dialogId,
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { dialogId } = nextProps.params;
+
+    if (dialogId !== this.props.params.dialogId) {
+      this.props.messageActions.fetchMessages({ dialogId });
+    }
+  }
+
+  sendMessage(text) {
+    console.log(this.props);
+    this.props.messageActions.sendMessage({
+      dialogId: this.props.params.dialogId,
+      text,
+    });
+  }
+
   render() {
-    const { list } = this.props.dialogs;
-    const messages = list ? list.map(({ name, date, id, text }) => (
+    const { list } = this.props.messages;
+    const messages = list ? list.map(({ name, date, text, _id: id }) => (
       <Message key={id} name={name} text={text} date={date} />
     )) : null;
 
     return (
       <div className="pm">
         <div className="pm-list">{messages}</div>
-        <Form />
+        <Form sendMessage={this._sendMessage} />
       </div>
     );
   }
@@ -47,13 +66,13 @@ class PM extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    userActions: bindActionCreators(userActions, dispatch),
+    messageActions: bindActionCreators(messageActions, dispatch),
   };
 }
 
 
-function mapStateToProps({ user, dialogs }) {
-  return { user, dialogs };
+function mapStateToProps({ user, dialogs, messages }) {
+  return { user, dialogs, messages };
 }
 
 
