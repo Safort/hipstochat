@@ -26,9 +26,11 @@ DialogSchema.statics.createDialog = function createDialog(dialogData) {
   const { creatorId, interlocutorId, name } = dialogData;
   const DialogModel = mongoose.model('dialog');
 
+  // TODO: переписать всё это на промисы
+
   return new Promise((resolve, reject) => {
     // проверяем, существует ли пользователь с таким id
-    this.model('user').findById(creatorId, (err, user) => {
+    this.model('user').findById(creatorId, (err, dialogCreator) => {
       if (err) {
         reject(err);
       } else {
@@ -36,7 +38,6 @@ DialogSchema.statics.createDialog = function createDialog(dialogData) {
         const newDialog = new DialogModel({
           creatorId,
           participants: [creatorId, interlocutorId],
-          interlocutorId,
           name,
         });
 
@@ -46,12 +47,30 @@ DialogSchema.statics.createDialog = function createDialog(dialogData) {
             reject(err);
           } else {
             // сохраняем новый диалог в список диалогов пользователя
-            user.dialogs.push({ id: createdDialog._id, name });
-            user.save(err => {
+            dialogCreator.dialogs.push({ id: createdDialog._id, name });
+            dialogCreator.save(err => {
               if (err) {
                 reject(err);
               } else {
-                resolve(createdDialog);
+                // теперь сохраняем этот же диалог в список диалогов собеседника
+                this.model('user')
+                .findById(interlocutorId, (err, dialogInterlocutor) => {
+                  if (err) {
+                    reject(err);
+                  } else {
+                    dialogInterlocutor.dialogs.push({
+                      id: createdDialog._id,
+                      name: dialogCreator.username,
+                    });
+                    dialogInterlocutor.save(err => {
+                      if (err) {
+                        reject(err);
+                      } else {
+                        resolve(createdDialog);
+                      }
+                    });
+                  }
+                });
               }
             });
           }
@@ -76,7 +95,7 @@ DialogSchema.statics.getDialogs = function getDialogs({ creatorId }) {
 };
 
 
-// remove dialog by dialogUserId
+// remove dialog by dialogId
 DialogSchema.statics.removeDialog = function removeDialog({ creatorId, dialogId }) {
   return new Promise((resolve, reject) => {
     this
