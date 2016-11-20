@@ -1,22 +1,34 @@
 import request from '../utils/request';
-import * as actions from '../constants/message';
+
+
+export const GET_MESSAGES_REQUEST = 'GET_MESSAGES_REQUEST';
+export const GET_MESSAGES_SUCCESS = 'GET_MESSAGES_SUCCESS';
+export const GET_MESSAGES_FAIL = 'GET_MESSAGES_FAIL';
+
+export const SEND_MESSAGE_REQUEST = 'SEND_MESSAGE_REQUEST';
+export const SEND_MESSAGE_SUCCESS = 'SEND_MESSAGE_SUCCESS';
+export const SEND_MESSAGE_FAIL = 'SEND_MESSAGE_FAIL';
+
+export const REMOVE_MESSAGE_REQUEST = 'REMOVE_MESSAGE_REQUEST';
+export const REMOVE_MESSAGE_SUCCESS = 'REMOVE_MESSAGE_SUCCESS';
+export const REMOVE_MESSAGE_FAIL = 'REMOVE_MESSAGE_FAIL';
 
 
 export function fetchMessages({ dialogId }) {
   return dispatch => {
     dispatch({
-      type: actions.GET_MESSAGES_REQUEST,
+      type: GET_MESSAGES_REQUEST,
     });
 
     request('get', `http://localhost:8080/api/dialog/${dialogId}/messages`)
     .then(({ list }) => {
       dispatch({
-        type: actions.GET_MESSAGES_SUCCESS,
+        type: GET_MESSAGES_SUCCESS,
         payload: { dialogId, list },
       });
     }).catch(errors => {
       dispatch({
-        type: actions.GET_MESSAGES_FAIL,
+        type: GET_MESSAGES_FAIL,
         payload: { errors },
       });
     });
@@ -27,7 +39,7 @@ export function fetchMessages({ dialogId }) {
 export function sendMessage({ dialogId, text }) {
   return dispatch => {
     dispatch({
-      type: actions.SEND_MESSAGE_REQUEST,
+      type: SEND_MESSAGE_REQUEST,
     });
 
     const body = { text };
@@ -35,12 +47,12 @@ export function sendMessage({ dialogId, text }) {
     request('post', `http://localhost:8080/api/dialog/${dialogId}/message`, { body })
     .then(res => {
       dispatch({
-        type: actions.SEND_MESSAGE_SUCCESS,
+        type: SEND_MESSAGE_SUCCESS,
         payload: { message: res.message },
       });
     }).catch(errors => {
       dispatch({
-        type: actions.SEND_MESSAGE_FAIL,
+        type: SEND_MESSAGE_FAIL,
         payload: { errors },
       });
     });
@@ -51,18 +63,18 @@ export function sendMessage({ dialogId, text }) {
 export function removeMessage({ dialogId }) {
   return dispatch => {
     dispatch({
-      type: actions.GET_MESSAGES_REQUEST,
+      type: GET_MESSAGES_REQUEST,
     });
 
     request('get', `http://localhost:8080/api/dialogs/${dialogId}`)
     .then(() => {
       dispatch({
-        type: actions.GET_MESSAGES_SUCCESS,
+        type: GET_MESSAGES_SUCCESS,
         payload: { dialogId },
       });
     }).catch(errors => {
       dispatch({
-        type: actions.GET_MESSAGES_FAIL,
+        type: GET_MESSAGES_FAIL,
         payload: { errors },
       });
     });
