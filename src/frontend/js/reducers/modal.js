@@ -1,4 +1,4 @@
-import * as actions from '../actions/modalActions';
+import * as actions from '../actions/modal';
 
 
 const initialState = {

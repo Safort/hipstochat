@@ -16,54 +16,63 @@ export const REMOVE_DIALOG_FAIL = 'REMOVE_DIALOG_FAIL';
 export const UPDATE_DIALOG_LIST = 'UPDATE_DIALOG_LIST';
 
 
+export function updateDialogListSuccess(payload) {
+  return { type: UPDATE_DIALOG_LIST, payload };
+}
+
+
+/* Create dialog */
+
+function createRequest() {
+  return { type: CREATE_DIALOG_REQUEST };
+}
+
+function createSuccess(payload) {
+  return { type: CREATE_DIALOG_SUCCESS, payload };
+}
+
+function createFail(errors) {
+  return { type: CREATE_DIALOG_FAIL, payload: errors };
+}
+
 export function create({ interlocutorId, name }) {
   return dispatch => {
-    dispatch({
-      type: actions.CREATE_DIALOG_REQUEST,
-    });
+    dispatch(createRequest());
 
     const body = { interlocutorId, name };
 
     request('post', 'http://localhost:8080/api/dialogs', { body })
     .then(res => {
       if (res.success === true) {
-        dispatch({
-          type: actions.CREATE_DIALOG_SUCCESS,
-          payload: body,
-        });
+        dispatch(createSuccess(body));
       } else {
-        dispatch({
-          type: actions.CREATE_DIALOG_FAIL,
-          payload: { errors: res.errors },
-        });
+        dispatch(createFail(res.errors));
       }
-    }).catch(errors => {
-      dispatch({
-        type: actions.CREATE_DIALOG_FAIL,
-        payload: { errors },
-      });
-    });
+    }).catch(errors => createFail(errors));
   };
 }
 
 
+/* Remove dialog */
+
+function removeRequest() {
+  return { type: REMOVE_DIALOG_REQUEST };
+}
+
+function removeSuccess(id) {
+  return { type: REMOVE_DIALOG_SUCCESS, payload: { id } };
+}
+
+function removeFail(errors) {
+  return { type: REMOVE_DIALOG_FAIL, payload: { errors } };
+}
+
 export function remove({ id }) {
   return dispatch => {
-    dispatch({
-      type: actions.REMOVE_DIALOG_REQUEST,
-    });
+    dispatch(removeRequest());
 
     request('delete', `http://localhost:8080/api/me/dialog/${id}`)
-    .then(() => {
-      dispatch({
-        type: actions.REMOVE_DIALOG_SUCCESS,
-        payload: { id },
-      });
-    }).catch(errors => {
-      dispatch({
-        type: actions.REMOVE_DIALOG_FAIL,
-        payload: { errors },
-      });
-    });
+    .then(() => dispatch(removeSuccess(id)))
+    .catch(errors => dispatch(removeFail(errors)));
   };
 }

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import Menu from '../menu';
 import PageLoader from '../../components/pageLoader';
 import Modal from '../../components/modal';
-import * as userActions from '../../actions/userActions';
-import * as modalActions from '../../actions/modalActions';
+import * as userActions from '../../actions/user';
+import * as modalActions from '../../actions/modal';
 
 import './index.css';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as messageActions from '../../actions/messageActions';
+import * as messageActions from '../../actions/message';
 
 import Form from './form';
 import './index.css';

@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Profile from '../../components/menu/profile';
 import Dialogs from '../../components/menu/dialogs';
-import * as userActions from '../../actions/userActions';
-import * as dialogActions from '../../actions/dialogActions';
+import * as userActions from '../../actions/user';
+import * as dialogActions from '../../actions/dialog';
 
 import './index.css';
 

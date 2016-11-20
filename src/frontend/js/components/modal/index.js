@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as modalActions from '../../actions/modalActions';
-import * as dialogActions from '../../actions/dialogActions';
+import * as modalActions from '../../actions/modal';
+import * as dialogActions from '../../actions/dialog';
 import Profile from './profile';
 
 import './index.css';

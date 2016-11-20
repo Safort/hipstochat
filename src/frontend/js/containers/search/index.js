@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as searchActions from '../../actions/searchActions';
-import * as modalActions from '../../actions/modalActions';
+import * as searchActions from '../../actions/search';
+import * as modalActions from '../../actions/modal';
 import User from './user';
 
 import './index.css';

@@ -1,4 +1,4 @@
-import * as actions from '../actions/dialogActions';
+import * as actions from '../actions/dialog';
 
 
 const initialState = {

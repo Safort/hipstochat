@@ -1,4 +1,4 @@
-import * as actions from '../actions/messageActions';
+import * as actions from '../actions/message';
 
 
 // создать отдельные редьюсеры и экшены для сообщений(messages)
