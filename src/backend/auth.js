@@ -25,7 +25,7 @@ export default () => {
 
           return done(null, user);
         });
-      }
+      },
   ));
 
   passport.use('local-signup', new passportLocal.Strategy(
@@ -62,7 +62,7 @@ export default () => {
       };
 
       process.nextTick(registerUser);
-    }
+    },
   ));
 
   passport.serializeUser((user, done) => {

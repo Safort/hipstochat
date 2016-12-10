@@ -47,7 +47,7 @@ export default ({ app }) => {
       'username',
       (err, userList) => {
         res.json({ userList });
-      }
+      },
     );
   });
 };

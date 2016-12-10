@@ -1,6 +1,6 @@
 export default () => next => action => {
   console.log(
-    `Action type: ${action.type}; data: ${JSON.stringify(action.payload)}`
+    `Action type: ${action.type}; data: ${JSON.stringify(action.payload)}`,
   );
 
   return next(action);

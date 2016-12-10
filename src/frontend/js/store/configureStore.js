@@ -9,7 +9,7 @@ export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(thunk, ping, redirect)
+    applyMiddleware(thunk, ping, redirect),
   );
 
   if (module.hot) {

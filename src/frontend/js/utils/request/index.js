@@ -28,7 +28,7 @@ function request(reqMethod, url, otherData = {}) {
       }
 
       return res;
-    }
+    },
   );
 }
 

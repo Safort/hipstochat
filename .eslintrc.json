@@ -3,7 +3,8 @@
   "extends": "airbnb",
   "installedESLint": true,
   "plugins": [
-    "react"
+    "react",
+    "jsx-a11y"
   ],
   "rules": {
     "treatUndefinedAsUnspecified": 0,
