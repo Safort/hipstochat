@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/user';
+import classnames from 'classnames';
 
+import styles from './index.css';
 
 class Signup extends Component {
   constructor() {
@@ -14,7 +16,7 @@ class Signup extends Component {
 
 
   componentWillMount() {
-    this.setState({ signup: 'inactive', signin: 'active' });
+    this.setState({ signup: false, signin: true });
   }
 
 
@@ -37,23 +39,36 @@ class Signup extends Component {
 
 
   tabHandler() {
-    if (this.state.signup === 'active') {
-      this.setState({ signup: 'inactive', signin: 'active' });
+    if (this.state.signup === true) {
+      this.setState({ signup: false, signin: true });
     } else {
-      this.setState({ signup: 'active', signin: 'inactive' });
+      this.setState({ signup: true, signin: false });
     }
   }
 
 
   render() {
-    const tabSignup = `home__tab home__tab--${this.state.signup}`;
-    const tabSignin = `home__tab home__tab--${this.state.signin}`;
-    const pageSignup = `signup home__page home__page--${this.state.signup}`;
-    const pageSignin = `signin home__page home__page--${this.state.signin}`;
+    const pageSignup = classnames({
+      [styles.homePage]: true,
+      [styles.homePageActive]: this.state.signup,
+    });
+    const pageSignin = classnames({
+      [styles.homePage]: true,
+      [styles.homePageActive]: this.state.signin,
+    });
+
+    const tabSignup = classnames({
+      [styles.homeTab]: true,
+      [styles.homeTabActive]: this.state.signup,
+    });
+    const tabSignin = classnames({
+      [styles.homeTab]: true,
+      [styles.homeTabActive]: this.state.signin,
+    });
 
     return (
-      <div className="home">
-        <button className="home__tabs" onClick={this._tabHandler}>
+      <div className={styles.home}>
+        <button className={styles.homeTabs} onClick={this._tabHandler}>
           <div className={tabSignup}>Sign up</div>
           <div className={tabSignin}>Sign in</div>
         </button>

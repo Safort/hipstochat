@@ -9,32 +9,32 @@
 }
 
 
-.home__tabs {
+.homeTabs {
   display: flex;
   margin-bottom: 10px;
   width: 170px;
 }
 
-.home__tab {
+.homeTab {
   text-align: center;
   background-color: #ccc;
   flex-grow: 1;
   cursor: pointer;
 }
-.home__tab--active {
+.homeTabActive {
   background-color: #555;
 }
 
 
 
-.home__page {
-  display: flex;
+.homePage {
+  display: none;
+  /*display: flex;*/
   flex-direction: column;
 }
 
-.home__page--inactive {
-  display: none;
-}
-.home__page--active {
+/*.homePageInactive {
+}*/
+.homePageActive {
   display: flex;
 }
