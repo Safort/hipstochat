@@ -3,6 +3,7 @@ const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const isDev = NODE_ENV === 'development';
@@ -22,7 +23,8 @@ if (isDev) {
 const output = {
   path: path.resolve(__dirname, 'app/public'),
   publicPath: '/',
-  filename: 'bundle.js'
+  filename: 'bundle.js',
+  libraryTarget: 'umd',
 };
 
 const plugins = [
@@ -30,11 +32,12 @@ const plugins = [
   new HtmlWebpackPlugin({
     title: 'Title',
     filename: 'index.html',
-    template: 'templates/index.html'
+    template: 'templates/index.html',
   }),
   new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
-  })
+    'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
+  }),
+  new ExtractTextPlugin('style.css', { allChunks: true }),
 ];
 
 if (isDev) {
@@ -44,14 +47,14 @@ if (isDev) {
 } else {
   plugins.push(
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
+      sourceMap: true,
     })
   );
 }
 
 
 module.exports = {
-  context: __dirname + '/src/frontend',
+  context: path.join(__dirname, '/src/frontend'),
   entry,
   output,
   watch: isDev,
@@ -62,16 +65,19 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: ['babel-loader'],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
       },
       {
         test:   /\.css$/,
-        loader: "style-loader!css-loader!postcss-loader"
-      }
+        loader: ExtractTextPlugin.extract(
+          'style-loader',
+          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
+        ),
+      },
     ],
   },
 
-  postcss: function () {
+  postcss() {
     return [precss, autoprefixer];
   },
 
@@ -81,6 +87,6 @@ module.exports = {
     contentBase: './app/public',
     historyApiFallback: true,
     hot: true,
-    headers: { 'Access-Control-Allow-Origin': '*' }
-  }
-}
+    headers: { 'Access-Control-Allow-Origin': '*' },
+  },
+};

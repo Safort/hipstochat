@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-file-cache": "0.0.1",
@@ -43,6 +44,7 @@
   },
   "dependencies": {
     "body-parser": "^1.14.1",
+    "classnames": "^2.2.5",
     "compression": "^1.6.1",
     "connect-mongo": "^1.3.2",
     "cookie-parser": "^1.4.1",
