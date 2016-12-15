@@ -5,7 +5,7 @@ import * as searchActions from '../../actions/search';
 import * as modalActions from '../../actions/modal';
 import User from './user';
 
-import './index.css';
+import styles from './index.css';
 
 
 class Search extends Component {
@@ -41,16 +41,16 @@ class Search extends Component {
     ));
 
     return (
-      <div className="search">
-        <header className="search__header">
+      <div className={styles.search}>
+        <header className={styles.searchHeader}>
           <input
-            className="search__input"
+            className={styles.searchInput}
             ref={username => { this._username = username; }}
             placeholder="username or channel name"
             onKeyUp={this._find}
           />
         </header>
-        <div className="search__users">{userList}</div>
+        <div className={styles.searchUsers}>{userList}</div>
       </div>
     );
   }

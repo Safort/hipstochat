@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import * as modalActions from '../../actions/modal';
 import * as dialogActions from '../../actions/dialog';
 import Profile from './profile';
-
-import './index.css';
+import styles from './index.css';
 
 
 const modalComponents = {
@@ -20,18 +19,15 @@ class Modal extends Component {
     this._hide = this.hide.bind(this);
   }
 
-
   hide(event) {
     if (this._bg === event.target) {
       this.props.modalActions.hide();
     }
   }
 
-
   render() {
     const { state, modalName, modalData, dialogActions } = this.props;
     const CurrentModal = modalComponents[modalName];
-    const classes = `modal modal_${state}`;
 
     if (!CurrentModal) {
       return <span />;
@@ -39,8 +35,8 @@ class Modal extends Component {
 
     /* eslint jsx-a11y/no-static-element-interactions: 0 */
     return (
-      <div ref={el => { this._bg = el; }} className={classes} onClick={this._hide}>
-        <div className="modal__content">
+      <div ref={el => { this._bg = el; }} className={styles.modal} onClick={this._hide}>
+        <div className={styles.modalContent}>
           <CurrentModal user={modalData} dialogActions={dialogActions} />
         </div>
       </div>

@@ -5,34 +5,34 @@
   box-sizing: border-box;
 }
 
-.search__header {
+.searchHeader {
   display: flex;
   align-items: center;
 }
-.search__input {
+.searchInput {
   width: 400px;
   padding: 5px;
 }
-.search__users {
+.searchUsers {
   margin-top: 10px;
   overflow-y: auto;
   height: calc(100% - 30px);
 }
-.search__user {
+.searchUser {
   padding: 5px 0;
   border-bottom: 1px solid #ccc;
   padding-left: 5px;
   display: flex;
   align-items: center;
 }
-.search__user:hover {
+.searchUser:hover {
   background-color: #bbb;
   cursor: pointer;
 }
-.search__user:last-child {
+.searchUser:last-child {
   border-bottom: none;
 }
 
-.search__username {
+.searchUsername {
   margin-left: 10px;
 }

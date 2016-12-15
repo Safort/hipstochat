@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import * as messageActions from '../../actions/message';
 
 import Form from './form';
-import './index.css';
+import styles from './index.css';
 
 
 const Message = ({ name, text, date }) => (
-  <div className="pm-message">
-    <div className="pm-message__avatar" />
-    <div className="pm-message__content">
-      <div className="pm-message__username">{name}</div>
-      <div className="pm-message__date">{date}</div>
-      <div className="pm-message__text">{text}</div>
+  <div className={styles.pmMessage}>
+    <div className={styles.pmMessageAvatar} />
+    <div className={styles.pmMessageContent}>
+      <div className={styles.pmMessageUsername}>{name}</div>
+      <div className={styles.pmMessageDate}>{date}</div>
+      <div className={styles.pmMessageText}>{text}</div>
     </div>
   </div>
 );
@@ -55,8 +55,8 @@ class PM extends Component {
     )) : null;
 
     return (
-      <div className="pm">
-        <div className="pm-list">{messages}</div>
+      <div className={styles.pm}>
+        <div className={styles.pmList}>{messages}</div>
         <Form sendMessage={this._sendMessage} />
       </div>
     );

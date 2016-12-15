@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Avatar from '../avatar';
+import styles from './profile.css';
 
 
 export default class Profile extends Component {
@@ -8,7 +9,6 @@ export default class Profile extends Component {
     super();
     this._signout = this.signout.bind(this);
   }
-
 
   signout() {
     this.props.userActions.signout();
@@ -18,12 +18,12 @@ export default class Profile extends Component {
     const { username } = this.props.user;
 
     return (
-      <div className="menu-profile">
+      <div className={styles.menuProfile}>
         <Avatar username={username} />
-        <div className="menu-profile__username">
+        <div className={styles.menuProfileUsername}>
           <Link to={'/profile/edit'}>{username}</Link>
         </div>
-        <div className="menu-profile__config">
+        <div className={styles.menuProfileConfig}>
           <button title="Exit" onClick={this._signout}>[Exit]</button>
         </div>
       </div>

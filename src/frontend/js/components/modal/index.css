@@ -9,11 +9,12 @@
   justify-content: center;
   background-color: rgba(100, 100, 100, .8);
 }
-.modal_hidden {
+
+.modalHidden {
   display: none;
 }
 
-.modal__content {
+.modalContent {
   background-color: #bbb;
   width: 450px;
   height: 380px;

@@ -1,0 +1,25 @@
+.dialogs {
+  padding: 5px;
+}
+
+.dialogsHeader {
+  display: flex;
+}
+.dialogsTitle {
+  flex-grow: 1;
+}
+
+.dialogsItem {
+  display: block;
+}
+
+.dialogsPlus {
+  text-decoration: none;
+  border-radius: 100%;
+  border: 1px solid #000;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

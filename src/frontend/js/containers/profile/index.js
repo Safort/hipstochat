@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/user';
 
+import styles from './index.css';
 
 class Profile extends Component {
   constructor() {
@@ -25,7 +26,7 @@ class Profile extends Component {
     const user = this.props.user;
 
     return (
-      <div className="profile-edit">
+      <div className={styles.profileEdit}>
         <div className="profile">
           <input
             ref={username => { this._username = username; }}

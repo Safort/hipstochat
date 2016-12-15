@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as userActions from '../../actions/user';
 import classnames from 'classnames';
+import * as userActions from '../../actions/user';
 
 import styles from './index.css';
 

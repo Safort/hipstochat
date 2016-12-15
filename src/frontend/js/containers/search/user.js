@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Avatar from '../../components/avatar';
 
+import styles from './index.css';
+
 
 class User extends Component {
   constructor(props) {
@@ -20,9 +22,9 @@ class User extends Component {
 
     /* eslint jsx-a11y/no-static-element-interactions: 0 */
     return (
-      <div onClick={this._onClick} className="search__user">
+      <div onClick={this._onClick} className={styles.searchUser}>
         <Avatar username={username} />
-        <div className="search__username">{username}</div>
+        <div className={styles.searchUsername}>{username}</div>
       </div>
     );
   }

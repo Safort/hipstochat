@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.css';
+import styles from './index.css';
 
 
 class Profile extends Component {
@@ -8,7 +8,6 @@ class Profile extends Component {
 
     this._onClick = this.onClick.bind(this);
   }
-
 
   onClick() {
     const { user, dialogActions } = this.props;
@@ -19,17 +18,16 @@ class Profile extends Component {
     });
   }
 
-
   render() {
     const { user } = this.props;
 
     return (
-      <div className="modal-profile">
-        <div className="modal-profile__title">Contact info</div>
-        <div className="modal-profile__info">
+      <div className={styles.modalProfile}>
+        <div className={styles.modalProfileTitle}>Contact info</div>
+        <div className={styles.modalProfileInfo}>
           username: {user.username}
         </div>
-        <div className="modal-profile__info">
+        <div className={styles.modalProfileInfo}>
           <button onClick={this._onClick}>Добавить</button>
         </div>
       </div>

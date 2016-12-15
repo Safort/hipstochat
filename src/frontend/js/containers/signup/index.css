@@ -8,7 +8,6 @@
   margin: auto;
 }
 
-
 .homeTabs {
   display: flex;
   margin-bottom: 10px;
@@ -29,12 +28,9 @@
 
 .homePage {
   display: none;
-  /*display: flex;*/
   flex-direction: column;
 }
 
-/*.homePageInactive {
-}*/
 .homePageActive {
   display: flex;
 }

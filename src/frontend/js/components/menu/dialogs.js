@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 import Dialog from './dialog';
+import styles from './dialogs.css';
 
 
 const Plus = () => (
-  <Link className="dialogs__plus" to={'/search'}>+</Link>
+  <Link className={styles.dialogsPlus} to={'/search'}>+</Link>
 );
 
 
@@ -14,12 +15,12 @@ export default ({ dialogs, dialogActions }) => {
   )) : null;
 
   return (
-    <div className="dialogs">
-      <header className="dialogs__header">
-        <div className="dialogs__title">Dialogs {`(${list ? list.length : 0})`}</div>
+    <div className={styles.dialogs}>
+      <header className={styles.dialogsHeader}>
+        <div className={styles.dialogsTitle}>Dialogs {`(${list ? list.length : 0})`}</div>
         <Plus />
       </header>
-      <div className="dialogs__list">{list}</div>
+      <div className={styles.dialogsList}>{list}</div>
     </div>
   );
 };

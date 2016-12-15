@@ -3,45 +3,44 @@
   height: 100%;
 }
 
-.pm-list {
+.pmList {
   height: calc(100% - 140px);
   overflow-y: auto;
 }
 
 
-.pm-message {
+.pmMessage {
   margin-bottom: 10px;
 }
-.pm-message:hover {
+.pmMessage:hover {
   background-color: #fff;
 }
-.pm-message__avatar {
+.pmMessageAvatar {
   width: 35px;
   height: 35px;
   background-color: #555;
   display: inline-block;
   vertical-align: top;
 }
-.pm-message__content {
+.pmMessageContent {
   display: inline-block;
   width: calc(100% - 35px);
   padding-left: 5px;
   box-sizing: border-box;
 }
-.pm-message__username {
+.pmMessageUsername {
   display: inline-block;
   vertical-align: top;
   margin-right: 10px;
   color: #666;
 }
-.pm-message__date {
+.pmMessageDate {
   display: inline-block;
   vertical-align: top;
 }
-.pm-message__text {}
 
 
-.pm-form {
+.pmForm {
   background-color: #aaa;
   height: 140px;
   max-height: 140px;
@@ -51,16 +50,16 @@
   display: flex;
   flex-direction: column;
 }
-.pm-form__input {
+.pmFormInput {
   height: 90px;
   max-height: 90px;
 }
 
-.pm-panel {
+.pmPanel {
   text-align: right;
   margin-top: 5px;
 }
 
-.pm-form__send {
+.pmFormSend {
   width: 100px;
 }

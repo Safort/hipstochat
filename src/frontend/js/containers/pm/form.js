@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import styles from './index.css';
+
 
 class Form extends Component {
   constructor() {
@@ -18,14 +20,14 @@ class Form extends Component {
 
   render() {
     return (
-      <form className="pm-form">
+      <form className={styles.pmForm}>
         <textarea
           ref={text => { this._text = text; }}
-          className="pm-form__input"
+          className={styles.pmFormInput}
         />
-        <div className="pm-panel">
+        <div className={styles.pmPanel}>
           <input
-            className="pm-form__send"
+            className={styles.pmFormSend}
             type="submit"
             onClick={this._onClick}
             value="Send"

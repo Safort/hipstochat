@@ -7,7 +7,7 @@ import Modal from '../../components/modal';
 import * as userActions from '../../actions/user';
 import * as modalActions from '../../actions/modal';
 
-import './index.css';
+import styles from './index.css';
 
 
 class Main extends Component {
@@ -15,14 +15,13 @@ class Main extends Component {
     this.props.userActions.loadInfo();
   }
 
-
   render() {
     const { user, contacts, modal } = this.props;
     const menu = <Menu user={user} contacts={contacts} />;
-    const children = <div className="detail">{this.props.children}</div>;
+    const children = <div className={styles.detail}>{this.props.children}</div>;
 
     return (
-      <div className="main">
+      <div className={styles.main}>
         {user.username ? menu : ''}
         {user.isInfoLoaded ? children : <PageLoader />}
         <Modal {...modal} />

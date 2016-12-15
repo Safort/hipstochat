@@ -1,11 +1,10 @@
+.modalProfile {}
 
-.modal-profile {}
-
-.modal-profile__title {
+.modalProfileTitle {
   background-color: #999;
   padding: 15px;
 }
 
-.modal-profile__info {
+.modalProfileInfo {
   padding: 15px;
 }

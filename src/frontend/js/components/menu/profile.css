@@ -1,0 +1,21 @@
+.menuProfile {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  flex-shrink: 0;
+}
+
+.menuProfileImg {
+  background-color: black;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+}
+.menuProfileUsername {
+  margin-left: 5px;
+  font-size: 15px;
+  flex-grow: 1;
+}
+.menuProfileConfig {
+  margin-left: 5px;
+}
