@@ -12,7 +12,9 @@
     "watch-frontend": "NODE_ENV=development webpack-dev-server",
     "build-backend": "NODE_ENV=production gulp build",
     "watch-backend": "NODE_ENV=development gulp watch",
-    "lint": "eslint ./src"
+    "lint": "npm run lint-js && npm run lint-css",
+    "lint-js": "eslint ./src",
+    "lint-css": "stylelint \"./src/frontend/js/**/*.css\""
   },
   "devDependencies": {
     "babel-core": "^6.20.0",
@@ -39,6 +41,7 @@
     "precss": "^1.4.0",
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.13.1",
+    "stylelint-config-standard": "^15.0.0",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   },

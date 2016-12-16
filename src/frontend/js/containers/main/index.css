@@ -16,7 +16,7 @@ html, body,
 
 .main {
   display: flex;
-  width: 850px
+  width: 850px;
 }
 
 .detail {

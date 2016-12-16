@@ -22,7 +22,7 @@ class Profile extends Component {
     const { user } = this.props;
 
     return (
-      <div className={styles.modalProfile}>
+      <div>
         <div className={styles.modalProfileTitle}>Contact info</div>
         <div className={styles.modalProfileInfo}>
           username: {user.username}

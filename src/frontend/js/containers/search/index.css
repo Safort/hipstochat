@@ -9,15 +9,18 @@
   display: flex;
   align-items: center;
 }
+
 .searchInput {
   width: 400px;
   padding: 5px;
 }
+
 .searchUsers {
   margin-top: 10px;
   overflow-y: auto;
   height: calc(100% - 30px);
 }
+
 .searchUser {
   padding: 5px 0;
   border-bottom: 1px solid #ccc;
@@ -25,10 +28,12 @@
   display: flex;
   align-items: center;
 }
+
 .searchUser:hover {
   background-color: #bbb;
   cursor: pointer;
 }
+
 .searchUser:last-child {
   border-bottom: none;
 }

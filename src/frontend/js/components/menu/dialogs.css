@@ -5,6 +5,7 @@
 .dialogsHeader {
   display: flex;
 }
+
 .dialogsTitle {
   flex-grow: 1;
 }

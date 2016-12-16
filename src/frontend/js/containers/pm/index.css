@@ -1,4 +1,3 @@
-
 .pm {
   height: 100%;
 }
@@ -8,13 +7,14 @@
   overflow-y: auto;
 }
 
-
 .pmMessage {
   margin-bottom: 10px;
 }
+
 .pmMessage:hover {
   background-color: #fff;
 }
+
 .pmMessageAvatar {
   width: 35px;
   height: 35px;
@@ -22,23 +22,25 @@
   display: inline-block;
   vertical-align: top;
 }
+
 .pmMessageContent {
   display: inline-block;
   width: calc(100% - 35px);
   padding-left: 5px;
   box-sizing: border-box;
 }
+
 .pmMessageUsername {
   display: inline-block;
   vertical-align: top;
   margin-right: 10px;
   color: #666;
 }
+
 .pmMessageDate {
   display: inline-block;
   vertical-align: top;
 }
-
 
 .pmForm {
   background-color: #aaa;
@@ -50,6 +52,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .pmFormInput {
   height: 90px;
   max-height: 90px;

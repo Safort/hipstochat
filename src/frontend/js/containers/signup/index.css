@@ -20,11 +20,10 @@
   flex-grow: 1;
   cursor: pointer;
 }
+
 .homeTabActive {
   background-color: #555;
 }
-
-
 
 .homePage {
   display: none;

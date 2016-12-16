@@ -11,11 +11,13 @@
   height: 30px;
   border-radius: 100%;
 }
+
 .menuProfileUsername {
   margin-left: 5px;
   font-size: 15px;
   flex-grow: 1;
 }
+
 .menuProfileConfig {
   margin-left: 5px;
 }
