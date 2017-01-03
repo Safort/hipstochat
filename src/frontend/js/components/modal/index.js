@@ -26,7 +26,7 @@ class Modal extends Component {
   }
 
   render() {
-    const { state, modalName, modalData, dialogActions } = this.props;
+    const { modalName, modalData, dialogActions } = this.props;
     const CurrentModal = modalComponents[modalName];
 
     if (!CurrentModal) {
