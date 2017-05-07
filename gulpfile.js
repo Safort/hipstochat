@@ -1,20 +1,19 @@
 'use strict';
 
-const path = require('path');
 const gulp = require('gulp');
-const gutil = require('gulp-util');
 const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
 const nodemon = require('gulp-nodemon');
 const Cache = require('gulp-file-cache');
+
 const cache = new Cache();
 
 
-gulp.task('build', ['backend-prod']);
+gulp.task('build', ['server-prod']);
 
 
-gulp.task('watch', ['backend-dev'], () => {
-  gulp.watch('./src/backend/**/*.js', ['backend-dev']);
+gulp.task('watch', ['server-dev'], () => {
+  gulp.watch('./src/server/**/*.js', ['server-dev']);
 
   nodemon({
     execMap: {
@@ -23,11 +22,11 @@ gulp.task('watch', ['backend-dev'], () => {
     script: './app/index.js',
     ignore: [
       'node_modules/',
-      'app/public/'
+      'app/public/',
     ],
     watch: ['app/'],
     ext: 'js',
-    env: { 'NODE_ENV': 'development' },
+    env: { NODE_ENV: 'development' },
   }).on('restart', () => {
     console.log('Restarted!');
   });
@@ -36,17 +35,17 @@ gulp.task('watch', ['backend-dev'], () => {
 });
 
 
-gulp.task('backend-prod', () => {
+gulp.task('server-prod', () => {
   return gulp
-    .src('./src/backend/**/*.js', { base: './src/backend' })
+    .src('./src/server/**/*.js', { base: './src/server' })
     .pipe(babel())
     .pipe(gulp.dest('app/'));
 });
 
 
-gulp.task('backend-dev', () => {
+gulp.task('server-dev', () => {
   return gulp
-    .src('./src/backend/**/*.js', { base: './src/backend' })
+    .src('./src/server/**/*.js', { base: './src/server' })
     .pipe(cache.filter())
     .pipe(plumber())
     .pipe(babel())

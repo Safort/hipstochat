@@ -14,10 +14,10 @@ if (isDev) {
   entry = [
     'webpack-dev-server/client?http://localhost:3000/',
     'webpack/hot/dev-server',
-    './js/index'
+    './index.jsx',
   ];
 } else {
-  entry = './js/index';
+  entry = './index.jsx';
 }
 
 const output = {
@@ -54,7 +54,7 @@ if (isDev) {
 
 
 module.exports = {
-  context: path.join(__dirname, '/src/frontend'),
+  context: path.join(__dirname, '/src/client'),
   entry,
   output,
   watch: isDev,
@@ -68,7 +68,7 @@ module.exports = {
         include: path.join(__dirname, 'src'),
       },
       {
-        test:   /\.css$/,
+        test: /\.css$/,
         loader: ExtractTextPlugin.extract(
           'style-loader',
           'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'
@@ -79,6 +79,10 @@ module.exports = {
 
   postcss() {
     return [precss, autoprefixer];
+  },
+
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.ts', 'tsx'],
   },
 
   devServer: {
