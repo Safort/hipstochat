@@ -10,10 +10,12 @@ import styles from './index.css';
 
 
 const Menu = ({ user, userActions, dialogs, dialogActions }) => (
-  <div className={styles.menu}>
-    <Profile user={user} userActions={userActions} />
-    <Dialogs dialogs={dialogs} dialogActions={dialogActions} />
-  </div>
+  user.username ? (
+    <div className={styles.menu}>
+      <Profile user={user} userActions={userActions} />
+      <Dialogs dialogs={dialogs} dialogActions={dialogActions} />
+    </div>
+  ) : null
 );
 
 

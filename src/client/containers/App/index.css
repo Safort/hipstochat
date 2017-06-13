@@ -1,0 +1,13 @@
+.app {
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 800px;
+  margin: auto;
+}
+
+.detail {
+  flex-grow: 1;
+  background-color: #eee;
+}

@@ -29,22 +29,21 @@ class PM extends Component {
 
   componentDidMount() {
     this.props.messageActions.fetchMessages({
-      dialogId: this.props.params.dialogId,
+      dialogId: this.props.match.params.dialogId,
     });
   }
 
   componentWillReceiveProps(nextProps) {
-    const { dialogId } = nextProps.params;
+    const { dialogId } = nextProps.match.params;
 
-    if (dialogId !== this.props.params.dialogId) {
+    if (dialogId !== this.props.match.params.dialogId) {
       this.props.messageActions.fetchMessages({ dialogId });
     }
   }
 
   sendMessage(text) {
-    console.log(this.props);
     this.props.messageActions.sendMessage({
-      dialogId: this.props.params.dialogId,
+      dialogId: this.props.match.params.dialogId,
       text,
     });
   }

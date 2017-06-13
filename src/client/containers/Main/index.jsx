@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Menu from '../Menu';
+import { Route, Redirect } from 'react-router';
+
 import PageLoader from '../../components/PageLoader';
 import Modal from '../../components/Modal';
 import * as userActions from '../../actions/user';
@@ -16,14 +17,31 @@ class Main extends Component {
   }
 
   render() {
-    const { user, contacts, modal } = this.props;
-    const menu = <Menu user={user} contacts={contacts} />;
-    const children = <div className={styles.detail}>{this.props.children}</div>;
+    const { user, modal, match } = this.props;
+    const routeRender = () => (
+      user.username ? (
+        <div>Welcome home, Master!</div>
+      ) : (
+        <Redirect to={`${match.url}auth`} />
+      )
+    );
 
     return (
       <div className={styles.main}>
-        {user.username ? menu : ''}
-        {user.isInfoLoaded ? children : <PageLoader />}
+        {user.isInfoLoaded ? (
+          <div className={styles.detail}>
+            {
+              <Route
+                path={`${match.url}`}
+                render={routeRender}
+              />
+            }
+          </div>
+          ) : (
+            <PageLoader />
+          )
+        }
+
         <Modal {...modal} />
       </div>
     );
@@ -31,16 +49,15 @@ class Main extends Component {
 }
 
 
+function mapStateToProps({ user, modal }) {
+  return { user, modal };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
     modalActions: bindActionCreators(modalActions, dispatch),
   };
-}
-
-
-function mapStateToProps({ user, modal }) {
-  return { user, modal };
 }
 
 
