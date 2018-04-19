@@ -41,8 +41,6 @@ class Auth extends Component {
       [styles.homeTabActive]: this.state.signin,
     });
 
-    console.log('Auth props == ', this.props);
-
     return (
       <div className={styles.home}>
 

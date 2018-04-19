@@ -1,96 +1,66 @@
-const path = require('path');
-const precss = require('precss');
-const autoprefixer = require('autoprefixer');
+const { resolve, join } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const isDev = NODE_ENV === 'development';
-
-let entry;
-
-if (isDev) {
-  entry = [
-    'webpack-dev-server/client?http://localhost:3000/',
-    'webpack/hot/dev-server',
-    './index.jsx',
-  ];
-} else {
-  entry = './index.jsx';
-}
-
-const output = {
-  path: path.resolve(__dirname, 'app/public'),
-  publicPath: '/',
-  filename: 'bundle.js',
-  libraryTarget: 'umd',
-};
-
-const plugins = [
-  new webpack.NoErrorsPlugin(),
-  new HtmlWebpackPlugin({
-    title: 'Title',
-    filename: 'index.html',
-    template: 'templates/index.html',
-  }),
-  new webpack.DefinePlugin({
-    'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-  }),
-  new ExtractTextPlugin('style.css', { allChunks: true }),
-];
-
-if (isDev) {
-  plugins.unshift(
-    new webpack.HotModuleReplacementPlugin()
-  );
-} else {
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-    })
-  );
-}
-
 
 module.exports = {
-  context: path.join(__dirname, '/src/client'),
-  entry,
-  output,
-  watch: isDev,
-  devtool: isDev ? 'source-map' : null,
-  plugins,
+  context: resolve(__dirname, 'src/client'),
+  entry: './index.jsx',
+  output: {
+    path: resolve(__dirname, 'app/public'),
+    publicPath: '/',
+    filename: 'bundle.js',
+  },
+  devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        loaders: ['babel-loader'],
-        include: path.join(__dirname, 'src'),
+        loader: 'babel-loader',
+        include: join(__dirname, 'src'),
+        exclude: /(node_modules|bower_components)/
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract(
-          'style-loader',
-          'css-loader?modules&importLoaders=1&localIdentName=[local]___[hash:base64:5]!postcss-loader'
-        ),
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              modules: true,
+              importLoaders: 1,
+              sourceMap: true,
+            },
+          },
+        ],
       },
     ],
   },
 
-  postcss() {
-    return [precss, autoprefixer];
-  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'HipstoChat',
+      filename: 'index.html',
+      template: 'templates/index.html',
+    }),
+    new webpack.NamedModulesPlugin(),
+    // new ExtractTextPlugin('style.css', { allChunks: true }),
+    new webpack.HotModuleReplacementPlugin()
+  ],
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.ts', 'tsx'],
+    extensions: ['.js', '.jsx'],
   },
 
   devServer: {
-    host: 'localhost',
+    contentBase: join(__dirname, 'app'),
+    compress: true,
     port: 3000,
-    contentBase: './app/public',
-    historyApiFallback: true,
-    hot: true,
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    hot: true
   },
+
 };
