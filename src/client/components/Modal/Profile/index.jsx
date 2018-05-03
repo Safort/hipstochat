@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import styles from './index.css';
 
 
@@ -24,11 +23,11 @@ class Profile extends Component {
 
     return (
       <div>
-        <div className={styles.modalProfileTitle}>Contact info</div>
-        <div className={styles.modalProfileInfo}>
+        <div className={styles.title}>Contact info</div>
+        <div className={styles.info}>
           username: {user.username}
         </div>
-        <div className={styles.modalProfileInfo}>
+        <div className={styles.info}>
           <button onClick={this._onClick}>Добавить</button>
         </div>
       </div>

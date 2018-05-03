@@ -2,20 +2,20 @@
   height: 100%;
 }
 
-.pmList {
+.list {
   height: calc(100% - 140px);
   overflow-y: auto;
 }
 
-.pmMessage {
+.message {
   margin-bottom: 10px;
 }
 
-.pmMessage:hover {
+.message:hover {
   background-color: #fff;
 }
 
-.pmMessageAvatar {
+.messageAvatar {
   width: 35px;
   height: 35px;
   background-color: #555;
@@ -23,26 +23,26 @@
   vertical-align: top;
 }
 
-.pmMessageContent {
+.messageContent {
   display: inline-block;
   width: calc(100% - 35px);
   padding-left: 5px;
   box-sizing: border-box;
 }
 
-.pmMessageUsername {
+.messageUsername {
   display: inline-block;
   vertical-align: top;
   margin-right: 10px;
   color: #666;
 }
 
-.pmMessageDate {
+.messageDate {
   display: inline-block;
   vertical-align: top;
 }
 
-.pmForm {
+.form {
   background-color: #aaa;
   height: 140px;
   max-height: 140px;
@@ -53,16 +53,16 @@
   flex-direction: column;
 }
 
-.pmFormInput {
+.formInput {
   height: 90px;
   max-height: 90px;
 }
 
-.pmPanel {
+.panel {
   text-align: right;
   margin-top: 5px;
 }
 
-.pmFormSend {
+.formSend {
   width: 100px;
 }

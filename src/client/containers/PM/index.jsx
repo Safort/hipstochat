@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import * as messageActions from '../../actions/message';
 import Form from './Form';
-
-import styles from './index.css';
+import * as messageActions from '../../actions/message';
+import * as styles from './index.css';
 
 
 const Message = ({ name, text, date }) => (
-  <div className={styles.pmMessage}>
-    <div className={styles.pmMessageAvatar} />
-    <div className={styles.pmMessageContent}>
-      <div className={styles.pmMessageUsername}>{name}</div>
-      <div className={styles.pmMessageDate}>{date}</div>
-      <div className={styles.pmMessageText}>{text}</div>
+  <div className={styles.message}>
+    <div className={styles.messageAvatar} />
+    <div className={styles.messageContent}>
+      <div className={styles.messageUsername}>{name}</div>
+      <div className={styles.messageDate}>{date}</div>
+      <div className={styles.messageText}>{text}</div>
     </div>
   </div>
 );
@@ -56,7 +54,7 @@ class PM extends Component {
 
     return (
       <div className={styles.pm}>
-        <div className={styles.pmList}>{messages}</div>
+        <div className={styles.list}>{messages}</div>
         <Form sendMessage={this._sendMessage} />
       </div>
     );

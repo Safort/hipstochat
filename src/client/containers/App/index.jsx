@@ -3,7 +3,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Switch, Route } from 'react-router';
-
 import Menu from '../Menu';
 import Main from '../Main';
 import Auth from '../Auth';
@@ -12,10 +11,8 @@ import Pm from '../PM';
 import Profile from '../Profile';
 import NoMatch from '../../components/NoMatch';
 import Modal from '../../components/Modal';
-
 import * as userActions from '../../actions/user';
 import * as modalActions from '../../actions/modal';
-
 import * as styles from './index.css';
 
 
@@ -25,13 +22,11 @@ class App extends React.Component {
   }
 
   render() {
-    const { modal } = this.props;
-
     return (
       <Router>
         <div className={styles.app}>
           <Menu />
-          <div className={styles.detail}>
+          <div className={styles.layout}>
             <Switch>
               <Route exact path="/" component={Main} />
               <Route exact path="/auth" component={Auth} />
@@ -41,7 +36,7 @@ class App extends React.Component {
               <Route component={NoMatch} />
             </Switch>
           </div>
-          <Modal {...modal} />
+          <Modal {...this.props.modal} />
         </div>
       </Router>
     );

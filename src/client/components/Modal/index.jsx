@@ -36,7 +36,7 @@ class Modal extends Component {
     /* eslint jsx-a11y/no-static-element-interactions: 0 */
     return (
       <div ref={el => { this._bg = el; }} className={styles.modal} onClick={this._hide}>
-        <div className={styles.modalContent}>
+        <div className={styles.content}>
           <CurrentModal user={modalData} dialogActions={dialogActions} />
         </div>
       </div>

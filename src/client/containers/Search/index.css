@@ -5,23 +5,23 @@
   box-sizing: border-box;
 }
 
-.searchHeader {
+.header {
   display: flex;
   align-items: center;
 }
 
-.searchInput {
+.input {
   width: 400px;
   padding: 5px;
 }
 
-.searchUsers {
+.users {
   margin-top: 10px;
   overflow-y: auto;
   height: calc(100% - 30px);
 }
 
-.searchUser {
+.user {
   padding: 5px 0;
   border-bottom: 1px solid #ccc;
   padding-left: 5px;
@@ -29,15 +29,15 @@
   align-items: center;
 }
 
-.searchUser:hover {
+.user:hover {
   background-color: #bbb;
   cursor: pointer;
 }
 
-.searchUser:last-child {
+.user:last-child {
   border-bottom: none;
 }
 
-.searchUsername {
+.username {
   margin-left: 10px;
 }

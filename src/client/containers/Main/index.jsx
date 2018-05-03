@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router';
-
 import PageLoader from '../../components/PageLoader';
 import Modal from '../../components/Modal';
 import * as userActions from '../../actions/user';
 import * as modalActions from '../../actions/modal';
-
-import styles from './index.css';
+import * as styles from './index.css';
 
 
 class Main extends Component {
@@ -20,7 +18,7 @@ class Main extends Component {
     const { user, modal, match } = this.props;
     const routeRender = () => (
       user.username ? (
-        <div>Welcome home, Master!</div>
+        <div className={styles.greeting}>Welcome home, Master!</div>
       ) : (
         <Redirect to={`${match.url}auth`} />
       )
@@ -29,14 +27,7 @@ class Main extends Component {
     return (
       <div className={styles.main}>
         {user.isInfoLoaded ? (
-          <div className={styles.detail}>
-            {
-              <Route
-                path={`${match.url}`}
-                render={routeRender}
-              />
-            }
-          </div>
+            <Route path={`${match.url}`} render={routeRender} />
           ) : (
             <PageLoader />
           )

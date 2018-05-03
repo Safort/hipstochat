@@ -8,20 +8,20 @@
   margin: auto;
 }
 
-.homeTabs {
+.tabs {
   display: flex;
   margin-bottom: 10px;
   width: 170px;
 }
 
-.homeTab {
+.tab {
   text-align: center;
   background-color: #ccc;
   flex-grow: 1;
   cursor: pointer;
 }
 
-.homeTabActive {
+.tabActive {
   background-color: #555;
 }
 

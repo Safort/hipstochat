@@ -10,11 +10,11 @@
   background-color: rgba(100, 100, 100, .8);
 }
 
-.modalHidden {
+.hidden {
   display: none;
 }
 
-.modalContent {
+.content {
   background-color: #bbb;
   width: 450px;
   height: 380px;

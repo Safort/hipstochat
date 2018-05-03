@@ -3,13 +3,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Route, Redirect } from 'react-router';
-
 import * as userActions from '../../actions/user';
 import Signin from './Signin';
 import Signup from './Signup';
+import * as styles from './index.css';
 
-
-import styles from './index.css';
 
 class Auth extends Component {
   constructor() {
@@ -29,16 +27,15 @@ class Auth extends Component {
     }
   }
 
-
   render() {
     const { user } = this.props;
     const tabSignup = classnames({
-      [styles.homeTab]: true,
-      [styles.homeTabActive]: this.state.signup,
+      [styles.tab]: true,
+      [styles.tabActive]: this.state.signup,
     });
     const tabSignin = classnames({
-      [styles.homeTab]: true,
-      [styles.homeTabActive]: this.state.signin,
+      [styles.tab]: true,
+      [styles.tabActive]: this.state.signin,
     });
 
     return (
@@ -50,7 +47,7 @@ class Auth extends Component {
           /> : ''
         }
 
-        <button className={styles.homeTabs} onClick={this._tabHandler}>
+        <button className={styles.tabs} onClick={this._tabHandler}>
           <div className={tabSignup}>Sign up</div>
           <div className={tabSignin}>Sign in</div>
         </button>

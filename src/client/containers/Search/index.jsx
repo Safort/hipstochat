@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
+import User from './User';
 import * as searchActions from '../../actions/search';
 import * as modalActions from '../../actions/modal';
-import User from './User';
-
-import styles from './index.css';
+import * as styles from './index.css';
 
 
 class Search extends Component {
@@ -31,7 +29,6 @@ class Search extends Component {
     }
   }
 
-
   render() {
     const userList = this.props.search.userList.map((user, i) => (
       <User
@@ -43,15 +40,15 @@ class Search extends Component {
 
     return (
       <div className={styles.search}>
-        <header className={styles.searchHeader}>
+        <header className={styles.header}>
           <input
-            className={styles.searchInput}
+            className={styles.input}
             ref={username => { this._username = username; }}
             placeholder="username or channel name"
             onKeyUp={this._find}
           />
         </header>
-        <div className={styles.searchUsers}>{userList}</div>
+        <div className={styles.users}>{userList}</div>
       </div>
     );
   }

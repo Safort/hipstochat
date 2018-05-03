@@ -30,7 +30,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              localIdentName: '[local]--[hash:base64:8]',
               modules: true,
               importLoaders: 1,
               sourceMap: true,
@@ -48,7 +48,6 @@ module.exports = {
       template: 'templates/index.html',
     }),
     new webpack.NamedModulesPlugin(),
-    // new ExtractTextPlugin('style.css', { allChunks: true }),
     new webpack.HotModuleReplacementPlugin()
   ],
 
@@ -60,7 +59,8 @@ module.exports = {
     contentBase: join(__dirname, 'app'),
     compress: true,
     port: 3000,
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
 
 };

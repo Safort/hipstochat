@@ -3,8 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import * as userActions from '../../actions/user';
-
-import styles from './index.css';
+import * as styles from './index.css';
 
 
 class Signup extends Component {
@@ -20,7 +19,6 @@ class Signup extends Component {
     const password = this._password.value;
     this.props.userActions.signin({ username, password });
   }
-
 
   render() {
     const pageSignin = classnames(styles.homePage, styles.homePageActive);

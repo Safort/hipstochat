@@ -2,19 +2,19 @@
   padding: 5px;
 }
 
-.dialogsHeader {
+.header {
   display: flex;
 }
 
-.dialogsTitle {
+.title {
   flex-grow: 1;
 }
 
-.dialogsItem {
+.item {
   display: block;
 }
 
-.dialogsPlus {
+.plus {
   text-decoration: none;
   border-radius: 100%;
   border: 1px solid #000;

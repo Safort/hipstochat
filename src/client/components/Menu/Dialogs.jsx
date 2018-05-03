@@ -5,7 +5,7 @@ import styles from './Dialogs.css';
 
 
 const Plus = () => (
-  <Link className={styles.dialogsPlus} to={'/search'}>+</Link>
+  <Link className={styles.plus} to={'/search'}>+</Link>
 );
 
 
@@ -16,11 +16,11 @@ export default ({ dialogs, dialogActions }) => {
 
   return (
     <div className={styles.dialogs}>
-      <header className={styles.dialogsHeader}>
-        <div className={styles.dialogsTitle}>Dialogs {`(${list ? list.length : 0})`}</div>
+      <header className={styles.header}>
+        <div className={styles.title}>Dialogs {`(${list ? list.length : 0})`}</div>
         <Plus />
       </header>
-      <div className={styles.dialogsList}>{list}</div>
+      <div className={styles.list}>{list}</div>
     </div>
   );
 };

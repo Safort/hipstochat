@@ -5,8 +5,7 @@ import Profile from '../../components/Menu/Profile';
 import Dialogs from '../../components/Menu/Dialogs';
 import * as userActions from '../../actions/user';
 import * as dialogActions from '../../actions/dialog';
-
-import styles from './index.css';
+import * as styles from './index.css';
 
 
 const Menu = ({ user, userActions, dialogs, dialogActions }) => (

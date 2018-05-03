@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as userActions from '../../actions/user';
-
-import styles from './index.css';
+import * as styles from './index.css';
 
 
 class Profile extends Component {
@@ -21,7 +20,6 @@ class Profile extends Component {
 
     this.props.userActions.update({ username, name, email });
   }
-
 
   render() {
     const user = this.props.user;

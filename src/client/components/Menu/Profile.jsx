@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from '../Avatar';
-
 import styles from './Profile.css';
 
 
@@ -19,12 +18,12 @@ export default class Profile extends Component {
     const { username } = this.props.user;
 
     return (
-      <div className={styles.menuProfile}>
+      <div className={styles.profile}>
         <Avatar username={username} />
-        <div className={styles.menuProfileUsername}>
+        <div className={styles.username}>
           <Link to={'/profile/edit'}>{username}</Link>
         </div>
-        <div className={styles.menuProfileConfig}>
+        <div className={styles.config}>
           <button title="Exit" onClick={this._signout}>[Exit]</button>
         </div>
       </div>
