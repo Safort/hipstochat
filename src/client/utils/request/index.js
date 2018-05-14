@@ -1,53 +1,51 @@
-function request(reqMethod, url, otherData = {}) {
+async function request(reqMethod, url, otherData = {}, auth = false) {
   const method = reqMethod || 'GET';
-  const headers = otherData.headers || {};
   const body = otherData.body || null;
-  /* eslint quote-props: 0 */
-  const defaultHeaders = {
+  const headers = {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    ...headers,
+    ...(otherData.headers || {}),
   };
-
   const requestConfig = {
     method,
+    headers,
     credentials: 'include',
-    headers: defaultHeaders,
   };
 
   if (body !== null) {
     requestConfig.body = JSON.stringify(body);
   }
-
-  return fetch(url, requestConfig).then(
-    (res) => {
-      const contentType = res.headers.get('content-type');
-
-      if (contentType && contentType.indexOf('application/json') !== -1) {
-        return res.json();
-      }
-
-      return res;
-    },
-  );
+  
+  return fetch(url, requestConfig).then(responseHandler);
 }
 
 
-function get(url, otherData) {
-  return request('GET', url, otherData);
+function responseHandler(res) {
+  const contentType = res.headers.get('content-type');
+  
+  if (contentType && contentType.indexOf('application/json') !== -1) {
+    return res.json();
+  }
+  
+  return res;
 }
 
-function post(url, otherData) {
-  return request('POST', url, otherData);
+function get(url, otherData, auth) {
+  return request('GET', url, otherData, auth);
 }
 
-function put(url, otherData) {
-  return request('PUT', url, otherData);
+function post(url, otherData, auth) {
+  return request('POST', url, otherData, auth);
 }
 
-function remove(url, otherData) {
-  return request('DELETE', url, otherData);
+function put(url, otherData, auth) {
+  return request('PUT', url, otherData, auth);
 }
+
+function remove(url, otherData, auth) {
+  return request('DELETE', url, otherData, auth);
+}
+
 
 
 export default request;

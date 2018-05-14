@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Avatar from '../Avatar';
 import styles from './Profile.css';
 
 
-export default class Profile extends Component {
+export default class Profile extends React.PureComponent {
   constructor() {
     super();
     this._signout = this.signout.bind(this);
@@ -15,13 +15,13 @@ export default class Profile extends Component {
   }
 
   render() {
-    const { username } = this.props.user;
+    const { login } = this.props.user;
 
     return (
       <div className={styles.profile}>
-        <Avatar username={username} />
-        <div className={styles.username}>
-          <Link to={'/profile/edit'}>{username}</Link>
+        <Avatar login={login} />
+        <div className={styles.login}>
+          <Link to={'/profile/edit'}>{login}</Link>
         </div>
         <div className={styles.config}>
           <button title="Exit" onClick={this._signout}>[Exit]</button>

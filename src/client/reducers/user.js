@@ -2,95 +2,110 @@ import * as actions from '../actions/user';
 
 
 const initialState = {
-  username: null,
+  login: null,
   name: null,
-  email: null,
   avatarUrl: null,
-  token: null,
+  expiresIn: localStorage.getItem('expiresIn'),
   errors: [],
-  isInfoLoaded: false, // TODO: replace on isFetching
+  isFetching: false
 };
 
 
 export default function user(state = initialState, action) {
   switch (action.type) {
-    case actions.CREATE_USER_REQUEST:
-      return { ...state };
-
-    case actions.CREATE_USER_SUCCESS:
+    case actions.SIGNUP_USER_REQUEST:
       return {
         ...state,
-        username: action.payload.username,
+        isFetching: true
+      };
+
+    case actions.SIGNUP_USER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        login: action.payload.login,
         name: action.payload.name,
-        email: action.payload.email,
+        expiresIn: action.payload.expiresIn,
         avatarUrl: action.payload.avatarUrl,
       };
 
-    case actions.CREATE_USER_FAIL:
-      return { ...state };
+    case actions.SIGNUP_USER_FAIL:
+      return {
+        ...state,
+        isFetching: true
+      };
 
     //
 
     case actions.SIGNIN_USER_REQUEST:
-      return { ...state };
-
-    case actions.SIGNIN_USER_SUCCESS:
       return {
         ...state,
-        username: action.payload.username,
+        isFetching: true
+      };
+      
+      case actions.SIGNIN_USER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        login: action.payload.login,
         name: action.payload.name,
-        email: action.payload.email,
         avatarUrl: action.payload.avatarUrl,
         errors: [],
-        token: action.payload.token,
+        expiresIn: action.payload.expiresIn,
       };
 
     case actions.SIGNIN_USER_FAIL:
-      return { ...state };
+      return {
+        ...state,
+        isFetching: true
+      };
 
     //
 
     case actions.SIGNOUT_USER_REQUEST:
-      return { ...state };
+      return {
+        ...state,
+        isFetching: true
+      };
 
     case actions.SIGNOUT_USER_SUCCESS:
       return {
-        username: null,
+        login: null,
         name: null,
-        email: null,
         avatarUrl: null,
         errors: [],
-        token: null,
-        isInfoLoaded: true,
+        expiresIn: null,
+        isFetching: false,
       };
 
     case actions.SIGNOUT_USER_FAIL:
-      return { ...state };
+      return {
+        ...state,
+        isFetching: false
+      };
 
     //
 
     case actions.LOAD_USER_INFO_REQUEST:
       return {
         ...state,
-        isInfoLoaded: false,
+        isFetching: true,
       };
 
     case actions.LOAD_USER_INFO_SUCCESS:
       return {
         ...state,
-        username: action.payload.username,
+        login: action.payload.login,
         name: action.payload.name,
-        email: action.payload.email,
         avatarUrl: action.payload.avatarUrl,
         errors: [],
-        token: action.payload.token,
-        isInfoLoaded: true,
+        isFetching: false,
       };
 
     case actions.LOAD_USER_INFO_FAIL:
       return {
         ...state,
-        isInfoLoaded: true,
+        isFetching: false,
       };
 
     //
@@ -98,25 +113,23 @@ export default function user(state = initialState, action) {
     case actions.UPDATE_USER_REQUEST:
       return {
         ...state,
-        isInfoLoaded: false,
+        isFetching: true,
       };
 
     case actions.UPDATE_USER_SUCCESS:
       return {
         ...state,
-        username: action.payload.username,
+        login: action.payload.login,
         name: action.payload.name,
-        email: action.payload.email,
         errors: [],
-        token: action.payload.token,
-        isInfoLoaded: true,
+        isFetching: false,
       };
 
     case actions.UPDATE_USER_FAIL:
       return {
         ...state,
         errors: action.payload.errors,
-        isInfoLoaded: true,
+        isFetching: false,
       };
 
     default:

@@ -3,11 +3,6 @@ import { get } from '../utils/request';
 export const SEARCH_USER_REQUEST = 'SEARCH_USER_REQUEST';
 export const SEARCH_USER_SUCCESS = 'SEARCH_USER_SUCCESS';
 export const SEARCH_USER_FAIL = 'SEARCH_USER_FAIL';
-
-export const SEARCH_CHANNEL_REQUEST = 'SEARCH_CHANNEL_REQUEST';
-export const SEARCH_CHANNEL_SUCCESS = 'SEARCH_CHANNEL_SUCCESS';
-export const SEARCH_CHANNEL_FAIL = 'SEARCH_CHANNEL_FAIL';
-
 export const SEARCH_CLEAR = 'SEARCH_CLEAR';
 
 
@@ -25,12 +20,12 @@ function findUserFail() {
   return { type: SEARCH_USER_FAIL };
 }
 
-export function findUser({ username }) {
+export function findUser({ login }) {
   return dispatch => {
     dispatch(findUserRequest());
 
-    get(`http://localhost:8080/api/users/${username}`)
-    .then(({ userList }) => dispatch(findUserSuccess({ userList })))
+    get(`http://localhost:8080/api/search/users/${login}`)
+    .then(({ users }) => dispatch(findUserSuccess({ users })))
     .catch(() => dispatch(findUserFail()));
   };
 }

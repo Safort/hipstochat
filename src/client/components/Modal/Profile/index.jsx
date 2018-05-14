@@ -14,7 +14,7 @@ class Profile extends Component {
 
     dialogActions.create({
       interlocutorId: user._id,
-      name: user.username,
+      name: user.login,
     });
   }
 
@@ -25,7 +25,7 @@ class Profile extends Component {
       <div>
         <div className={styles.title}>Contact info</div>
         <div className={styles.info}>
-          username: {user.username}
+          login: {user.login}
         </div>
         <div className={styles.info}>
           <button onClick={this._onClick}>Добавить</button>

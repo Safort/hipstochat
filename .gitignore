@@ -1,5 +1,4 @@
-.gulp-cache
 /.vscode
-/app
+/src/public
 /node_modules
 npm-debug.log

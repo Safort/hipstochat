@@ -2,9 +2,9 @@ import * as actions from '../actions/search';
 
 
 const initialState = {
-  userList: [],
+  users: [],
   errors: [],
-  isInfoLoaded: false,
+  isFetching: false,
 };
 
 
@@ -17,21 +17,21 @@ export default function search(state = initialState, action) {
     case actions.SEARCH_USER_SUCCESS:
       return {
         ...state,
-        userList: action.payload.userList,
-        isInfoLoaded: true,
+        users: action.payload.users,
+        isFetching: false,
       };
 
     case actions.SEARCH_USER_FAIL:
       return {
         ...state,
-        isInfoLoaded: true,
+        isFetching: false,
       };
 
     case actions.SEARCH_CLEAR:
       return {
-        userList: [],
+        users: [],
         errors: [],
-        isInfoLoaded: false,
+        isFetching: true,
       };
 
     default:

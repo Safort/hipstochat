@@ -1,0 +1,68 @@
+.pm {
+  height: 100%;
+}
+
+.list {
+  height: calc(100% - 140px);
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.message:hover {
+  background-color: #fff;
+}
+
+.messageAvatar {
+  width: 35px;
+  height: 35px;
+  background-color: #555;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.messageContent {
+  display: inline-block;
+  width: calc(100% - 35px);
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+.messageLogin {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+  color: #666;
+}
+
+.messageDate {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.form {
+  background-color: #aaa;
+  height: 140px;
+  max-height: 140px;
+  overflow: hidden;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.formInput {
+  height: 90px;
+  max-height: 90px;
+}
+
+.panel {
+  text-align: right;
+  margin-top: 5px;
+}
+
+.formSend {
+  width: 100px;
+}

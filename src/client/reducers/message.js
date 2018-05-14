@@ -1,7 +1,5 @@
 import * as actions from '../actions/message';
 
-
-// создать отдельные редьюсеры и экшены для сообщений(messages)
 const initialState = {
   errors: [],
   user: {},
@@ -22,7 +20,6 @@ export default function message(state = initialState, action) {
     case actions.GET_MESSAGES_FAIL:
       return { ...state };
 
-    // send message
     case actions.SEND_MESSAGE_REQUEST:
       return { ...state };
 
