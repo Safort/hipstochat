@@ -51,6 +51,15 @@ module.exports = db => {
       return db.query(query, values)
         .then(res => res.rowCount === 1 ? res.rows[0] : false)
         .catch(err => false);
+    },
+
+    async updateUser(id, login, name) {
+      const query = 'update users set login = $1, name = $2 where id = $3';
+      const values = [login, name, id];
+
+      return db.query(query, values)
+        .then(res => res.rowCount === 1 ? res.rows[0] : false)
+        .catch(err => false);
     }
   }  
 };

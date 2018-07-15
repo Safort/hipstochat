@@ -25,4 +25,19 @@ module.exports = ({ router }) => {
 
     ctx.body = { success: true, users };
   });
+
+  router.put('/api/me', auth.isSessionValid, async ctx => {
+    const UserModel = require('../models/user')(ctx.db);
+    const userId = ctx.cookies.get('userId').trim();
+    const { login, name } = ctx.request.body;
+    const updateRes = await UserModel.updateUser(userId, login, name);
+    
+    if (updateRes !== null) {
+      ctx.body = { success: true };
+    }
+    ctx.body = { success: false };
+
+  });
+
+  
 };
