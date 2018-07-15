@@ -1,4 +1,4 @@
-import * as actions from '../actions/dialog';
+import * as actions from '../actions/contact';
 
 
 const initialState = {
@@ -7,9 +7,9 @@ const initialState = {
 };
 
 
-export default function dialogs(state = initialState, action) {
+export default function contacts(state = initialState, action) {
   switch (action.type) {
-    case actions.UPDATE_DIALOG_LIST: {
+    case actions.UPDATE_CONTACT_LIST: {
       return {
         ...state,
         list: action.payload,
@@ -17,7 +17,7 @@ export default function dialogs(state = initialState, action) {
     }
 
 
-    case actions.CREATE_DIALOG_SUCCESS: {
+    case actions.CREATE_CONTACT_SUCCESS: {
       const list = [...state.list];
       list.push(action.payload);
 
@@ -25,20 +25,20 @@ export default function dialogs(state = initialState, action) {
     }
 
 
-    case actions.REMOVE_DIALOG_REQUEST: {
+    case actions.REMOVE_CONTACT_REQUEST: {
       return { ...state };
     }
 
 
-    case actions.REMOVE_DIALOG_SUCCESS: {
+    case actions.REMOVE_CONTACT_SUCCESS: {
       const { id } = action.payload;
-      const list = state.list.filter(dialog => dialog.id !== id);
+      const list = state.list.filter(contact => contact.id !== id);
 
       return { ...state, list };
     }
 
 
-    case actions.REMOVE_DIALOG_FAIL: {
+    case actions.REMOVE_CONTACT_FAIL: {
       return { ...state };
     }
 

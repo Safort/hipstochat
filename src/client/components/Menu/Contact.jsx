@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './Dialogs.css';
+import styles from './Contacts.css';
 
 
-export default class Dialog extends Component {
+export default class Contact extends Component {
   constructor() {
     super();
 
@@ -12,14 +12,14 @@ export default class Dialog extends Component {
   }
 
   onClick() {
-    this.props.dialogActions.remove({ id: this.props.id });
+    this.props.contactActions.remove({ id: this.props.id });
   }
 
   render() {
     const { id, name } = this.props;
 
     return (
-      <div className={styles.dialogsItem}>
+      <div className={styles.contactsItem}>
         <Link to={`/pm/${id}`}>{name}</Link>
         <button onClick={this._onClick}>[-]</button>
       </div>

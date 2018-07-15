@@ -14,7 +14,7 @@ export const REMOVE_MESSAGE_SUCCESS = 'REMOVE_MESSAGE_SUCCESS';
 export const REMOVE_MESSAGE_FAIL = 'REMOVE_MESSAGE_FAIL';
 
 
-/* Fetch dialog messages */
+/* Fetch contact messages */
 
 function fetchMessagesRequest() {
   return { type: GET_MESSAGES_REQUEST };
@@ -28,12 +28,12 @@ function fetchMessagesFail(errors) {
   return { type: GET_MESSAGES_FAIL, payload: { errors } };
 }
 
-export function fetchMessages({ dialogId }) {
+export function fetchMessages({ contactId }) {
   return dispatch => {
     dispatch(fetchMessagesRequest());
 
-    request('get', `http://localhost:8080/api/dialog/${dialogId}/messages`)
-    .then(({ list }) => dispatch(fetchMessagesSuccess({ dialogId, list })))
+    request('get', `http://localhost:8080/api/contact/${contactId}/messages`)
+    .then(({ list }) => dispatch(fetchMessagesSuccess({ contactId, list })))
     .catch(errors => dispatch(fetchMessagesFail(errors)));
   };
 }
@@ -53,13 +53,13 @@ function sendMessageFail(errors) {
   return { type: SEND_MESSAGE_FAIL, payload: { errors } };
 }
 
-export function sendMessage({ dialogId, text }) {
+export function sendMessage({ contactId, text }) {
   return dispatch => {
     dispatch(sendMessageRequest());
 
     const body = { text };
 
-    request('post', `http://localhost:8080/api/dialog/${dialogId}/message`, { body })
+    request('post', `http://localhost:8080/api/contact/${contactId}/message`, { body })
     .then(res => dispatch(sendMessageSuccess({ message: res.message })))
     .catch(errors => dispatch(sendMessageFail(errors)));
   };
@@ -80,12 +80,12 @@ function removeMessageFail(errors) {
   return { type: REMOVE_MESSAGE_FAIL, payload: { errors } };
 }
 
-export function removeMessage({ dialogId }) {
+export function removeMessage({ contactId }) {
   return dispatch => {
     dispatch(removeMessageRequest());
 
-    request('get', `http://localhost:8080/api/dialogs/${dialogId}`)
-    .then(() => dispatch(removeMessageSuccess({ dialogId })))
+    request('get', `http://localhost:8080/api/contacts/${contactId}`)
+    .then(() => dispatch(removeMessageSuccess({ contactId })))
     .catch(errors => dispatch(removeMessageFail(errors)));
   };
 }

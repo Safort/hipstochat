@@ -10,9 +10,9 @@ class Profile extends Component {
   }
 
   onClick() {
-    const { user, dialogActions } = this.props;
+    const { user, contactActions } = this.props;
 
-    dialogActions.create({
+    contactActions.create({
       interlocutorId: user._id,
       name: user.login,
     });

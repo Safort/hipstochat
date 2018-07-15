@@ -2,17 +2,17 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Profile from './Profile';
-import Dialogs from './Dialogs';
+import Contacts from './Contacts';
 import * as userActions from '../../actions/user';
-import * as dialogActions from '../../actions/dialog';
+import * as contactActions from '../../actions/contact';
 import * as styles from './index.css';
 
 
-const Menu = ({ user, userActions, dialogs, dialogActions }) => (
+const Menu = ({ user, userActions, contacts, contactActions }) => (
   user.login ? (
     <div className={styles.menu}>
       <Profile user={user} userActions={userActions} />
-      <Dialogs dialogs={dialogs} dialogActions={dialogActions} />
+      <Contacts contacts={contacts} contactActions={contactActions} />
     </div>
   ) : null
 );
@@ -21,13 +21,13 @@ const Menu = ({ user, userActions, dialogs, dialogActions }) => (
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
-    dialogActions: bindActionCreators(dialogActions, dispatch),
+    contactActions: bindActionCreators(contactActions, dispatch),
   };
 }
 
 
-function mapStateToProps({ user, dialogs }) {
-  return { user, dialogs };
+function mapStateToProps({ user, contacts }) {
+  return { user, contacts };
 }
 
 

@@ -27,21 +27,21 @@ class PM extends Component {
 
   componentDidMount() {
     this.props.messageActions.fetchMessages({
-      dialogId: this.props.match.params.dialogId,
+      contactId: this.props.match.params.contactId,
     });
   }
 
   componentWillReceiveProps(nextProps) {
-    const { dialogId } = nextProps.match.params;
+    const { contactId } = nextProps.match.params;
 
-    if (dialogId !== this.props.match.params.dialogId) {
-      this.props.messageActions.fetchMessages({ dialogId });
+    if (contactId !== this.props.match.params.contactId) {
+      this.props.messageActions.fetchMessages({ contactId });
     }
   }
 
   sendMessage(text) {
     this.props.messageActions.sendMessage({
-      dialogId: this.props.match.params.dialogId,
+      contactId: this.props.match.params.contactId,
       text,
     });
   }
@@ -69,8 +69,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-function mapStateToProps({ user, dialogs, messages }) {
-  return { user, dialogs, messages };
+function mapStateToProps({ user, contacts, messages }) {
+  return { user, contacts, messages };
 }
 
 

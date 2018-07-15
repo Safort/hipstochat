@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as modalActions from '../../actions/modal';
-import * as dialogActions from '../../actions/dialog';
+import * as contactActions from '../../actions/contact';
 import Profile from './Profile';
 import styles from './index.css';
 
@@ -26,7 +26,7 @@ class Modal extends Component {
   }
 
   render() {
-    const { modalName, modalData, dialogActions } = this.props;
+    const { modalName, modalData, contactActions } = this.props;
     const CurrentModal = modalComponents[modalName];
 
     if (!CurrentModal) {
@@ -37,7 +37,7 @@ class Modal extends Component {
     return (
       <div ref={el => { this._bg = el; }} className={styles.modal} onClick={this._hide}>
         <div className={styles.content}>
-          <CurrentModal user={modalData} dialogActions={dialogActions} />
+          <CurrentModal user={modalData} contactActions={contactActions} />
         </div>
       </div>
     );
@@ -48,7 +48,7 @@ class Modal extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActions, dispatch),
-    dialogActions: bindActionCreators(dialogActions, dispatch),
+    contactActions: bindActionCreators(contactActions, dispatch),
   };
 }
 

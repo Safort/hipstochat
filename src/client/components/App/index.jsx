@@ -27,7 +27,7 @@ class App extends React.Component {
               <Route exact path="/" component={Main} />
               <Route exact path="/auth" component={Auth} />
               <Route exact path="/profile/edit" component={Profile} />
-              <Route exact path="/pm/:dialogId" component={Pm} />
+              <Route exact path="/pm/:contactId" component={Pm} />
               <Route exact path="/search" component={Search} />
               <Route component={NoMatch} />
             </Switch>
