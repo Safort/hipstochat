@@ -13,7 +13,15 @@ exports.isSessionValid = async (ctx, next) => {
   const ssid = ctx.cookies.get('ssid');
   const hasSession = await authModel.isSessionExist(userId, ssid);
 
+  ctx.session = {
+    userId: null,
+    ssid: null
+  };
+
   if (hasSession) {
+    ctx.session.userId = parseInt(userId);
+    ctx.session.ssid = ssid.trim();
+
     return next();
   }
 
