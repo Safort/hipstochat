@@ -8,14 +8,22 @@ import * as contactActions from '../../actions/contact';
 import * as styles from './index.css';
 
 
-const Menu = ({ user, userActions, contacts, contactActions }) => (
-  user.login ? (
-    <div className={styles.menu}>
-      <Profile user={user} userActions={userActions} />
-      <Contacts contacts={contacts} contactActions={contactActions} />
-    </div>
-  ) : null
-);
+class Menu extends React.PureComponent {
+  componentDidMount() {
+    this.props.contactActions.getContacts();
+  }
+
+  render() {
+    const { user, userActions, contacts, contactActions } = this.props;
+
+    return user.login ? (
+      <div className={styles.menu}>
+        <Profile user={user} userActions={userActions} />
+        <Contacts contacts={contacts} contactActions={contactActions} />
+      </div>
+    ) : null
+  }
+}
 
 
 function mapDispatchToProps(dispatch) {
