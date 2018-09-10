@@ -7,7 +7,8 @@ import redirect from '../enhancers/redirect';
 
 const store = createStore(
   rootReducer,
-  undefined,
+  // undefined,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk, ping, redirect)
 );
 
