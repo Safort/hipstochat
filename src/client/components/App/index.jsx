@@ -1,4 +1,5 @@
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Redirect } from 'react-router-dom';
@@ -51,5 +52,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(App));

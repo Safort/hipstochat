@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: resolve(__dirname, 'src/client'),
-  entry: ['babel-polyfill', './index.jsx'],
+  entry: ['@babel/polyfill', './index.jsx'],
   output: {
     path: resolve(__dirname, 'src/public'),
     publicPath: '/',
@@ -16,8 +16,10 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
+        test: /\.(tsx?)|(jsx?)$/,
+        use: [
+          { loader: 'babel-loader' }
+        ],
         include: join(__dirname, 'src'),
         exclude: /(node_modules|bower_components)/
       },
@@ -52,7 +54,7 @@ module.exports = {
   ],
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
 
   devServer: {
@@ -60,7 +62,8 @@ module.exports = {
     compress: true,
     port: 3000,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    disableHostCheck: true,
   },
 
 };
