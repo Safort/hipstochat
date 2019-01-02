@@ -1,7 +1,7 @@
-const Koa = require('koa');
-const db = require('./db');
-const middleware = require('./middleware');
-const config = require('./config');
+import Koa from 'koa';
+import db from './db';
+import middleware from './middleware';
+import config from './config';
 
 const { host, port } = config.server;
 const app = new Koa();
@@ -15,6 +15,6 @@ db.connect()
       console.log(`\n Started on http://${host}:${port} \n`);
     });
   })
-  .catch((err) => {
+  .catch(err => {
     console.log(err);
   });

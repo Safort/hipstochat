@@ -1,14 +1,12 @@
 const { resolve, join } = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
 
 module.exports = {
   context: resolve(__dirname, 'src/client'),
   entry: ['@babel/polyfill', './index.jsx'],
   output: {
-    path: resolve(__dirname, 'src/public'),
+    path: resolve(__dirname, 'app/public'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -50,7 +48,7 @@ module.exports = {
       template: 'templates/index.html',
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
 
   resolve: {
