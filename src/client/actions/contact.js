@@ -1,6 +1,5 @@
 import request from '../utils/request';
 
-
 export const ADD_CONTACT_REQUEST = 'ADD_CONTACT_REQUEST';
 export const ADD_CONTACT_SUCCESS = 'ADD_CONTACT_SUCCESS';
 export const ADD_CONTACT_FAIL = 'ADD_CONTACT_FAIL';
@@ -45,7 +44,6 @@ export function add(contactUserId, name) {
   };
 }
 
-
 /* Remove contact */
 
 function removeRequest() {
@@ -65,13 +63,12 @@ export function remove({ id }) {
     dispatch(removeRequest());
 
     request('delete', `http://localhost:8080/api/contacts/${id}`)
-    .then(res => dispatch(
-      res.success === true ? removeSuccess(id) : dispatch(removeFail(errors))
-    ))
-    .catch(errors => dispatch(removeFail(errors)));
+      .then(res =>
+        dispatch(res.success === true ? removeSuccess(id) : dispatch(removeFail(errors))),
+      )
+      .catch(errors => dispatch(removeFail(errors)));
   };
 }
-
 
 /* Get contacts */
 
@@ -86,7 +83,7 @@ export function getContacts() {
     dispatch(getContactsRequest());
 
     request('get', `http://localhost:8080/api/contacts`)
-    .then(res => dispatch(getContactsSuccess(res.contacts)))
-    .catch(errors => dispatch(getContactsFail(errors)));
+      .then(res => dispatch(getContactsSuccess(res.contacts)))
+      .catch(errors => dispatch(getContactsFail(errors)));
   };
 }

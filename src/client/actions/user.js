@@ -1,6 +1,5 @@
 import { get, post, put } from '../utils/request';
 
-
 export const SET_USER_NAME_REQUEST = 'SET_USER_NAME_REQUEST';
 export const SET_USER_NAME_SUCCESS = 'SET_USER_NAME_SUCCESS';
 export const SET_USER_NAME_FAIL = 'SET_USER_NAME_FAIL';
@@ -24,7 +23,6 @@ export const UPDATE_USER_FAIL = 'UPDATE_USER_FAIL';
 export const LOAD_USER_INFO_REQUEST = 'LOAD_USER_INFO_REQUEST';
 export const LOAD_USER_INFO_SUCCESS = 'LOAD_USER_INFO_SUCCESS';
 export const LOAD_USER_INFO_FAIL = 'LOAD_USER_INFO_FAIL';
-
 
 /* Signup user */
 
@@ -63,7 +61,7 @@ export function signup({ login, name, password }) {
               login,
               name,
               expiresIn: res.expiresIn,
-            })
+            }),
           );
         } else {
           return dispatch(signupFail());
@@ -72,7 +70,6 @@ export function signup({ login, name, password }) {
       .catch(() => dispatch(signupFail()));
   };
 }
-
 
 /* Signin user */
 
@@ -100,7 +97,6 @@ export function signin({ login, password }) {
   };
 }
 
-
 /* Signout user */
 
 function signoutRequest() {
@@ -115,7 +111,6 @@ function signoutFail() {
   return { type: SIGNOUT_USER_FAIL };
 }
 
-
 export function signout() {
   return dispatch => {
     dispatch(signoutRequest());
@@ -125,7 +120,6 @@ export function signout() {
       .catch(() => dispatch(signoutFail()));
   };
 }
-
 
 /* Load user info */
 
@@ -156,7 +150,6 @@ export function loadInfo() {
       .catch(err => dispatch(loadInfoFail(err)));
   };
 }
-
 
 /* Update user info */
 

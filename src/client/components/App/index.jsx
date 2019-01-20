@@ -16,7 +16,6 @@ import * as userActions from '../../actions/user';
 import * as modalActions from '../../actions/modal';
 import * as styles from './index.css';
 
-
 class App extends React.Component {
   render() {
     return (
@@ -40,7 +39,6 @@ class App extends React.Component {
   }
 }
 
-
 function mapStateToProps({ user, modal }) {
   return { user, modal };
 }
@@ -52,4 +50,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default hot(module)(connect(mapStateToProps, mapDispatchToProps)(App));
+export default hot(module)(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(App),
+);

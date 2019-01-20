@@ -8,14 +8,13 @@ import * as searchActions from '../../actions/search';
 import * as modalActions from '../../actions/modal';
 import * as styles from './index.css';
 
-
 class Search extends Component {
   constructor(props) {
     super(props);
 
     this._find = this.find.bind(this);
   }
-  
+
   componentDidMount() {
     this.props.searchActions.clear();
 
@@ -39,11 +38,7 @@ class Search extends Component {
 
   render() {
     const users = this.props.search.users.map((user, i) => (
-      <User
-        key={i}
-        modalActions={this.props.modalActions}
-        data={user}
-      />
+      <User key={i} modalActions={this.props.modalActions} data={user} />
     ));
 
     return (
@@ -51,7 +46,9 @@ class Search extends Component {
         <header className={styles.header}>
           <input
             className={styles.input}
-            ref={login => { this._login = login; }}
+            ref={login => {
+              this._login = login;
+            }}
             placeholder="Enter user login"
             onKeyUp={this._find}
           />
@@ -61,7 +58,6 @@ class Search extends Component {
     );
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -75,4 +71,7 @@ function mapStateToProps({ search, modal, user }) {
   return { search, modal, user };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Search);

@@ -1,6 +1,5 @@
 import request from '../utils/request';
 
-
 export const GET_MESSAGES_REQUEST = 'GET_MESSAGES_REQUEST';
 export const GET_MESSAGES_SUCCESS = 'GET_MESSAGES_SUCCESS';
 export const GET_MESSAGES_FAIL = 'GET_MESSAGES_FAIL';
@@ -12,7 +11,6 @@ export const SEND_MESSAGE_FAIL = 'SEND_MESSAGE_FAIL';
 export const REMOVE_MESSAGE_REQUEST = 'REMOVE_MESSAGE_REQUEST';
 export const REMOVE_MESSAGE_SUCCESS = 'REMOVE_MESSAGE_SUCCESS';
 export const REMOVE_MESSAGE_FAIL = 'REMOVE_MESSAGE_FAIL';
-
 
 /* Fetch contact messages */
 
@@ -33,11 +31,10 @@ export function fetchMessages({ contactId }) {
     dispatch(fetchMessagesRequest());
 
     request('get', `http://localhost:8080/api/contact/${contactId}/messages`)
-    .then(({ list }) => dispatch(fetchMessagesSuccess({ contactId, list })))
-    .catch(errors => dispatch(fetchMessagesFail(errors)));
+      .then(({ list }) => dispatch(fetchMessagesSuccess({ contactId, list })))
+      .catch(errors => dispatch(fetchMessagesFail(errors)));
   };
 }
-
 
 /* Send mesage */
 
@@ -60,11 +57,10 @@ export function sendMessage({ contactId, text }) {
     const body = { text };
 
     request('post', `http://localhost:8080/api/contact/${contactId}/message`, { body })
-    .then(res => dispatch(sendMessageSuccess({ message: res.message })))
-    .catch(errors => dispatch(sendMessageFail(errors)));
+      .then(res => dispatch(sendMessageSuccess({ message: res.message })))
+      .catch(errors => dispatch(sendMessageFail(errors)));
   };
 }
-
 
 /* Remove message */
 
@@ -85,7 +81,7 @@ export function removeMessage({ contactId }) {
     dispatch(removeMessageRequest());
 
     request('get', `http://localhost:8080/api/contacts/${contactId}`)
-    .then(() => dispatch(removeMessageSuccess({ contactId })))
-    .catch(errors => dispatch(removeMessageFail(errors)));
+      .then(() => dispatch(removeMessageSuccess({ contactId })))
+      .catch(errors => dispatch(removeMessageFail(errors)));
   };
 }

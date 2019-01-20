@@ -1,12 +1,10 @@
 import * as actions from '../actions/modal';
 
-
 const initialState = {
   modalName: '',
   modalData: {},
   state: 'hidden',
 };
-
 
 export default function modal(state = initialState, action) {
   switch (action.type) {

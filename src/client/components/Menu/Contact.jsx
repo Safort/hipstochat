@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import styles from './Contacts.css';
 
-
 export default class Contact extends Component {
   constructor() {
     super();

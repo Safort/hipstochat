@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom';
 import Contact from './Contact';
 import styles from './Contacts.css';
 
-
 const Plus = () => (
-  <Link className={styles.plus} to={'/search'}>+</Link>
+  <Link className={styles.plus} to={'/search'}>
+    +
+  </Link>
 );
 
-
 export default ({ contacts, contactActions }) => {
-  const list = contacts.list ? contacts.list.map((contact, i) => (
-    <Contact key={i} contactActions={contactActions} {...contact} />
-  )) : null;
+  const list = contacts.list
+    ? contacts.list.map((contact, i) => (
+        <Contact key={i} contactActions={contactActions} {...contact} />
+      ))
+    : null;
 
   return (
     <div className={styles.contacts}>

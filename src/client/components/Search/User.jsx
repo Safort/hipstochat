@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Avatar from '../../components/Avatar';
 import * as styles from './index.css';
 
-
 class User extends Component {
   constructor(props) {
     super(props);
@@ -26,6 +25,5 @@ class User extends Component {
     );
   }
 }
-
 
 export default User;

@@ -6,7 +6,6 @@ import store from '../../store';
 import * as userActions from '../../actions/user';
 import * as styles from './index.css';
 
-
 class Profile extends Component {
   constructor() {
     super();
@@ -27,24 +26,30 @@ class Profile extends Component {
   save() {
     this.props.userActions.update({
       login: this._login.value,
-      name: this._name.value
+      name: this._name.value,
     });
   }
 
   render() {
-    const { user: { login, name } } = this.props;
+    const {
+      user: { login, name },
+    } = this.props;
 
     return (
       <div className={styles.profileEdit}>
         <div className="profile">
           <input
-            ref={login => { this._login = login; }}
+            ref={login => {
+              this._login = login;
+            }}
             placeholder="login"
             defaultValue={login}
           />
           <br />
           <input
-            ref={name => { this._name = name; }}
+            ref={name => {
+              this._name = name;
+            }}
             placeholder="name"
             defaultValue={name}
           />
@@ -56,17 +61,17 @@ class Profile extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
   };
 }
 
-
 function mapStateToProps({ user }) {
   return { user };
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Profile);

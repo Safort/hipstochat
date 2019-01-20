@@ -5,7 +5,6 @@ import Form from './Form';
 import * as messageActions from '../../actions/message';
 import * as styles from './index.css';
 
-
 const Message = ({ name, text, date }) => (
   <div className={styles.message}>
     <div className={styles.messageAvatar} />
@@ -16,7 +15,6 @@ const Message = ({ name, text, date }) => (
     </div>
   </div>
 );
-
 
 class PM extends Component {
   constructor() {
@@ -48,9 +46,11 @@ class PM extends Component {
 
   render() {
     const { list } = this.props.messages;
-    const messages = list ? list.map(({ name, date, text, _id: id }) => (
-      <Message key={id} name={name} text={text} date={date} />
-    )) : null;
+    const messages = list
+      ? list.map(({ name, date, text, _id: id }) => (
+          <Message key={id} name={name} text={text} date={date} />
+        ))
+      : null;
 
     return (
       <div className={styles.pm}>
@@ -61,17 +61,17 @@ class PM extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   return {
     messageActions: bindActionCreators(messageActions, dispatch),
   };
 }
 
-
 function mapStateToProps({ user, contacts, messages }) {
   return { user, contacts, messages };
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(PM);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PM);

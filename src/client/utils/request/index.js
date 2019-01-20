@@ -2,7 +2,7 @@ async function request(reqMethod, url, otherData = {}, auth = false) {
   const method = reqMethod || 'GET';
   const body = otherData.body || null;
   const headers = {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json',
     ...(otherData.headers || {}),
   };
@@ -15,18 +15,17 @@ async function request(reqMethod, url, otherData = {}, auth = false) {
   if (body !== null) {
     requestConfig.body = JSON.stringify(body);
   }
-  
+
   return fetch(url, requestConfig).then(responseHandler);
 }
 
-
 function responseHandler(res) {
   const contentType = res.headers.get('content-type');
-  
+
   if (contentType && contentType.indexOf('application/json') !== -1) {
     return res.json();
   }
-  
+
   return res;
 }
 
@@ -45,8 +44,6 @@ function put(url, otherData, auth) {
 function remove(url, otherData, auth) {
   return request('DELETE', url, otherData, auth);
 }
-
-
 
 export default request;
 export { get, post, put, remove };

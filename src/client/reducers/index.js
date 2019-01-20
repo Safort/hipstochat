@@ -5,7 +5,6 @@ import modal from './modal';
 import contacts from './contact';
 import messages from './message';
 
-
 export default combineReducers({
   user,
   contacts,

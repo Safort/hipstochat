@@ -8,12 +8,11 @@ import * as userActions from '../../actions/user';
 import * as modalActions from '../../actions/modal';
 import * as styles from './index.css';
 
-
 class Main extends Component {
   componentDidMount() {
     this.props.userActions.loadInfo();
   }
-  
+
   renderPage() {
     if (this.props.user.login) {
       return <div className={styles.greeting}>Welcome home, Master!</div>;
@@ -27,14 +26,13 @@ class Main extends Component {
 
     return (
       <div className={styles.main}>
-        {user.isFetching ? (<PageLoader />) : (this.renderPage())}
+        {user.isFetching ? <PageLoader /> : this.renderPage()}
 
         <Modal {...modal} />
       </div>
     );
   }
 }
-
 
 function mapStateToProps({ user, modal }) {
   return { user, modal };
@@ -47,5 +45,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Main);

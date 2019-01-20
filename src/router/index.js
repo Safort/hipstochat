@@ -6,11 +6,6 @@ const user = require('./user');
 
 const router = new Router();
 
-[
-  user,
-  contact,
-  message,
-  auth
-].forEach(route => route({ router }));
+[user, contact, message, auth].forEach(route => route({ router }));
 
 module.exports = router;

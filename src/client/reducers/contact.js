@@ -1,16 +1,13 @@
 import * as actions from '../actions/contact';
 
-
 const initialState = {
   list: [],
   errors: [],
-  isFetching: false
+  isFetching: false,
 };
-
 
 export default function contacts(state = initialState, action) {
   switch (action.type) {
-
     case actions.ADD_CONTACT_SUCCESS: {
       const list = [...state.list];
       list.push(action.payload);
@@ -46,7 +43,7 @@ export default function contacts(state = initialState, action) {
         ...state,
         errors: [],
         isFetching: false,
-        list: action.payload.contacts
+        list: action.payload.contacts,
       };
     }
 

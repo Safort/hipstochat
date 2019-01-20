@@ -9,7 +9,7 @@ module.exports = db => {
       const { ssid, expiresIn } = auth.ssidHash(user.password, userId);
       const createSessionRes = await db.query(
         'insert into sessions (user_id, expires_in, ssid) VALUES ($1, to_timestamp($2), $3)',
-        [userId, expiresIn, ssid]
+        [userId, expiresIn, ssid],
       );
 
       if (createSessionRes.rowCount === 1) {
@@ -20,7 +20,10 @@ module.exports = db => {
     },
 
     async isSessionExist(userId, ssid) {
-      const isSessionExistRes = await db.query('select * from sessions where user_id=$1 and ssid=$2', [userId, ssid]);
+      const isSessionExistRes = await db.query(
+        'select * from sessions where user_id=$1 and ssid=$2',
+        [userId, ssid],
+      );
 
       if (isSessionExistRes.rowCount === 1) {
         return true;
@@ -34,6 +37,5 @@ module.exports = db => {
 
       return res === 1 ? true : false;
     },
-
-  }
+  };
 };

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Avatar from '../Avatar';
 import styles from './Profile.css';
 
-
 export default class Profile extends React.PureComponent {
   constructor() {
     super();
@@ -24,7 +23,9 @@ export default class Profile extends React.PureComponent {
           <Link to={'/profile/edit'}>{login}</Link>
         </div>
         <div className={styles.config}>
-          <button title="Exit" onClick={this._signout}>[Exit]</button>
+          <button title="Exit" onClick={this._signout}>
+            [Exit]
+          </button>
         </div>
       </div>
     );

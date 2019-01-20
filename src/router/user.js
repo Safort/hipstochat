@@ -6,9 +6,9 @@ module.exports = ({ router }) => {
     const userId = ctx.cookies.get('userId').trim();
     const user = await UserModel.getUserById(userId);
     const body = {
-      success: false
+      success: false,
     };
-    
+
     if (user === null) {
       body.message = 'User not found';
     } else {
@@ -31,13 +31,10 @@ module.exports = ({ router }) => {
     const userId = ctx.cookies.get('userId').trim();
     const { login, name } = ctx.request.body;
     const updateRes = await UserModel.updateUser(userId, login, name);
-    
+
     if (updateRes !== null) {
       ctx.body = { success: true };
     }
     ctx.body = { success: false };
-
   });
-
-  
 };

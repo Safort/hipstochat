@@ -5,7 +5,6 @@ export const SEARCH_USER_SUCCESS = 'SEARCH_USER_SUCCESS';
 export const SEARCH_USER_FAIL = 'SEARCH_USER_FAIL';
 export const SEARCH_CLEAR = 'SEARCH_CLEAR';
 
-
 /* Find user */
 
 function findUserRequest() {
@@ -25,11 +24,10 @@ export function findUser({ login }) {
     dispatch(findUserRequest());
 
     get(`http://localhost:8080/api/search/users/${login}`)
-    .then(({ users }) => dispatch(findUserSuccess({ users })))
-    .catch(() => dispatch(findUserFail()));
+      .then(({ users }) => dispatch(findUserSuccess({ users })))
+      .catch(() => dispatch(findUserFail()));
   };
 }
-
 
 /* Clear field */
 

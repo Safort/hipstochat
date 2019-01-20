@@ -6,11 +6,9 @@ import * as contactActions from '../../actions/contact';
 import Profile from './Profile';
 import styles from './index.css';
 
-
 const modalComponents = {
   profile: Profile,
 };
-
 
 class Modal extends Component {
   constructor() {
@@ -35,7 +33,13 @@ class Modal extends Component {
 
     /* eslint jsx-a11y/no-static-element-interactions: 0 */
     return (
-      <div ref={el => { this._bg = el; }} className={styles.modal} onClick={this._hide}>
+      <div
+        ref={el => {
+          this._bg = el;
+        }}
+        className={styles.modal}
+        onClick={this._hide}
+      >
         <div className={styles.content}>
           <CurrentModal user={modalData} contactActions={contactActions} />
         </div>
@@ -44,7 +48,6 @@ class Modal extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   return {
     modalActions: bindActionCreators(modalActions, dispatch),
@@ -52,10 +55,11 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-
 function mapStateToProps({ modal }) {
   return { modal };
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Modal);

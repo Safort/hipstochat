@@ -5,7 +5,6 @@ import classnames from 'classnames';
 import * as userActions from '../../actions/user';
 import * as styles from './index.css';
 
-
 class Signin extends Component {
   constructor() {
     super();
@@ -28,16 +27,23 @@ class Signin extends Component {
         <h3>Sign up</h3>
         <input
           defaultValue="al"
-          ref={login => { this._login = login; }}
+          ref={login => {
+            this._login = login;
+          }}
           placeholder="login"
-        />
-        <input 
-          defaultValue="al" 
-          ref={name => { this._name = name; }} placeholder="Name"
         />
         <input
           defaultValue="al"
-          ref={password => { this._password = password; }}
+          ref={name => {
+            this._name = name;
+          }}
+          placeholder="Name"
+        />
+        <input
+          defaultValue="al"
+          ref={password => {
+            this._password = password;
+          }}
           placeholder="Password"
         />
         <input type="button" value="Sign up" onClick={this._onSubmit} />
@@ -46,16 +52,17 @@ class Signin extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
   };
 }
 
-
 function mapStateToProps({ user }) {
   return { user };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Signin);

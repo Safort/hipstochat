@@ -8,7 +8,6 @@ import Signin from './Signin';
 import Signup from './Signup';
 import * as styles from './index.css';
 
-
 class Auth extends Component {
   constructor() {
     super();
@@ -25,24 +24,16 @@ class Auth extends Component {
 
   render() {
     const { user } = this.props;
-    const tabSignup = classnames(styles.tab,
-      {
-        [styles.tabActive]: this.state.signup,
-      }
-    );
-    const tabSignin = classnames(styles.tab,
-      {
-        [styles.tabActive]: !this.state.signup,
-      }
-    );
+    const tabSignup = classnames(styles.tab, {
+      [styles.tabActive]: this.state.signup,
+    });
+    const tabSignin = classnames(styles.tab, {
+      [styles.tabActive]: !this.state.signup,
+    });
 
     return (
       <div className={styles.home}>
-        {
-          user.login ? <Route
-            render={() => (user.login ? <Redirect to="/" /> : null)}
-          /> : ''
-        }
+        {user.login ? <Route render={() => (user.login ? <Redirect to="/" /> : null)} /> : ''}
 
         <button className={styles.tabs} onClick={this._tabHandler}>
           <div className={tabSignup}>Sign up</div>
@@ -54,16 +45,17 @@ class Auth extends Component {
   }
 }
 
-
 function mapDispatchToProps(dispatch) {
   return {
     userActions: bindActionCreators(userActions, dispatch),
   };
 }
 
-
 function mapStateToProps({ user }) {
   return { user };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Auth);

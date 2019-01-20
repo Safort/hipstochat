@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './index.css';
 
-
 class Profile extends React.PureComponent {
   constructor() {
     super();
@@ -22,8 +21,10 @@ class Profile extends React.PureComponent {
       <div>
         <div className={styles.title}>Contact info</div>
         <div className={styles.info}>
-          login: {user.login}<br />
-          name: {user.name}<br />
+          login: {user.login}
+          <br />
+          name: {user.name}
+          <br />
         </div>
         <div className={styles.info}>
           <button onClick={this._onClick}>Добавить</button>
@@ -32,6 +33,5 @@ class Profile extends React.PureComponent {
     );
   }
 }
-
 
 export default Profile;

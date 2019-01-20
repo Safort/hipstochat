@@ -1,22 +1,20 @@
 import * as actions from '../actions/user';
 
-
 const initialState = {
   login: null,
   name: null,
   avatarUrl: null,
   expiresIn: localStorage.getItem('expiresIn'),
   errors: [],
-  isFetching: false
+  isFetching: false,
 };
-
 
 export default function user(state = initialState, action) {
   switch (action.type) {
     case actions.SIGNUP_USER_REQUEST:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
 
     case actions.SIGNUP_USER_SUCCESS:
@@ -32,7 +30,7 @@ export default function user(state = initialState, action) {
     case actions.SIGNUP_USER_FAIL:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
 
     //
@@ -40,10 +38,10 @@ export default function user(state = initialState, action) {
     case actions.SIGNIN_USER_REQUEST:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
-      
-      case actions.SIGNIN_USER_SUCCESS:
+
+    case actions.SIGNIN_USER_SUCCESS:
       return {
         ...state,
         isFetching: false,
@@ -57,7 +55,7 @@ export default function user(state = initialState, action) {
     case actions.SIGNIN_USER_FAIL:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
 
     //
@@ -65,7 +63,7 @@ export default function user(state = initialState, action) {
     case actions.SIGNOUT_USER_REQUEST:
       return {
         ...state,
-        isFetching: true
+        isFetching: true,
       };
 
     case actions.SIGNOUT_USER_SUCCESS:
@@ -81,7 +79,7 @@ export default function user(state = initialState, action) {
     case actions.SIGNOUT_USER_FAIL:
       return {
         ...state,
-        isFetching: false
+        isFetching: false,
       };
 
     //

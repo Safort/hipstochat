@@ -7,7 +7,6 @@ import * as userActions from '../../actions/user';
 import * as contactActions from '../../actions/contact';
 import * as styles from './index.css';
 
-
 class Menu extends React.PureComponent {
   componentDidMount() {
     this.props.contactActions.getContacts();
@@ -21,10 +20,9 @@ class Menu extends React.PureComponent {
         <Profile user={user} userActions={userActions} />
         <Contacts contacts={contacts} contactActions={contactActions} />
       </div>
-    ) : null
+    ) : null;
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -33,10 +31,11 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-
 function mapStateToProps({ user, contacts }) {
   return { user, contacts };
 }
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Menu);

@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import * as userActions from '../../actions/user';
 import * as styles from './index.css';
 
-
 class Signin extends React.PureComponent {
   constructor() {
     super();
@@ -24,20 +23,20 @@ class Signin extends React.PureComponent {
 
   renderFrom() {
     const pageSignin = classnames(styles.homePage, styles.homePageActive);
-  
+
     return (
-      <form
-        className={pageSignin}
-        action="http://localhost:8080/signin"
-        method="post"
-      >
+      <form className={pageSignin} action="http://localhost:8080/signin" method="post">
         <h3>Sign in</h3>
         <input
-          ref={login => { this._login = login; }}
+          ref={login => {
+            this._login = login;
+          }}
           placeholder="login"
         />
         <input
-          ref={password => { this._password = password; }}
+          ref={password => {
+            this._password = password;
+          }}
           placeholder="Password"
         />
         <input type="submit" value="Sign in" onClick={this._onSubmit} />
@@ -46,23 +45,24 @@ class Signin extends React.PureComponent {
   }
 
   render() {
-    return <Route
-      render={props =>
-        !this.props.user.login ? (
-          this.renderFrom()
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/',
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    />
+    return (
+      <Route
+        render={props =>
+          !this.props.user.login ? (
+            this.renderFrom()
+          ) : (
+            <Redirect
+              to={{
+                pathname: '/',
+                state: { from: props.location },
+              }}
+            />
+          )
+        }
+      />
+    );
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -70,9 +70,11 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-
 function mapStateToProps({ user }) {
   return { user };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signin);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Signin);
