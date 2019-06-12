@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: resolve(__dirname, 'src/client'),
-  entry: ['@babel/polyfill', './index.jsx'],
+  entry: './index.jsx',
   output: {
     path: resolve(__dirname, 'app/public'),
     publicPath: '/',
@@ -30,8 +30,9 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              localIdentName: '[local]--[hash:base64:8]',
-              modules: true,
+              modules: {
+                localIdentName: '[name]__[local]--[hash:base64:5]'
+              },
               importLoaders: 1,
               sourceMap: true,
             },
